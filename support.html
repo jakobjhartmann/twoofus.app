@@ -1,266 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Support – TwoUfUs</title>
-  <style>
-    :root {
-      --bg: #0e0e12; --bg2: #16161e; --card: #1a1a26;
-      --accent: #e8556d; --accent2: #ff8fa3;
-      --text: #f0f0f5; --muted: #9090aa;
-      --border: rgba(232, 85, 109, 0.2);
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
-    nav {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 18px 40px; background: rgba(14,14,18,0.95);
-      border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100;
-    }
-    .nav-logo {
-      font-size: 1.2rem; font-weight: 700; text-decoration: none;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-    }
-    nav a.back { color: var(--muted); text-decoration: none; font-size: 0.9rem; }
-    nav a.back:hover { color: var(--text); }
-    .page { max-width: 800px; margin: 0 auto; padding: 72px 24px 100px; }
-    .page-label { font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 12px; }
-    h1 { font-size: 2.6rem; font-weight: 800; margin-bottom: 14px; }
-    .subtitle { color: var(--muted); font-size: 1.05rem; margin-bottom: 60px; max-width: 500px; }
-
-    /* CONTACT CARD */
-    .contact-card {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 20px; padding: 36px 40px; margin-bottom: 60px;
-      display: flex; gap: 28px; align-items: center; flex-wrap: wrap;
-    }
-    .contact-icon { font-size: 3rem; }
-    .contact-info h2 { font-size: 1.3rem; font-weight: 700; margin-bottom: 8px; }
-    .contact-info p { color: var(--muted); margin-bottom: 16px; }
-    .contact-link {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: linear-gradient(135deg, var(--accent), #c23d55);
-      color: #fff; padding: 12px 24px; border-radius: 100px;
-      text-decoration: none; font-weight: 600; font-size: 0.95rem;
-      transition: transform .2s, box-shadow .2s;
-      box-shadow: 0 4px 16px rgba(232,85,109,0.35);
-    }
-    .contact-link:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(232,85,109,0.45); }
-
-    /* FAQ */
-    h2.faq-title { font-size: 1.8rem; font-weight: 800; margin-bottom: 32px; }
-    .faq-list { display: flex; flex-direction: column; gap: 16px; }
-    .faq-item {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 16px; overflow: hidden;
-    }
-    .faq-question {
-      padding: 20px 24px; font-weight: 600; cursor: pointer;
-      display: flex; justify-content: space-between; align-items: center;
-      user-select: none;
-    }
-    .faq-question:hover { color: var(--accent2); }
-    .faq-arrow { color: var(--accent); font-size: 1.1rem; transition: transform .3s; }
-    .faq-item.open .faq-arrow { transform: rotate(180deg); }
-    .faq-answer {
-      max-height: 0; overflow: hidden;
-      transition: max-height .35s ease, padding .35s ease;
-      padding: 0 24px; color: var(--muted); font-size: 0.95rem;
-    }
-    .faq-item.open .faq-answer { max-height: 400px; padding: 0 24px 20px; }
-
-    /* TIPS */
-    .tips-section { margin-top: 64px; }
-    .tips-section h2 { font-size: 1.8rem; font-weight: 800; margin-bottom: 32px; }
-    .tips-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
-    .tip-card {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 16px; padding: 24px;
-    }
-    .tip-emoji { font-size: 1.8rem; margin-bottom: 12px; }
-    .tip-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
-    .tip-card p { color: var(--muted); font-size: 0.88rem; }
-
-    footer { background: var(--bg); border-top: 1px solid var(--border); padding: 36px 24px; text-align: center; color: var(--muted); font-size: 0.85rem; }
-    footer a { color: var(--muted); text-decoration: none; margin: 0 12px; }
-    footer a:hover { color: var(--text); }
-    @media (max-width: 600px) { nav { padding: 16px 20px; } .contact-card { padding: 24px; } }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Support &mdash; TwoOfUs</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#FBF4EC;--surface:#FFFFFF;--tint:#FBF1EB;--text:#3B2D26;--text2:#9A8C82;--line:#EFE2D6;
+  --accent:#C2603E;--accent2:#A6492B;--success:#5FA978;--onaccent:#FFF6EF;
+  --serif:"New York",Georgia,"Times New Roman",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,sans-serif;
+  --radius:24px;--shadow:0 10px 30px rgba(90,55,40,.10);
+}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:var(--accent)}
+h1,h2,h3{font-family:var(--serif);color:var(--text);font-weight:600;line-height:1.15}
+nav{position:sticky;top:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:15px 32px;background:rgba(251,244,236,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav-logo{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:600;font-size:1.3rem;color:var(--text);text-decoration:none}
+.logo-tile{width:34px;height:34px;border-radius:11px;background:linear-gradient(135deg,#D5764E,#B84E5F);display:flex;align-items:center;justify-content:center;color:var(--onaccent);font-size:.95rem}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{color:var(--text2);text-decoration:none;font-size:.95rem;font-weight:500}
+.nav-links a:hover{color:var(--accent)}
+.btn{display:inline-flex;align-items:center;gap:9px;border-radius:100px;padding:14px 28px;font-weight:600;text-decoration:none;font-size:1rem;border:none;cursor:pointer}
+.btn-primary{background:var(--accent);color:var(--onaccent);box-shadow:var(--shadow)}
+.btn-primary:hover{background:var(--accent2)}
+.btn-secondary{background:var(--surface);color:var(--text);border:1px solid var(--line)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+.kicker{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700}
+.page{max-width:780px;margin:0 auto;padding:64px 24px 90px}
+.container{max-width:1080px;margin:0 auto}
+section{padding:88px 24px}
+footer{background:var(--bg);border-top:1px solid var(--line);padding:40px 24px;text-align:center;color:var(--text2);font-size:.88rem}
+footer a{color:var(--text2);text-decoration:none;margin:0 12px}
+footer a:hover{color:var(--accent)}
+@media(max-width:620px){nav{padding:14px 20px}.nav-links{display:none}section{padding:60px 20px}}
+</style>
+<style>
+.support-hero{text-align:center;margin-bottom:48px}
+.support-hero h1{font-size:2.6rem;margin:14px 0 12px}
+.support-hero p{color:var(--text2);font-size:1.1rem;max-width:560px;margin:0 auto}
+.contact-card{padding:34px 28px;text-align:center;margin-bottom:60px}
+.contact-card h2{font-size:1.5rem;margin-bottom:8px}
+.contact-card p{color:var(--text2);margin-bottom:22px}
+.contact-email{display:inline-block;font-family:var(--serif);font-size:1.3rem;color:var(--accent);text-decoration:none;margin-bottom:26px}
+.contact-email:hover{color:var(--accent2)}
+.section-head{margin-bottom:24px}
+.section-head h2{font-size:1.9rem;margin-top:6px}
+.faq-list{display:flex;flex-direction:column;gap:12px;margin-bottom:66px}
+.faq-item{overflow:hidden}
+.faq-q{display:flex;justify-content:space-between;align-items:center;gap:16px;width:100%;text-align:left;background:none;border:none;cursor:pointer;padding:20px 24px;font-family:var(--sans);font-size:1.05rem;font-weight:600;color:var(--text)}
+.faq-toggle{flex-shrink:0;width:26px;height:26px;border-radius:50%;background:var(--tint);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:1.2rem;line-height:1;transition:transform .25s ease}
+.faq-item.open .faq-toggle{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .32s ease;color:var(--text2)}
+.faq-item.open .faq-a{max-height:480px}
+.faq-a p{padding:0 24px 22px}
+.faq-a code{background:var(--tint);color:var(--accent2);padding:2px 7px;border-radius:6px;font-size:.9em;font-family:var(--serif)}
+.tips-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+.tip{padding:26px 24px}
+.tip-icon{font-size:1.7rem;margin-bottom:12px}
+.tip h3{font-size:1.12rem;margin-bottom:8px}
+.tip p{color:var(--text2);font-size:.95rem;margin:0}
+</style>
 </head>
 <body>
+<nav>
+  <a href="index.html" class="nav-logo"><span class="logo-tile">&#9829;</span> TwoOfUs</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="support.html">Support</a></li>
+    <li><a href="privacy.html">Privacy</a></li>
+    <li><a href="imprint.html">Imprint</a></li>
+  </ul>
+</nav>
 
-  <nav>
-    <a href="index.html" class="nav-logo">💑 TwoUfUs</a>
-    <a href="index.html" class="back">← Back to home</a>
-  </nav>
+<div class="page">
 
-  <div class="page">
-    <div class="page-label">Help &amp; Support</div>
-    <h1>We're here to help 💬</h1>
-    <p class="subtitle">Having trouble with TwoUfUs? Browse our FAQ or reach out directly – we'll get back to you as soon as possible.</p>
+  <div class="support-hero">
+    <span class="kicker">Help &amp; Support</span>
+    <h1>We&rsquo;re here to help</h1>
+    <p>Two hearts, one rhythm. If something isn&rsquo;t syncing the way it should, start here &mdash; or reach out to us directly.</p>
+  </div>
 
-    <!-- CONTACT -->
-    <div class="contact-card">
-      <div class="contact-icon">📧</div>
-      <div class="contact-info">
-        <h2>Contact Support</h2>
-        <p>Can't find the answer you're looking for? Send us an email and we'll help you out.</p>
-        <a href="mailto:jakobsworld@web.de?subject=TwoUfUs Support" class="contact-link">
-          ✉️ Send us an email
-        </a>
-      </div>
+  <div class="card contact-card">
+    <h2>Get in touch</h2>
+    <p>Have a question, some feedback, or a bug to report? Drop us a line and we&rsquo;ll get back to you.</p>
+    <a class="contact-email" href="mailto:jakobsworld@web.de?subject=TwoOfUs%20Support">jakobsworld@web.de</a>
+    <br>
+    <a class="btn btn-primary" href="mailto:jakobsworld@web.de?subject=TwoOfUs%20Support">&#9829; Email support</a>
+  </div>
+
+  <div class="section-head">
+    <span class="kicker">FAQ</span>
+    <h2>Frequently asked questions</h2>
+  </div>
+
+  <div class="faq-list">
+
+    <div class="card faq-item">
+      <button class="faq-q">Do I need an account?<span class="faq-toggle">+</span></button>
+      <div class="faq-a"><p>Yes &mdash; TwoOfUs uses <strong>Sign in with Apple</strong>. It&rsquo;s the only sign-in method, so there&rsquo;s no separate password to remember. Your Apple ID keeps your couple&rsquo;s data private and synced across your devices through iCloud.</p></div>
     </div>
 
-    <!-- FAQ -->
-    <h2 class="faq-title">Frequently Asked Questions</h2>
-    <div class="faq-list">
-
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggle(this)">
-          Do I need an account to use TwoUfUs?
-          <span class="faq-arrow">▾</span>
-        </div>
-        <div class="faq-answer">
-          Yes. TwoUfUs requires Sign in with Apple to create your account. This means no separate password – just use the Apple ID already on your iPhone. Your data is stored securely in iCloud (CloudKit). Both you and your partner need to sign in with Apple before connecting.
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggle(this)">
-          How do I add a widget to my lock screen?
-          <span class="faq-arrow">▾</span>
-        </div>
-        <div class="faq-answer">
-          Long-press your iPhone lock screen, then tap the "Customize" button at the bottom. Select "Lock Screen", then tap the area where you want to add a widget. Scroll through the list to find TwoUfUs and tap to add it.
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggle(this)">
-          How do I connect with my partner?
-          <span class="faq-arrow">▾</span>
-        </div>
-        <div class="faq-answer">
-          After signing in with Apple, you'll receive a unique invite code (in the format XXXX-XXXX). Share it with your partner via any messaging app. Once they enter the code in their app, you'll be connected and all features will sync between your devices.
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggle(this)">
-          Why is the distance widget not showing?
-          <span class="faq-arrow">▾</span>
-        </div>
-        <div class="faq-answer">
-          Make sure location permissions are enabled for TwoUfUs. Go to Settings → Privacy &amp; Security → Location Services → TwoUfUs and set it to "Always" or "While Using App". Also ensure your partner has done the same and that both of you are connected in the app.
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggle(this)">
-          How does the shared note work?
-          <span class="faq-arrow">▾</span>
-        </div>
-        <div class="faq-answer">
-          TwoUfUs features a single shared note (up to 100 characters) between you and your partner. When you update the note, your partner receives a push notification and the new note appears on their lock screen widget. The previous note is replaced – it's not a chat, but a little message board for two.
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggle(this)">
-          My partner isn't receiving a notification when I update the note – what do I do?
-          <span class="faq-arrow">▾</span>
-        </div>
-        <div class="faq-answer">
-          Check that your partner has notifications enabled for TwoUfUs in Settings → Notifications → TwoUfUs. Also verify that both devices are connected to the internet and still paired in the app. Notifications are delivered via iCloud (CloudKit), so a working internet connection on both sides is required.
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggle(this)">
-          How do I create a countdown?
-          <span class="faq-arrow">▾</span>
-        </div>
-        <div class="faq-answer">
-          Open TwoUfUs and navigate to the Countdown section. Set a target date and an optional label (up to 30 characters), then save. The countdown will automatically sync to your partner's device and appear on the widget.
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggle(this)">
-          Is my location shared all the time?
-          <span class="faq-arrow">▾</span>
-        </div>
-        <div class="faq-answer">
-          Location access is optional. If you grant "Always" permission, your location updates automatically in the background whenever your device detects a significant change, which keeps the distance widget current. If you grant "While Using App", the distance only updates when you open the app. You can change or revoke location permissions at any time in Settings → Privacy &amp; Security → Location Services → TwoUfUs. Your location is only used to calculate the distance – it is shared only with your partner.
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggle(this)">
-          How do I sign out or remove my data?
-          <span class="faq-arrow">▾</span>
-        </div>
-        <div class="faq-answer">
-          To sign out, go to Settings → Account → Sign Out within the TwoUfUs app. Note: signing out does not immediately delete your data from iCloud – it may remain there for a limited time and can be restored if you sign back in with the same Apple ID. To request permanent deletion of your data, contact us at jakobsworld@web.de.
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggle(this)">
-          Which iPhone models and iOS versions are supported?
-          <span class="faq-arrow">▾</span>
-        </div>
-        <div class="faq-answer">
-          TwoUfUs requires iOS 16 or later (needed for lock screen widget support). It is compatible with all iPhones that support iOS 16, starting from iPhone 8. For the best experience, we recommend running the latest version of iOS.
-        </div>
-      </div>
-
+    <div class="card faq-item">
+      <button class="faq-q">How do I add a widget to my Lock or Home Screen?<span class="faq-toggle">+</span></button>
+      <div class="faq-a"><p>On the Home Screen, touch and hold an empty area until the icons jiggle, tap the <strong>+</strong> (or <strong>Edit &rarr; Add Widget</strong>), search for <strong>TwoOfUs</strong>, choose a size, and place it. For the Lock Screen, long-press the Lock Screen, tap <strong>Customize</strong>, select a widget slot, and add the TwoOfUs widget you want.</p></div>
     </div>
 
-    <!-- TIPS -->
-    <div class="tips-section">
-      <h2>Tips for the best experience</h2>
-      <div class="tips-grid">
-        <div class="tip-card">
-          <div class="tip-emoji">📶</div>
-          <h3>Keep a stable connection</h3>
-          <p>For accurate distance updates and note delivery, ensure both devices have a working internet connection.</p>
-        </div>
-        <div class="tip-card">
-          <div class="tip-emoji">🔋</div>
-          <h3>Manage battery usage</h3>
-          <p>Set location to "While Using App" if you're concerned about battery life. The widget updates when the app is opened.</p>
-        </div>
-        <div class="tip-card">
-          <div class="tip-emoji">🔔</div>
-          <h3>Enable notifications</h3>
-          <p>Turn on notifications so you never miss a sweet note update from your partner.</p>
-        </div>
-        <div class="tip-card">
-          <div class="tip-emoji">🔄</div>
-          <h3>Keep the app updated</h3>
-          <p>Enable automatic updates in the App Store for the latest features and bug fixes.</p>
-        </div>
-      </div>
+    <div class="card faq-item">
+      <button class="faq-q">How do I connect with my partner?<span class="faq-toggle">+</span></button>
+      <div class="faq-a"><p>One of you generates an invite code in the format <code>XXXX-XXXX</code>. Share it with your partner, who enters it in their app. Once it&rsquo;s accepted, your two devices are paired and your widgets start syncing.</p></div>
+    </div>
+
+    <div class="card faq-item">
+      <button class="faq-q">My Distance widget isn&rsquo;t showing anything &mdash; why?<span class="faq-toggle">+</span></button>
+      <div class="faq-a"><p>The Distance widget needs <strong>location permission</strong> to work out how far apart you are. Open <strong>Settings &rarr; TwoOfUs &rarr; Location</strong> and make sure access is enabled. Both partners need location turned on for the live distance to appear.</p></div>
+    </div>
+
+    <div class="card faq-item">
+      <button class="faq-q">How does the shared Note work?<span class="faq-toggle">+</span></button>
+      <div class="faq-a"><p>You share <strong>one</strong> note between the two of you, up to <strong>100 characters</strong>. When you write a new note it <strong>replaces</strong> the previous one and <strong>pushes a notification</strong> to your partner &mdash; so a quick &ldquo;thinking of you&rdquo; lands right on their screen.</p></div>
+    </div>
+
+    <div class="card faq-item">
+      <button class="faq-q">My partner didn&rsquo;t get a Note notification &mdash; what can I check?<span class="faq-toggle">+</span></button>
+      <div class="faq-a"><p>Ask your partner to confirm that notifications are allowed under <strong>Settings &rarr; TwoOfUs &rarr; Notifications</strong>, that a Focus or Do Not Disturb mode isn&rsquo;t silencing them, and that they&rsquo;re signed in and still paired with you. A stable internet connection on both sides helps the note sync promptly.</p></div>
+    </div>
+
+    <div class="card faq-item">
+      <button class="faq-q">How do I create a Countdown?<span class="faq-toggle">+</span></button>
+      <div class="faq-a"><p>Open the app, choose the <strong>Countdown</strong> widget, and pick a shared date &mdash; an anniversary, a trip, a reunion. Add a label and it&rsquo;ll show the days remaining. The countdown syncs to both of you and updates automatically each day.</p></div>
+    </div>
+
+    <div class="card faq-item">
+      <button class="faq-q">What is the Partner clock?<span class="faq-toggle">+</span></button>
+      <div class="faq-a"><p>The <strong>Partner clock</strong> shows your partner&rsquo;s <strong>current local time</strong> along with their name and city &mdash; ideal for long-distance couples in different time zones. It&rsquo;s derived from their location and <strong>updates every minute</strong>, so you always know whether it&rsquo;s morning or midnight on their side.</p></div>
+    </div>
+
+    <div class="card faq-item">
+      <button class="faq-q">Should I choose &ldquo;Always&rdquo; or &ldquo;While Using&rdquo; for location?<span class="faq-toggle">+</span></button>
+      <div class="faq-a"><p><strong>&ldquo;Always&rdquo;</strong> lets the Distance and Partner clock widgets stay accurate even when the app is closed, so your widgets reflect where you really are. <strong>&ldquo;While Using&rdquo;</strong> still works, but only updates while the app is open, which can leave widget info a little stale. For the smoothest experience we recommend &ldquo;Always.&rdquo;</p></div>
+    </div>
+
+    <div class="card faq-item">
+      <button class="faq-q">How do I sign out or delete my data?<span class="faq-toggle">+</span></button>
+      <div class="faq-a"><p>You can sign out at any time under <strong>Settings &rarr; Account</strong> inside the app. For <strong>permanent deletion</strong> of your data, email us at <a href="mailto:jakobsworld@web.de?subject=TwoOfUs%20Support">jakobsworld@web.de</a> and we&rsquo;ll take care of it.</p></div>
+    </div>
+
+    <div class="card faq-item">
+      <button class="faq-q">Which iPhones and iOS versions are supported?<span class="faq-toggle">+</span></button>
+      <div class="faq-a"><p>TwoOfUs requires <strong>iOS 26 or later</strong>. As long as your iPhone is running iOS 26 or newer, you&rsquo;re good to go.</p></div>
+    </div>
+
+  </div>
+
+  <div class="section-head">
+    <span class="kicker">Tips</span>
+    <h2>Get the most out of TwoOfUs</h2>
+  </div>
+
+  <div class="tips-grid">
+    <div class="card tip">
+      <div class="tip-icon">&#128241;</div>
+      <h3>Stack your widgets</h3>
+      <p>Add Distance, Countdown, Note, and the Partner clock to a Smart Stack so you can swipe through all four in one spot.</p>
+    </div>
+    <div class="card tip">
+      <div class="tip-icon">&#128205;</div>
+      <h3>Keep location on</h3>
+      <p>Choose &ldquo;Always&rdquo; for location so the Distance and Partner clock widgets stay fresh even when the app is closed.</p>
+    </div>
+    <div class="card tip">
+      <div class="tip-icon">&#9993;&#65039;</div>
+      <h3>Send a little note</h3>
+      <p>A 100-character note pushes straight to your partner &mdash; a fast, sweet way to say you&rsquo;re thinking of them.</p>
+    </div>
+    <div class="card tip">
+      <div class="tip-icon">&#127881;</div>
+      <h3>Count down together</h3>
+      <p>Set a Countdown for your next reunion or anniversary and watch the days shrink on both of your screens.</p>
     </div>
   </div>
 
-  <footer>
-    <a href="index.html">Home</a>
-    <a href="privacy.html">Privacy Policy</a>
-    <a href="mailto:jakobsworld@web.de">Contact</a>
-    <br><br>
-    © 2026 TwoUfUs. All rights reserved.
-  </footer>
+</div>
 
-  <script>
-    function toggle(el) {
-      const item = el.parentElement;
-      item.classList.toggle('open');
-    }
-  </script>
+<footer>
+  <div style="font-family:var(--serif);color:var(--accent);font-weight:600;font-size:1.05rem;margin-bottom:10px">TwoOfUs</div>
+  <a href="index.html">Home</a><a href="support.html">Support</a><a href="privacy.html">Privacy</a><a href="imprint.html">Imprint</a>
+  <div style="margin-top:16px">Made with &#9829; in M&uuml;nster &middot; &copy; 2026 Jakob Hartmann</div>
+</footer>
+
+<script>
+document.querySelectorAll('.faq-q').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    btn.parentElement.classList.toggle('open');
+  });
+});
+</script>
 
 </body>
 </html>
