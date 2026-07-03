@@ -641,6 +641,22 @@ if (typeof window === 'undefined' && typeof module !== 'undefined') { module.exp
 		sub.append(line1, document.createElement('br'), t('subCard'));
 	}
 
+	/* #actions (top:648) + #caption (top:804) are positioned with FIXED tops, but #card grows with the
+	   message. Re-place both directly below the card's REAL rendered bottom. offsetTop/offsetHeight
+	   ignore CSS transforms, so this yields the correct FINAL resting layout even while the reveal is
+	   still animating; #actions is opacity:0 until the end, so early repositioning is invisible. The
+	   unwrap animation only ramps #actions' OPACITY (never its top), so writing .top here is safe. */
+	function reflowActions() {
+		if (gMode !== 'unwrap') return;
+		var card = document.getElementById('card');
+		var actions = document.getElementById('actions');
+		var caption = document.getElementById('caption');
+		if (!card || !actions) return;
+		var top = card.offsetTop + card.offsetHeight + 22;   // real card bottom + gap
+		actions.style.top = Math.round(top) + 'px';
+		if (caption) caption.style.top = Math.round(top + actions.offsetHeight + 16) + 'px';
+	}
+
 	function renderCard() {
 		if (gMode !== 'unwrap' || !gPayload) return;
 		/* preset titles re-resolve into the viewer's language; custom titles stay verbatim (resolveTitle) */
@@ -657,6 +673,9 @@ if (typeof window === 'undefined' && typeof module !== 'undefined') { module.exp
 		}
 		setText('cardDate', TWO.fmtDate(gPayload.startAt, gPayload.tzReceiver, localeOf(lang)));
 		renderPills();
+		/* #card has dynamic height (grows with the message) — re-place #actions/#caption below its
+		   real bottom. Deferred one frame so layout reflects the just-rendered content. */
+		requestAnimationFrame(reflowActions);
 	}
 
 	function renderPills() {
@@ -726,6 +745,7 @@ if (typeof window === 'undefined' && typeof module !== 'undefined') { module.exp
 		$('frame').style.transform = 'scale(' + s + ')';
 	}
 	window.addEventListener('resize', fitFrame);
+	window.addEventListener('resize', reflowActions);
 
 	/* ————— build the wrapped-bouquet SVG from the payload's BouquetConfig ————— */
 	function el(name, attrs) {
