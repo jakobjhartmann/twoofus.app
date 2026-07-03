@@ -573,6 +573,33 @@ if (typeof window === 'undefined' && typeof module !== 'undefined') { module.exp
 	};
 	function t(k) { return I18N[lang][k]; }
 
+	/* ————— preset date-idea labels (verbatim from L10n.swift ideaSeries/Food/Dinner/Game/Walk/Quiz) —————
+	   The app stores a PRESET date title as a fixed label per ideaType, and the payload carries BOTH the
+	   ideaType and the (sender-language) title. So a preset title can be safely re-shown in the viewer's
+	   own language. CUSTOM titles (user-written) must always stay exactly as the sender typed them. */
+	var IDEA_LABELS = {
+		series: { de: 'Serie & Chill',        en: 'Show & chill' },
+		food:   { de: 'Essen bestellen',      en: 'Order food' },
+		dinner: { de: 'Kerzen-Dinner',        en: 'Candlelit dinner' },
+		game:   { de: 'Game-Abend',           en: 'Game night' },
+		walk:   { de: 'Telefon-Spaziergang',  en: 'Phone walk' },
+		quiz:   { de: 'Quiz-Abend',           en: 'Quiz night' }
+	};
+
+	/* Re-resolve a PRESET title into the viewer's language; return CUSTOM titles VERBATIM.
+	   Safe by construction: only substitutes when payload.ideaType is a known preset AND payload.title
+	   EXACTLY equals that preset's de or en label. Every other case — a custom/unknown ideaType, or a
+	   user-written title (e.g. "Italiener um die Ecke") that merely shares an ideaType like 'food' —
+	   falls through and returns payload.title unchanged, so already-sent custom links are never altered. */
+	function resolveTitle(payload, viewLang) {
+		if (!payload || typeof payload.title !== 'string') return (payload && payload.title) || '';
+		var labels = IDEA_LABELS[payload.ideaType];
+		if (labels && (payload.title === labels.de || payload.title === labels.en)) {
+			return labels[viewLang === 'en' ? 'en' : 'de'];
+		}
+		return payload.title;
+	}
+
 	/* payload + mode captured so the toggle can re-render everything live */
 	var gPayload = null, gFrag = '', gMode = 'landing';
 
@@ -613,7 +640,8 @@ if (typeof window === 'undefined' && typeof module !== 'undefined') { module.exp
 
 	function renderCard() {
 		if (gMode !== 'unwrap' || !gPayload) return;
-		setText('cardTitle', gPayload.title); /* sender's title — not translated */
+		/* preset titles re-resolve into the viewer's language; custom titles stay verbatim (resolveTitle) */
+		setText('cardTitle', resolveTitle(gPayload, lang));
 		var msgEl = $('cardMsg');
 		if (msgEl) {
 			if (gPayload.message) {
@@ -978,7 +1006,7 @@ if (typeof window === 'undefined' && typeof module !== 'undefined') { module.exp
 	function buildICS(p) {
 		var startSec = p.startAt;
 		var endSec = p.startAt + (p.durationMin || 120) * 60;
-		var title = p.title || 'Ein Date zu zweit';
+		var title = resolveTitle(p, lang) || 'Ein Date zu zweit';
 		/* DESCRIPTION = message, then two newlines, then "von/from <sender>"; each part optional */
 		var parts = [];
 		if (p.message) parts.push(p.message);
