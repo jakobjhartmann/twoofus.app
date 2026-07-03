@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Privacy Policy — TwoOfUs</title>
+<title>Datenschutzerkl&auml;rung &middot; TwoOfUs</title>
+<meta name="description" content="Datenschutzerkl&auml;rung der iOS-App TwoOfUs und der Website twoofus.app: private iCloud-Speicherung, kein Tracking, keine Cookies, keine eigenen Server.">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -48,124 +49,149 @@ footer a:hover{color:var(--accent)}
 .highlight p{margin:0}
 .contact-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 26px;margin:10px 0 4px}
 .contact-card p{margin-bottom:4px}
+.summary-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:26px 28px;margin-top:48px}
+.summary-card h2{margin:0 0 10px}
+.summary-card p{color:var(--text2)}
+.summary-card p:last-child{margin-bottom:0}
 </style>
 </head>
 <body>
 <nav>
-  <a href="index.html" class="nav-logo"><span class="logo-tile">&#9829;</span> TwoOfUs</a>
+  <a href="index.html" class="nav-logo"><span class="logo-tile" aria-hidden="true">&#9829;</span> TwoOfUs</a>
   <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html">Start</a></li>
     <li><a href="support.html">Support</a></li>
-    <li><a href="privacy.html">Privacy</a></li>
-    <li><a href="imprint.html">Imprint</a></li>
+    <li><a href="privacy.html">Datenschutz</a></li>
+    <li><a href="imprint.html">Impressum</a></li>
   </ul>
 </nav>
 
 <main class="page">
-  <span class="kicker">Legal</span>
-  <h1>Privacy Policy</h1>
-  <p class="updated">Last updated: July 2, 2026</p>
+  <span class="kicker">Rechtliches</span>
+  <h1>Datenschutzerkl&auml;rung</h1>
+  <p class="updated">Stand: 3. Juli 2026</p>
 
   <div class="highlight">
-    <p><strong>In short:</strong> TwoOfUs is built for exactly two people. Your data lives in your own iCloud and is shared <em>only</em> with the partner you connect to &mdash; never with advertisers, data brokers, or any other third party. We never ask for an email or password (Sign in with Apple handles that), we do not track you across apps, and we do not sell data. You can sign out and delete everything from inside the app at any time.</p>
+    <p><strong>Kurz gesagt:</strong> TwoOfUs ist f&uuml;r genau zwei Menschen gebaut. Eure Inhalte liegen seit Version 1.5 in eurer privaten iCloud-Datenbank bei Apple. Den Zugriff setzt Apple serverseitig durch: Nur du und dein gekoppelter Partner k&ouml;nnt eure Daten lesen, niemand sonst, auch wir nicht. Es gibt keine eigenen Server, kein Tracking, keine Werbung und kein Konto au&szlig;er Sign in with Apple. Diese Website setzt keine Cookies und verwendet keine Tracker. Du kannst dich jederzeit in der App abmelden und alles l&ouml;schen.</p>
   </div>
 
-  <p class="lead">This Privacy Policy explains what personal data the TwoOfUs iOS app ("TwoOfUs", "the app", "we", "us") processes, why, on what legal basis, and what rights you have. It is written to comply with the EU General Data Protection Regulation (GDPR).</p>
+  <p class="lead">Diese Datenschutzerkl&auml;rung erkl&auml;rt, welche personenbezogenen Daten die iOS-App TwoOfUs (&bdquo;TwoOfUs&ldquo;, &bdquo;die App&ldquo;, &bdquo;wir&ldquo;) und die Website twoofus.app verarbeiten, zu welchem Zweck, auf welcher Rechtsgrundlage und welche Rechte du hast. Sie orientiert sich an der EU-Datenschutz-Grundverordnung (DSGVO).</p>
 
-  <h2>1. Who we are (Controller)</h2>
-  <p>The controller responsible for processing your personal data within the meaning of Art. 4(7) GDPR is:</p>
+  <h2>1. Verantwortlicher</h2>
+  <p>Verantwortlicher f&uuml;r die Verarbeitung deiner personenbezogenen Daten im Sinne von Art. 4 Nr. 7 DSGVO ist:</p>
   <div class="contact-card">
     <p><strong>Jakob Hartmann</strong></p>
     <p>Kanalstra&szlig;e 38</p>
     <p>48147 M&uuml;nster</p>
-    <p>Germany</p>
-    <p>Email: <a href="mailto:jakobsworld@web.de">jakobsworld@web.de</a></p>
+    <p>Deutschland</p>
+    <p>E-Mail: <a href="mailto:jakobsworld@web.de">jakobsworld@web.de</a></p>
   </div>
 
-  <h2>2. What data we collect</h2>
-  <p>TwoOfUs collects only the minimum data needed to run its shared widgets for you and your partner:</p>
+  <h2>2. Welche Daten die App verarbeitet</h2>
+  <p>TwoOfUs verarbeitet nur, was f&uuml;r die gemeinsamen Funktionen n&ouml;tig ist. Alle Paar-Inhalte werden in eurer privaten iCloud gespeichert (siehe Abschnitt 6) und sind ausschlie&szlig;lich f&uuml;r euch beide zug&auml;nglich:</p>
   <ul>
-    <li><strong>Apple User Identifier</strong> &mdash; a stable, app-specific ID provided by Sign in with Apple. It lets us recognize your account without ever handling an email address or password.</li>
-    <li><strong>Profile name / initials</strong> &mdash; the display name you choose, shown to your partner and used to render initials in the app and widgets.</li>
-    <li><strong>Location (optional)</strong> &mdash; your precise coordinates, used solely to compute the live distance for the Distance widget. If you grant "Always" permission, the app may use background significant-location updates so the distance stays current even when the app is closed. Location is only collected if you enable the feature and grant permission.</li>
-    <li><strong>Shared note</strong> &mdash; one short shared note (up to 100 characters) that you and your partner can update. Updating it sends a push notification to your partner.</li>
-    <li><strong>Countdown</strong> &mdash; the target date and optional label for your shared Countdown widget.</li>
-    <li><strong>Streak counter</strong> &mdash; an in-app counter of consecutive active days. This is an in-app feature only, not a standalone widget.</li>
-    <li><strong>Partner clock (Partner-Uhr) data</strong> &mdash; to show your partner's current local time in the Partner-Uhr widget, the app derives the partner's time zone from their city or coordinates and displays it alongside their name and city.</li>
-    <li><strong>Pairing invite code</strong> &mdash; a short code in the format XXXX-XXXX, used once to securely connect you with your partner.</li>
+    <li><strong>Apple-Nutzerkennung:</strong> eine stabile, app-spezifische ID aus Sign in with Apple. Sie erlaubt es, dein Konto wiederzuerkennen, ohne dass wir jemals E-Mail-Adresse oder Passwort verarbeiten.</li>
+    <li><strong>Profilname / Initialen:</strong> der Anzeigename, den du w&auml;hlst. Er wird deinem Partner angezeigt und f&uuml;r Initialen in App und Widgets verwendet.</li>
+    <li><strong>Standort (optional):</strong> deine Koordinaten, ausschlie&szlig;lich zur Berechnung der Entfernung f&uuml;r das Distanz-Widget und zur Bestimmung der Zeitzone f&uuml;r die Partner-Uhr. Mit der Berechtigung &bdquo;Immer&ldquo; kann die App signifikante Standort&auml;nderungen im Hintergrund verarbeiten, damit die Entfernung aktuell bleibt. Standortdaten werden nur verarbeitet, wenn du die Funktion aktivierst und die iOS-Berechtigung erteilst.</li>
+    <li><strong>Gemeinsame Notiz:</strong> eine kurze gemeinsame Notiz (bis zu 100 Zeichen). Eine Aktualisierung l&ouml;st eine Mitteilung an deinen Partner aus.</li>
+    <li><strong>Countdown:</strong> Zieldatum und optionale Beschriftung eures gemeinsamen Countdowns.</li>
+    <li><strong>Streak-Z&auml;hler:</strong> ein Z&auml;hler eurer aktiven Tage bzw. Check-in-Wochen innerhalb der App.</li>
+    <li><strong>Partner-Uhr:</strong> zur Anzeige der lokalen Uhrzeit deines Partners leitet die App dessen Zeitzone aus Stadt oder Koordinaten ab und zeigt sie mit Name und Stadt an.</li>
+    <li><strong>Kopplungscode:</strong> ein kurzer Code im Format XXXX-XXXX, der einmalig verwendet wird, um euch sicher zu verbinden.</li>
+    <li><strong>Date-Einladungen (ab Version 1.6):</strong> Inhalt und Gestaltung einer Einladung: gew&auml;hlte Idee, Titel, deine Kartennachricht, Termin (in beiden Zeitzonen), die Gestaltung des Blumenstrau&szlig;es sowie Antworten, Terminvorschl&auml;ge und Reaktionen.</li>
+    <li><strong>Fotos in Date-Erinnerungen (ab Version 1.6):</strong> Fotos und optionale Notizen, die ihr nach einem Date zu einer gemeinsamen Erinnerung hinzuf&uuml;gt. Der Zugriff auf deine Fotomediathek erfolgt nur &uuml;ber die iOS-Fotoauswahl und nur, wenn du selbst Fotos ausw&auml;hlst (siehe Abschnitt 13).</li>
+    <li><strong>Check-in-Antworten (ab Version 1.6):</strong> deine Antworten auf die w&ouml;chentlichen Check-in-Fragen. Sie werden versiegelt gespeichert: Dein Partner sieht deine Antworten erst, wenn ihr beide eure Antworten abgeschickt habt, und umgekehrt.</li>
+    <li><strong>Komplimente (ab Version 1.6):</strong> S&auml;tze aus euren Check-ins, die ihr in euer gemeinsames Komplimente-Glas legt.</li>
   </ul>
 
-  <h2>3. What we do NOT collect</h2>
+  <h2>3. Was wir nicht erheben</h2>
   <ul>
-    <li>No email address or password &mdash; authentication is handled entirely by Apple's Sign in with Apple.</li>
-    <li>No payment or billing information.</li>
-    <li>No advertising identifiers, and no ads.</li>
-    <li>No cross-app or cross-site tracking, and no third-party analytics or tracking SDKs.</li>
-    <li>We never sell or rent your data to anyone.</li>
+    <li>Keine E-Mail-Adresse und kein Passwort: Die Anmeldung l&auml;uft vollst&auml;ndig &uuml;ber Apples Sign in with Apple.</li>
+    <li>Keine Zahlungs- oder Rechnungsdaten.</li>
+    <li>Keine Werbe-IDs und keine Werbung.</li>
+    <li>Kein app- oder website-&uuml;bergreifendes Tracking, keine Analyse- oder Tracking-SDKs von Drittanbietern.</li>
+    <li>Keine Cookies und kein Tracking auf dieser Website (siehe Abschnitt 15).</li>
+    <li>Wir verkaufen oder vermieten niemals Daten.</li>
   </ul>
 
-  <h2>4. How we use the data</h2>
-  <p>We use the data listed above exclusively to provide the app's core functionality: to authenticate you, connect you with your chosen partner, and power the shared widgets &mdash; Distance, Countdown, Note, and the Partner-Uhr (your partner's local time). The shared note also triggers a push notification to your partner when you update it. We do not use your data for profiling, marketing, or any purpose unrelated to running these features.</p>
+  <h2>4. Wof&uuml;r wir die Daten verwenden</h2>
+  <p>Wir verwenden die oben genannten Daten ausschlie&szlig;lich f&uuml;r die Kernfunktionen der App: um dich anzumelden, dich mit deinem Partner zu verbinden und die gemeinsamen Funktionen bereitzustellen, also die Widgets (Entfernung, Countdown, Notiz, Partner-Uhr), Date-Einladungen und Erinnerungen, Weekly Check-ins und das Komplimente-Glas. Bestimmte Aktionen (z.&nbsp;B. eine neue Notiz, eine Date-Einladung oder eine Zusage) l&ouml;sen eine Mitteilung an deinen Partner aus. Wir nutzen deine Daten nicht f&uuml;r Profilbildung, Marketing oder andere Zwecke.</p>
 
-  <h2>5. Legal basis (GDPR)</h2>
+  <h2>5. Rechtsgrundlagen (DSGVO)</h2>
   <ul>
-    <li><strong>Art. 6(1)(b) GDPR &mdash; performance of a contract:</strong> processing your account identifier, profile, pairing, note, countdown, streak, and partner-clock data is necessary to provide the service you requested.</li>
-    <li><strong>Art. 6(1)(a) GDPR &mdash; consent:</strong> location data for the Distance widget is processed only with your explicit consent, given through the iOS location permission prompt. You may withdraw this consent at any time in iOS Settings.</li>
-    <li><strong>Art. 6(1)(f) GDPR &mdash; legitimate interests:</strong> ensuring the security and integrity of the service and preventing abuse.</li>
+    <li><strong>Art. 6 Abs. 1 lit. b DSGVO (Vertragserf&uuml;llung):</strong> Die Verarbeitung von Kontokennung, Profil, Kopplung, Notiz, Countdown, Streak, Partner-Uhr, Date-Einladungen, Erinnerungen (inkl. der von dir ausgew&auml;hlten Fotos), Check-in-Antworten und Komplimenten ist erforderlich, um den von dir gew&uuml;nschten Dienst bereitzustellen. Foto-Auswahl und Kalendereintrag erfolgen dabei stets nur auf deine eigene, aktive Handlung hin.</li>
+    <li><strong>Art. 6 Abs. 1 lit. a DSGVO (Einwilligung):</strong> Standortdaten werden nur mit deiner ausdr&uuml;cklichen Einwilligung &uuml;ber die iOS-Berechtigungsabfrage verarbeitet. Du kannst diese Einwilligung jederzeit in den iOS-Einstellungen widerrufen.</li>
+    <li><strong>Art. 6 Abs. 1 lit. f DSGVO (berechtigte Interessen):</strong> Sicherheit und Integrit&auml;t des Dienstes, Missbrauchsvermeidung sowie die technisch notwendige Auslieferung dieser Website.</li>
   </ul>
 
-  <h2>6. Infrastructure &amp; data sharing</h2>
-  <p>TwoOfUs stores your data using <strong>Apple iCloud (CloudKit)</strong>. Apple Inc. acts as our processor and hosts the data on your behalf. Sign in with Apple and push notifications are likewise provided by Apple. Apple's privacy policy applies to these services: <a href="https://www.apple.com/privacy/" target="_blank" rel="noopener">apple.com/privacy</a>.</p>
-  <p>Your couple data is shared <strong>only with the single partner you connect with</strong> through your pairing code. It is not shared with other users, advertisers, data brokers, or unrelated third parties. We do not access your data for any purpose beyond operating and supporting the app.</p>
+  <h2>6. Speicherung: eure private iCloud</h2>
+  <p>Alle Paar-Inhalte liegen seit Version 1.5 in der <strong>privaten iCloud-Datenbank (Apple CloudKit)</strong> und werden &uuml;ber eine von Apple verwaltete Freigabe ausschlie&szlig;lich zwischen deinem und dem Apple-Konto deines gekoppelten Partners geteilt. Die Zugriffskontrolle setzt Apple <strong>serverseitig</strong> durch: Andere Nutzer, Dritte und auch wir haben keinen Zugriff auf eure Inhalte. Wir betreiben keine eigenen Server und keine eigene Datenbank.</p>
+  <p>Apple Inc. stellt dabei die Infrastruktur bereit (iCloud/CloudKit, Sign in with Apple, Push-Mitteilungen). F&uuml;r diese Dienste gilt Apples Datenschutzerkl&auml;rung: <a href="https://www.apple.com/privacy/" target="_blank" rel="noopener">apple.com/privacy</a>.</p>
 
-  <h2>7. Data retention</h2>
-  <p>We keep your data only as long as your account exists and you use the app. Your shared note, countdown, and profile persist so both partners can see them. When you sign out and delete your account (see Section 9), the associated data is removed. Backups held by Apple's iCloud infrastructure follow Apple's own retention and deletion cycles.</p>
+  <h2>7. Speicherdauer</h2>
+  <p>Wir speichern deine Daten nur so lange, wie dein Konto besteht und du die App nutzt. Notiz, Countdown, Profil, Einladungen, Erinnerungen, Fotos, Check-in-Antworten und Komplimente bleiben bestehen, damit ihr beide sie sehen k&ouml;nnt. Wenn du dich abmeldest und dein Konto l&ouml;schst (siehe Abschnitt 9), werden die zugeh&ouml;rigen Daten entfernt. F&uuml;r Sicherungen innerhalb der iCloud-Infrastruktur gelten Apples eigene L&ouml;sch- und Aufbewahrungszyklen.</p>
 
-  <h2>8. Your rights</h2>
-  <p>Under the GDPR you have the right to:</p>
+  <h2>8. Deine Rechte</h2>
+  <p>Nach der DSGVO hast du das Recht auf:</p>
   <ul>
-    <li>access the personal data we hold about you (Art. 15);</li>
-    <li>request rectification of inaccurate data (Art. 16);</li>
-    <li>request erasure of your data (Art. 17);</li>
-    <li>request restriction of processing (Art. 18);</li>
-    <li>data portability (Art. 20);</li>
-    <li>object to processing based on legitimate interests (Art. 21);</li>
-    <li>withdraw any consent at any time, without affecting prior lawful processing (Art. 7(3));</li>
-    <li>lodge a complaint with a supervisory authority (Art. 77).</li>
+    <li>Auskunft &uuml;ber die zu deiner Person gespeicherten Daten (Art. 15);</li>
+    <li>Berichtigung unrichtiger Daten (Art. 16);</li>
+    <li>L&ouml;schung deiner Daten (Art. 17);</li>
+    <li>Einschr&auml;nkung der Verarbeitung (Art. 18);</li>
+    <li>Daten&uuml;bertragbarkeit (Art. 20);</li>
+    <li>Widerspruch gegen Verarbeitungen auf Basis berechtigter Interessen (Art. 21);</li>
+    <li>Widerruf erteilter Einwilligungen mit Wirkung f&uuml;r die Zukunft (Art. 7 Abs. 3);</li>
+    <li>Beschwerde bei einer Aufsichtsbeh&ouml;rde (Art. 77).</li>
   </ul>
-  <p>To exercise any of these rights, contact us at <a href="mailto:jakobsworld@web.de">jakobsworld@web.de</a>.</p>
+  <p>Um diese Rechte auszu&uuml;ben, schreib uns an <a href="mailto:jakobsworld@web.de">jakobsworld@web.de</a>.</p>
 
-  <h2>9. Sign out &amp; deletion</h2>
-  <p>You are always in control. Open the app and go to <strong>Settings &rarr; Account</strong> to sign out or to delete your account and its data. Deleting your account removes your profile and unpairs you from your partner. You can also revoke the app's access to Sign in with Apple in your iOS Settings under your Apple Account.</p>
+  <h2>9. Abmelden &amp; L&ouml;schen</h2>
+  <p>Du beh&auml;ltst die Kontrolle. In der App kannst du dich unter <strong>Einstellungen &rarr; Konto</strong> abmelden oder dein Konto samt Daten l&ouml;schen. Das L&ouml;schen entfernt dein Profil und hebt die Kopplung mit deinem Partner auf; auch gemeinsame Inhalte wie Erinnerungen, Fotos, Check-ins und Komplimente werden dabei aus der Freigabe entfernt. Zus&auml;tzlich kannst du der App in den iOS-Einstellungen unter deinem Apple-Account den Zugriff auf Sign in with Apple entziehen.</p>
 
-  <h2>10. Children's privacy</h2>
-  <p>TwoOfUs is not directed at children. The app is intended for users aged 13 and over. We do not knowingly collect data from children under 13. If you believe a child has provided us data, please contact us and we will delete it.</p>
+  <h2>10. Kinder</h2>
+  <p>TwoOfUs richtet sich nicht an Kinder. Die App ist f&uuml;r Personen ab 13 Jahren gedacht. Wir erheben wissentlich keine Daten von Kindern unter 13 Jahren. Wenn du glaubst, dass uns ein Kind Daten &uuml;bermittelt hat, kontaktiere uns bitte, und wir l&ouml;schen sie.</p>
 
-  <h2>11. Location permissions</h2>
-  <p>The Distance widget requires location access to calculate how far apart you and your partner are. iOS will ask you to grant permission; you can choose "While Using" or "Always". "Always" enables background significant-location updates so the distance stays fresh even when the app is closed. You can change or revoke location permission at any time in iOS <strong>Settings &rarr; Privacy &amp; Security &rarr; Location Services &rarr; TwoOfUs</strong>. Disabling location simply turns off the Distance feature; the rest of the app keeps working.</p>
+  <h2>11. Standortberechtigungen</h2>
+  <p>Das Distanz-Widget ben&ouml;tigt Standortzugriff, um zu berechnen, wie weit ihr voneinander entfernt seid. iOS fragt dich nach der Berechtigung; du kannst &bdquo;Beim Verwenden&ldquo; oder &bdquo;Immer&ldquo; w&auml;hlen. &bdquo;Immer&ldquo; erm&ouml;glicht Hintergrund-Updates bei signifikanten Standort&auml;nderungen, damit die Entfernung auch bei geschlossener App aktuell bleibt. Du kannst die Berechtigung jederzeit &auml;ndern oder entziehen unter iOS <strong>Einstellungen &rarr; Datenschutz &amp; Sicherheit &rarr; Ortungsdienste &rarr; TwoOfUs</strong>. Ohne Standort funktioniert die App weiter, nur die Distanz-Funktion ist dann aus.</p>
 
-  <h2>12. Push notifications</h2>
-  <p>When your partner updates the shared note, TwoOfUs sends you a push notification so you see it right away. Notifications are delivered via Apple Push Notification service. You can disable notifications at any time in iOS <strong>Settings &rarr; Notifications &rarr; TwoOfUs</strong>.</p>
+  <h2>12. Mitteilungen (Push)</h2>
+  <p>TwoOfUs sendet dir Mitteilungen, damit du nichts verpasst: wenn dein Partner die gemeinsame Notiz aktualisiert, dir eine Date-Einladung schickt, eine Einladung annimmt oder einen anderen Zeitpunkt vorschl&auml;gt, sowie als optionale Erinnerung an euren Weekly Check-in. Die Zustellung erfolgt &uuml;ber den Apple Push Notification Service. Du kannst Mitteilungen jederzeit deaktivieren unter iOS <strong>Einstellungen &rarr; Mitteilungen &rarr; TwoOfUs</strong>.</p>
 
-  <h2>13. Security</h2>
-  <p>Data is encrypted in transit between your device and Apple's iCloud servers. Access to your couple data is limited to you and your paired partner; no one else can read your note, distance, countdown, streak, or partner-clock information. We rely on Apple's infrastructure security together with the app's client-side access controls.</p>
+  <h2>13. Fotos &amp; Fotomediathek</h2>
+  <p>F&uuml;r Date-Erinnerungen kannst du Fotos hinzuf&uuml;gen. Der Zugriff auf deine Fotomediathek erfolgt ausschlie&szlig;lich &uuml;ber die iOS-Fotoauswahl und nur dann, wenn du aktiv Fotos ausw&auml;hlst; die App liest deine Mediathek nicht im Hintergrund. Ausgew&auml;hlte Fotos werden in eurer privaten iCloud gespeichert und sind nur f&uuml;r dich und deinen Partner sichtbar.</p>
 
-  <h2>14. Changes to this policy</h2>
-  <p>We may update this Privacy Policy as the app evolves or as legal requirements change. When we make material changes, we will update the "Last updated" date at the top of this page. Please review it periodically.</p>
+  <h2>14. Kalenderzugriff</h2>
+  <p>Wenn ihr ein Date vereinbart habt, kannst du es mit einem Tipp in deinen iOS-Kalender eintragen. Dieser Zugriff ist <strong>rein schreibend</strong> und erfolgt <strong>nur auf deine ausdr&uuml;ckliche Aktion</strong> hin (&bdquo;Zum iOS-Kalender hinzuf&uuml;gen&ldquo;). TwoOfUs liest deinen Kalender nicht aus. Der eingetragene Termin liegt danach in deinem eigenen Kalender-Account und unterliegt dessen Einstellungen.</p>
 
-  <h2>15. Contact</h2>
-  <p>If you have any questions about this Privacy Policy or your data, please reach out:</p>
+  <h2>15. Einladungs-Links &amp; diese Website</h2>
+  <p><strong>Einladungs-Links:</strong> Eine Date-Einladung kannst du als Link teilen (twoofus.app/d/&hellip;). Die Einladungsdaten sind dabei im sogenannten Fragment des Links kodiert, also im Teil hinter dem <strong>#</strong>. Das Fragment wird vom Browser technisch bedingt <strong>nicht an Server &uuml;bertragen</strong>: &Ouml;ffnet dein Partner den Link, wird die Einladung ausschlie&szlig;lich lokal im Browser dargestellt. Weder wir noch der Hosting-Anbieter der Website erhalten den Inhalt der Einladung. Der Link ist nur f&uuml;r Personen sichtbar, die ihn erhalten haben, und l&auml;uft nach dem Date ab.</p>
+  <p><strong>Website:</strong> Diese Website ist statisch. Sie setzt keine Cookies, verwendet keine Tracker und keine Analyse-Dienste und l&auml;dt keine Schriften, Skripte oder sonstigen Inhalte von Drittservern nach. Beim Aufruf verarbeitet der Hosting-Anbieter technisch bedingt kurzzeitig deine IP-Adresse, um die Seiten auszuliefern (Art. 6 Abs. 1 lit. f DSGVO); dar&uuml;ber hinaus findet keine Auswertung statt.</p>
+
+  <h2>16. Sicherheit</h2>
+  <p>Die &Uuml;bertragung zwischen deinem Ger&auml;t und Apples iCloud-Servern ist verschl&uuml;sselt; die Speicherung erfolgt in Apples gesicherter Infrastruktur. Der Zugriff auf eure Paar-Daten ist auf euch beide beschr&auml;nkt und wird von Apple serverseitig durchgesetzt: Niemand sonst kann eure Notizen, Fotos, Check-in-Antworten, Komplimente, Einladungen, Entfernungs- oder Uhrzeit-Daten lesen. Versiegelte Check-in-Antworten zeigt die App dem Partner erst an, wenn beide abgeschickt haben.</p>
+
+  <h2>17. &Auml;nderungen dieser Erkl&auml;rung</h2>
+  <p>Wir passen diese Datenschutzerkl&auml;rung an, wenn sich die App oder die Rechtslage &auml;ndert. Bei wesentlichen &Auml;nderungen aktualisieren wir das Datum unter &bdquo;Stand&ldquo; am Anfang dieser Seite. Bitte schau gelegentlich vorbei.</p>
+
+  <h2>18. Kontakt</h2>
+  <p>Bei Fragen zu dieser Datenschutzerkl&auml;rung oder deinen Daten erreichst du uns hier:</p>
   <div class="contact-card">
     <p><strong>Jakob Hartmann</strong></p>
-    <p>Kanalstra&szlig;e 38, 48147 M&uuml;nster, Germany</p>
-    <p>Email: <a href="mailto:jakobsworld@web.de">jakobsworld@web.de</a></p>
+    <p>Kanalstra&szlig;e 38, 48147 M&uuml;nster, Deutschland</p>
+    <p>E-Mail: <a href="mailto:jakobsworld@web.de">jakobsworld@web.de</a></p>
+  </div>
+
+  <div class="summary-card" lang="en">
+    <h2>English summary</h2>
+    <p>This privacy policy is provided in German. In short: TwoOfUs is built for exactly two people. Since version 1.5, everything you share (profile, note, countdown, location for the distance widget, date invitations, memory photos, weekly check-in answers, and compliments) is stored in your <strong>private, Apple-secured iCloud database</strong>. Access is enforced on Apple&rsquo;s servers: only you and your paired partner can read your data; we run no servers of our own and cannot access your content. There are no ads, no tracking, and no account beyond Sign in with Apple. Calendar access is write-only and happens only when you tap to add a date. Invitation links encode their data in the URL fragment, which never leaves your browser. This website sets no cookies and uses no trackers.</p>
+    <p>Questions? Contact <a href="mailto:jakobsworld@web.de">jakobsworld@web.de</a>.</p>
   </div>
 </main>
 
 <footer>
   <div style="font-family:var(--serif);color:var(--accent);font-weight:600;font-size:1.05rem;margin-bottom:10px">TwoOfUs</div>
-  <a href="index.html">Home</a><a href="support.html">Support</a><a href="privacy.html">Privacy</a><a href="imprint.html">Imprint</a>
-  <div style="margin-top:16px">Made with &#9829; in M&uuml;nster &middot; &copy; 2026 Jakob Hartmann</div>
+  <a href="index.html">Start</a><a href="support.html">Support</a><a href="privacy.html">Datenschutz</a><a href="imprint.html">Impressum</a>
+  <div style="margin-top:16px">Mit &#9829; in M&uuml;nster gemacht &middot; &copy; 2026 Jakob Hartmann</div>
 </footer>
 </body>
 </html>

@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Support &mdash; TwoOfUs</title>
+<title>Support &middot; TwoOfUs</title>
+<meta name="description" content="Hilfe und h&auml;ufige Fragen zur iOS-App TwoOfUs: Widgets, Kopplung, Blumenkarte, Weekly Check-ins, Komplimente-Glas, Standort und Datenschutz.">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -53,7 +54,7 @@ footer a:hover{color:var(--accent)}
 .faq-toggle{flex-shrink:0;width:26px;height:26px;border-radius:50%;background:var(--tint);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:1.2rem;line-height:1;transition:transform .25s ease}
 .faq-item.open .faq-toggle{transform:rotate(45deg)}
 .faq-a{max-height:0;overflow:hidden;transition:max-height .32s ease;color:var(--text2)}
-.faq-item.open .faq-a{max-height:480px}
+.faq-item.open .faq-a{max-height:520px}
 .faq-a p{padding:0 24px 22px}
 .faq-a code{background:var(--tint);color:var(--accent2);padding:2px 7px;border-radius:6px;font-size:.9em;font-family:var(--serif)}
 .tips-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
@@ -65,120 +66,140 @@ footer a:hover{color:var(--accent)}
 </head>
 <body>
 <nav>
-  <a href="index.html" class="nav-logo"><span class="logo-tile">&#9829;</span> TwoOfUs</a>
+  <a href="index.html" class="nav-logo"><span class="logo-tile" aria-hidden="true">&#9829;</span> TwoOfUs</a>
   <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html">Start</a></li>
     <li><a href="support.html">Support</a></li>
-    <li><a href="privacy.html">Privacy</a></li>
-    <li><a href="imprint.html">Imprint</a></li>
+    <li><a href="privacy.html">Datenschutz</a></li>
+    <li><a href="imprint.html">Impressum</a></li>
   </ul>
 </nav>
 
 <div class="page">
 
   <div class="support-hero">
-    <span class="kicker">Help &amp; Support</span>
-    <h1>We&rsquo;re here to help</h1>
-    <p>Two hearts, one rhythm. If something isn&rsquo;t syncing the way it should, start here &mdash; or reach out to us directly.</p>
+    <span class="kicker">Hilfe &amp; Support</span>
+    <h1>Wir helfen dir gern</h1>
+    <p>Wenn etwas nicht so synct, wie es soll, findest du hier die Antworten. Oder schreib uns einfach direkt.</p>
   </div>
 
   <div class="card contact-card">
-    <h2>Get in touch</h2>
-    <p>Have a question, some feedback, or a bug to report? Drop us a line and we&rsquo;ll get back to you.</p>
+    <h2>Schreib uns</h2>
+    <p>Eine Frage, Feedback oder ein Bug? Melde dich, wir antworten so schnell wir k&ouml;nnen.</p>
     <a class="contact-email" href="mailto:jakobsworld@web.de?subject=TwoOfUs%20Support">jakobsworld@web.de</a>
     <br>
-    <a class="btn btn-primary" href="mailto:jakobsworld@web.de?subject=TwoOfUs%20Support">&#9829; Email support</a>
+    <a class="btn btn-primary" href="mailto:jakobsworld@web.de?subject=TwoOfUs%20Support">E-Mail an den Support</a>
   </div>
 
   <div class="section-head">
     <span class="kicker">FAQ</span>
-    <h2>Frequently asked questions</h2>
+    <h2>H&auml;ufige Fragen</h2>
   </div>
 
   <div class="faq-list">
 
     <div class="card faq-item">
-      <button class="faq-q">Do I need an account?<span class="faq-toggle">+</span></button>
-      <div class="faq-a"><p>Yes &mdash; TwoOfUs uses <strong>Sign in with Apple</strong>. It&rsquo;s the only sign-in method, so there&rsquo;s no separate password to remember. Your Apple ID keeps your couple&rsquo;s data private and synced across your devices through iCloud.</p></div>
+      <button class="faq-q" aria-expanded="false">Brauche ich ein Konto?<span class="faq-toggle" aria-hidden="true">+</span></button>
+      <div class="faq-a"><p>Ja, TwoOfUs nutzt <strong>Sign in with Apple</strong>. Das ist die einzige Anmeldemethode, es gibt also kein extra Passwort. Dein Apple-Account h&auml;lt eure Daten privat und synchronisiert sie &uuml;ber iCloud.</p></div>
     </div>
 
     <div class="card faq-item">
-      <button class="faq-q">How do I add a widget to my Lock or Home Screen?<span class="faq-toggle">+</span></button>
-      <div class="faq-a"><p>On the Home Screen, touch and hold an empty area until the icons jiggle, tap the <strong>+</strong> (or <strong>Edit &rarr; Add Widget</strong>), search for <strong>TwoOfUs</strong>, choose a size, and place it. For the Lock Screen, long-press the Lock Screen, tap <strong>Customize</strong>, select a widget slot, and add the TwoOfUs widget you want.</p></div>
+      <button class="faq-q" aria-expanded="false">Wie verbinde ich mich mit meinem Partner?<span class="faq-toggle" aria-hidden="true">+</span></button>
+      <div class="faq-a"><p>Einer von euch erzeugt einen Einladungscode im Format <code>XXXX-XXXX</code>. Teile ihn mit deinem Partner, der ihn in seiner App eingibt. Sobald der Code angenommen ist, sind eure Ger&auml;te gekoppelt und eure Widgets beginnen zu syncen.</p></div>
     </div>
 
     <div class="card faq-item">
-      <button class="faq-q">How do I connect with my partner?<span class="faq-toggle">+</span></button>
-      <div class="faq-a"><p>One of you generates an invite code in the format <code>XXXX-XXXX</code>. Share it with your partner, who enters it in their app. Once it&rsquo;s accepted, your two devices are paired and your widgets start syncing.</p></div>
+      <button class="faq-q" aria-expanded="false">Wie f&uuml;ge ich ein Widget zum Home oder Lock Screen hinzu?<span class="faq-toggle" aria-hidden="true">+</span></button>
+      <div class="faq-a"><p>Auf dem Home Screen h&auml;ltst du eine freie Fl&auml;che gedr&uuml;ckt, bis die Symbole wackeln, tippst auf das <strong>+</strong> (oder <strong>Bearbeiten &rarr; Widget hinzuf&uuml;gen</strong>), suchst nach <strong>TwoOfUs</strong>, w&auml;hlst eine Gr&ouml;&szlig;e und platzierst es. F&uuml;r den Lock Screen h&auml;ltst du den Sperrbildschirm gedr&uuml;ckt, tippst auf <strong>Anpassen</strong>, w&auml;hlst einen Widget-Bereich und f&uuml;gst das gew&uuml;nschte TwoOfUs-Widget hinzu.</p></div>
     </div>
 
     <div class="card faq-item">
-      <button class="faq-q">My Distance widget isn&rsquo;t showing anything &mdash; why?<span class="faq-toggle">+</span></button>
-      <div class="faq-a"><p>The Distance widget needs <strong>location permission</strong> to work out how far apart you are. Open <strong>Settings &rarr; TwoOfUs &rarr; Location</strong> and make sure access is enabled. Both partners need location turned on for the live distance to appear.</p></div>
+      <button class="faq-q" aria-expanded="false">Mein Distanz-Widget zeigt nichts an. Warum?<span class="faq-toggle" aria-hidden="true">+</span></button>
+      <div class="faq-a"><p>Das Distanz-Widget braucht die <strong>Standortberechtigung</strong>, um zu berechnen, wie weit ihr voneinander entfernt seid. &Ouml;ffne <strong>Einstellungen &rarr; TwoOfUs &rarr; Standort</strong> und stelle sicher, dass der Zugriff erlaubt ist. Beide Partner m&uuml;ssen den Standort aktiviert haben, damit die Entfernung erscheint.</p></div>
     </div>
 
     <div class="card faq-item">
-      <button class="faq-q">How does the shared Note work?<span class="faq-toggle">+</span></button>
-      <div class="faq-a"><p>You share <strong>one</strong> note between the two of you, up to <strong>100 characters</strong>. When you write a new note it <strong>replaces</strong> the previous one and <strong>pushes a notification</strong> to your partner &mdash; so a quick &ldquo;thinking of you&rdquo; lands right on their screen.</p></div>
+      <button class="faq-q" aria-expanded="false">Wie funktioniert die gemeinsame Notiz?<span class="faq-toggle" aria-hidden="true">+</span></button>
+      <div class="faq-a"><p>Ihr teilt euch <strong>eine</strong> Notiz mit bis zu <strong>100 Zeichen</strong>. Schreibst du eine neue, <strong>ersetzt</strong> sie die alte und dein Partner bekommt eine <strong>Mitteilung</strong>. So landet ein kurzes &bdquo;Denk an dich&ldquo; direkt auf seinem Bildschirm.</p></div>
     </div>
 
     <div class="card faq-item">
-      <button class="faq-q">My partner didn&rsquo;t get a Note notification &mdash; what can I check?<span class="faq-toggle">+</span></button>
-      <div class="faq-a"><p>Ask your partner to confirm that notifications are allowed under <strong>Settings &rarr; TwoOfUs &rarr; Notifications</strong>, that a Focus or Do Not Disturb mode isn&rsquo;t silencing them, and that they&rsquo;re signed in and still paired with you. A stable internet connection on both sides helps the note sync promptly.</p></div>
+      <button class="faq-q" aria-expanded="false">Was ist die Partner-Uhr?<span class="faq-toggle" aria-hidden="true">+</span></button>
+      <div class="faq-a"><p>Die <strong>Partner-Uhr</strong> zeigt die <strong>aktuelle lokale Uhrzeit</strong> deines Partners mit Name und Stadt, ideal f&uuml;r Fernbeziehungen &uuml;ber Zeitzonen hinweg. Sie wird aus dem Standort abgeleitet und <strong>aktualisiert sich im Minutentakt</strong>, damit du immer wei&szlig;t, ob dr&uuml;ben gerade Morgen oder Mitternacht ist.</p></div>
     </div>
 
     <div class="card faq-item">
-      <button class="faq-q">How do I create a Countdown?<span class="faq-toggle">+</span></button>
-      <div class="faq-a"><p>Open the app, choose the <strong>Countdown</strong> widget, and pick a shared date &mdash; an anniversary, a trip, a reunion. Add a label and it&rsquo;ll show the days remaining. The countdown syncs to both of you and updates automatically each day.</p></div>
+      <button class="faq-q" aria-expanded="false">Was ist die Blumenkarte?<span class="faq-toggle" aria-hidden="true">+</span></button>
+      <div class="faq-a"><p>Die <strong>Blumenkarte</strong> ist eine Date-Einladung zum Auspacken: Du w&auml;hlst eine Date-Idee, schreibst eine Karte, bindest einen Blumenstrau&szlig; aus Blumen, Papier und Band und schickst alles los. Dein Partner packt den Strau&szlig; in der App aus und findet deine Karte darin. Er kann annehmen oder einen anderen Zeitpunkt vorschlagen; die Uhrzeiten rechnet TwoOfUs automatisch in beide Zeitzonen um. Angenommene Dates landen auf Wunsch im iOS-Kalender und der Countdown startet von selbst.</p></div>
     </div>
 
     <div class="card faq-item">
-      <button class="faq-q">What is the Partner clock?<span class="faq-toggle">+</span></button>
-      <div class="faq-a"><p>The <strong>Partner clock</strong> shows your partner&rsquo;s <strong>current local time</strong> along with their name and city &mdash; ideal for long-distance couples in different time zones. It&rsquo;s derived from their location and <strong>updates every minute</strong>, so you always know whether it&rsquo;s morning or midnight on their side.</p></div>
+      <button class="faq-q" aria-expanded="false">Wer sieht meine Check-in-Antworten?<span class="faq-toggle" aria-hidden="true">+</span></button>
+      <div class="faq-a"><p>Nur ihr zwei, und selbst das erst zum richtigen Zeitpunkt: Deine Antworten werden <strong>versiegelt</strong> gespeichert. Dein Partner sieht sie erst, wenn ihr <strong>beide</strong> eure Antworten abgeschickt habt, und umgekehrt. Dann &ouml;ffnen sich beide gleichzeitig. Gespeichert wird alles in eurer privaten iCloud, auf die niemand sonst Zugriff hat.</p></div>
     </div>
 
     <div class="card faq-item">
-      <button class="faq-q">Should I choose &ldquo;Always&rdquo; or &ldquo;While Using&rdquo; for location?<span class="faq-toggle">+</span></button>
-      <div class="faq-a"><p><strong>&ldquo;Always&rdquo;</strong> lets the Distance and Partner clock widgets stay accurate even when the app is closed, so your widgets reflect where you really are. <strong>&ldquo;While Using&rdquo;</strong> still works, but only updates while the app is open, which can leave widget info a little stale. For the smoothest experience we recommend &ldquo;Always.&rdquo;</p></div>
+      <button class="faq-q" aria-expanded="false">Was ist das Komplimente-Glas?<span class="faq-toggle" aria-hidden="true">+</span></button>
+      <div class="faq-a"><p>Ein gemeinsames Glas f&uuml;r die sch&ouml;nsten S&auml;tze aus euren Check-ins. Wenn dein Partner etwas schreibt, das bleiben soll, legst du es mit <strong>&bdquo;Ins Glas legen&ldquo;</strong> hinein. Sp&auml;ter k&ouml;nnt ihr jederzeit einen Zettel ziehen und ihn noch mal lesen. &Uuml;bersprungene Check-in-Wochen sind okay, das Glas f&uuml;llt sich trotzdem weiter.</p></div>
     </div>
 
     <div class="card faq-item">
-      <button class="faq-q">How do I sign out or delete my data?<span class="faq-toggle">+</span></button>
-      <div class="faq-a"><p>You can sign out at any time under <strong>Settings &rarr; Account</strong> inside the app. For <strong>permanent deletion</strong> of your data, email us at <a href="mailto:jakobsworld@web.de?subject=TwoOfUs%20Support">jakobsworld@web.de</a> and we&rsquo;ll take care of it.</p></div>
+      <button class="faq-q" aria-expanded="false">Wo liegen unsere Fotos, Antworten und Einladungen?<span class="faq-toggle" aria-hidden="true">+</span></button>
+      <div class="faq-a"><p>In eurer <strong>privaten iCloud-Datenbank</strong> bei Apple. Den Zugriff setzt Apple serverseitig durch: Nur eure beiden Apple-Konten kommen an die Daten, niemand sonst, auch wir nicht. Es gibt keine eigenen Server und kein Tracking. Details stehen in der <a href="privacy.html">Datenschutzerkl&auml;rung</a>.</p></div>
     </div>
 
     <div class="card faq-item">
-      <button class="faq-q">Which iPhones and iOS versions are supported?<span class="faq-toggle">+</span></button>
-      <div class="faq-a"><p>TwoOfUs requires <strong>iOS 26 or later</strong>. As long as your iPhone is running iOS 26 or newer, you&rsquo;re good to go.</p></div>
+      <button class="faq-q" aria-expanded="false">Greift TwoOfUs auf meinen Kalender zu?<span class="faq-toggle" aria-hidden="true">+</span></button>
+      <div class="faq-a"><p>Nur wenn du es willst, und nur schreibend: Nach einer angenommenen Date-Einladung kannst du auf <strong>&bdquo;Zum iOS-Kalender hinzuf&uuml;gen&ldquo;</strong> tippen, dann tr&auml;gt die App genau diesen Termin ein. TwoOfUs liest deinen Kalender nicht aus.</p></div>
+    </div>
+
+    <div class="card faq-item">
+      <button class="faq-q" aria-expanded="false">Was steckt in einem Einladungs-Link?<span class="faq-toggle" aria-hidden="true">+</span></button>
+      <div class="faq-a"><p>Wenn du eine Einladung als Link teilst, sind die Einladungsdaten im Link-Fragment kodiert, also im Teil hinter dem <code>#</code>. Dieses Fragment verl&auml;sst den Browser nicht und wird nicht an Server &uuml;bertragen. Der Link ist nur f&uuml;r Personen sichtbar, die ihn erhalten, und l&auml;uft nach dem Date ab.</p></div>
+    </div>
+
+    <div class="card faq-item">
+      <button class="faq-q" aria-expanded="false">&bdquo;Immer&ldquo; oder &bdquo;Beim Verwenden&ldquo; f&uuml;r den Standort?<span class="faq-toggle" aria-hidden="true">+</span></button>
+      <div class="faq-a"><p><strong>&bdquo;Immer&ldquo;</strong> h&auml;lt Distanz-Widget und Partner-Uhr auch bei geschlossener App aktuell. <strong>&bdquo;Beim Verwenden&ldquo;</strong> funktioniert ebenfalls, aktualisiert aber nur, solange die App offen ist, wodurch Widget-Daten etwas veralten k&ouml;nnen. F&uuml;r das fl&uuml;ssigste Erlebnis empfehlen wir &bdquo;Immer&ldquo;.</p></div>
+    </div>
+
+    <div class="card faq-item">
+      <button class="faq-q" aria-expanded="false">Wie melde ich mich ab oder l&ouml;sche unsere Daten?<span class="faq-toggle" aria-hidden="true">+</span></button>
+      <div class="faq-a"><p>Abmelden kannst du dich jederzeit in der App unter <strong>Einstellungen &rarr; Konto</strong>, dort kannst du auch dein Konto samt Daten l&ouml;schen. Bei Fragen zur <strong>endg&uuml;ltigen L&ouml;schung</strong> schreib uns an <a href="mailto:jakobsworld@web.de?subject=TwoOfUs%20Support">jakobsworld@web.de</a>, wir k&uuml;mmern uns darum.</p></div>
+    </div>
+
+    <div class="card faq-item">
+      <button class="faq-q" aria-expanded="false">Welche iPhones und iOS-Versionen werden unterst&uuml;tzt?<span class="faq-toggle" aria-hidden="true">+</span></button>
+      <div class="faq-a"><p>TwoOfUs ben&ouml;tigt <strong>iOS 26 oder neuer</strong>. L&auml;uft dein iPhone auf iOS 26 oder h&ouml;her, kann es losgehen.</p></div>
     </div>
 
   </div>
 
   <div class="section-head">
-    <span class="kicker">Tips</span>
-    <h2>Get the most out of TwoOfUs</h2>
+    <span class="kicker">Tipps</span>
+    <h2>Hol mehr aus TwoOfUs raus</h2>
   </div>
 
   <div class="tips-grid">
     <div class="card tip">
-      <div class="tip-icon">&#128241;</div>
-      <h3>Stack your widgets</h3>
-      <p>Add Distance, Countdown, Note, and the Partner clock to a Smart Stack so you can swipe through all four in one spot.</p>
+      <div class="tip-icon" aria-hidden="true">&#128241;</div>
+      <h3>Stapelt eure Widgets</h3>
+      <p>Lege Entfernung, Countdown, Notiz und Partner-Uhr in einen Smart Stack und wische an einer Stelle durch alle vier.</p>
     </div>
     <div class="card tip">
-      <div class="tip-icon">&#128205;</div>
-      <h3>Keep location on</h3>
-      <p>Choose &ldquo;Always&rdquo; for location so the Distance and Partner clock widgets stay fresh even when the app is closed.</p>
+      <div class="tip-icon" aria-hidden="true">&#128205;</div>
+      <h3>Standort auf &bdquo;Immer&ldquo;</h3>
+      <p>So bleiben Distanz-Widget und Partner-Uhr auch dann aktuell, wenn die App gerade geschlossen ist.</p>
     </div>
     <div class="card tip">
-      <div class="tip-icon">&#9993;&#65039;</div>
-      <h3>Send a little note</h3>
-      <p>A 100-character note pushes straight to your partner &mdash; a fast, sweet way to say you&rsquo;re thinking of them.</p>
+      <div class="tip-icon" aria-hidden="true">&#9993;&#65039;</div>
+      <h3>Eine kleine Notiz</h3>
+      <p>100 Zeichen, direkt auf den Bildschirm deines Partners. Der schnellste Weg zu sagen, dass du an ihn denkst.</p>
     </div>
     <div class="card tip">
-      <div class="tip-icon">&#127881;</div>
-      <h3>Count down together</h3>
-      <p>Set a Countdown for your next reunion or anniversary and watch the days shrink on both of your screens.</p>
+      <div class="tip-icon" aria-hidden="true">&#128144;</div>
+      <h3>Ladet euch zum Date ein</h3>
+      <p>Eine Blumenkarte macht aus einem Serienabend einen Termin, auf den ihr euch beide freut. Countdown inklusive.</p>
     </div>
   </div>
 
@@ -186,14 +207,15 @@ footer a:hover{color:var(--accent)}
 
 <footer>
   <div style="font-family:var(--serif);color:var(--accent);font-weight:600;font-size:1.05rem;margin-bottom:10px">TwoOfUs</div>
-  <a href="index.html">Home</a><a href="support.html">Support</a><a href="privacy.html">Privacy</a><a href="imprint.html">Imprint</a>
-  <div style="margin-top:16px">Made with &#9829; in M&uuml;nster &middot; &copy; 2026 Jakob Hartmann</div>
+  <a href="index.html">Start</a><a href="support.html">Support</a><a href="privacy.html">Datenschutz</a><a href="imprint.html">Impressum</a>
+  <div style="margin-top:16px">Mit &#9829; in M&uuml;nster gemacht &middot; &copy; 2026 Jakob Hartmann</div>
 </footer>
 
 <script>
 document.querySelectorAll('.faq-q').forEach(function(btn){
   btn.addEventListener('click',function(){
-    btn.parentElement.classList.toggle('open');
+    var open=btn.parentElement.classList.toggle('open');
+    btn.setAttribute('aria-expanded',open?'true':'false');
   });
 });
 </script>
