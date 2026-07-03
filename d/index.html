@@ -674,8 +674,12 @@ if (typeof window === 'undefined' && typeof module !== 'undefined') { module.exp
 		setText('cardDate', TWO.fmtDate(gPayload.startAt, gPayload.tzReceiver, localeOf(lang)));
 		renderPills();
 		/* #card has dynamic height (grows with the message) — re-place #actions/#caption below its
-		   real bottom. Deferred one frame so layout reflects the just-rendered content. */
+		   real bottom. Retry on a few timers because at boot the first rAF can fire before the
+		   frame is shown / laid out (measured height 0), which would leave the buttons overlapping. */
 		requestAnimationFrame(reflowActions);
+		setTimeout(reflowActions, 80);
+		setTimeout(reflowActions, 400);
+		setTimeout(reflowActions, 1000);
 	}
 
 	function renderPills() {
