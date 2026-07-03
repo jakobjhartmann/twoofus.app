@@ -1,0 +1,14 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appIDs": ["ZBZLW43YML.CoupleWidgets.CoupleWidgets"],
+        "components": [
+          { "/": "/d/*" },
+          { "/": "/d" }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+	<defs>
+		<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+			<stop offset="0" stop-color="#6B4258"/>
+			<stop offset=".55" stop-color="#4A2E42"/>
+			<stop offset="1" stop-color="#2E1D2B"/>
+		</linearGradient>
+		<radialGradient id="glow1" cx=".5" cy=".5" r=".5">
+			<stop offset="0" stop-color="#E6AA96" stop-opacity=".26"/>
+			<stop offset="1" stop-color="#E6AA96" stop-opacity="0"/>
+		</radialGradient>
+		<radialGradient id="glow2" cx=".5" cy=".5" r=".5">
+			<stop offset="0" stop-color="#C88CA0" stop-opacity=".22"/>
+			<stop offset="1" stop-color="#C88CA0" stop-opacity="0"/>
+		</radialGradient>
+	</defs>
+
+	<rect width="1200" height="630" fill="url(#bg)"/>
+	<circle cx="180" cy="480" r="260" fill="url(#glow1)"/>
+	<circle cx="1040" cy="140" r="230" fill="url(#glow2)"/>
+
+	<!-- sparkle stars -->
+	<g fill="#F3D9C2">
+		<path d="M120 120 L126 138 L144 144 L126 150 L120 168 L114 150 L96 144 L114 138 Z" opacity=".7"/>
+		<path d="M560 88 L564.5 101.5 L578 106 L564.5 110.5 L560 124 L555.5 110.5 L542 106 L555.5 101.5 Z" opacity=".5"/>
+		<path d="M700 500 L704.5 513.5 L718 518 L704.5 522.5 L700 536 L695.5 522.5 L682 518 L695.5 513.5 Z" opacity=".55"/>
+		<path d="M1120 420 L1124 432 L1136 436 L1124 440 L1120 452 L1116 440 L1104 436 L1116 432 Z" opacity=".6"/>
+		<path d="M170 320 L173 329 L182 332 L173 335 L170 344 L167 335 L158 332 L167 329 Z" opacity=".45"/>
+	</g>
+
+	<!-- badge: TWOOFUS -->
+	<g transform="translate(96,84)">
+		<rect x="0" y="0" width="238" height="56" rx="28" fill="#FFF6EF" fill-opacity=".13"/>
+		<path transform="translate(24,15) scale(1.1)" fill="#F3D9C2" d="M12 20.5s-6.7-4.3-9-8.1C1.4 9.6 2.6 6.6 5.5 6.3c1.9-.2 3.3 1 4.5 2.7l2 2.6 2-2.6c1.2-1.7 2.6-2.9 4.5-2.7 2.9.3 4.1 3.3 2.5 6.1-2.3 3.8-9 8.1-9 8.1z"/>
+		<text x="62" y="37" font-family="-apple-system,'SF Pro Text','Segoe UI',Helvetica,Arial,sans-serif" font-size="21" font-weight="700" letter-spacing="4" fill="#F6E7DC">TWOOFUS</text>
+	</g>
+
+	<!-- headline -->
+	<text x="96" y="308" font-family="'New York',Georgia,'Times New Roman',serif" font-size="78" font-weight="600" fill="#F6E7DC">Du bist eingeladen</text>
+	<path transform="translate(862,254) scale(2.4)" fill="#E3A6B4" d="M12 20.5s-6.7-4.3-9-8.1C1.4 9.6 2.6 6.6 5.5 6.3c1.9-.2 3.3 1 4.5 2.7l2 2.6 2-2.6c1.2-1.7 2.6-2.9 4.5-2.7 2.9.3 4.1 3.3 2.5 6.1-2.3 3.8-9 8.1-9 8.1z"/>
+	<text x="96" y="368" font-family="'New York',Georgia,'Times New Roman',serif" font-style="italic" font-size="34" fill="#E9CDBC">Eine Blumenkarte von deinem Lieblingsmenschen</text>
+	<text x="96" y="452" font-family="-apple-system,'SF Pro Text','Segoe UI',Helvetica,Arial,sans-serif" font-size="22" font-weight="600" letter-spacing="2" fill="#C9A3AE">TWOOFUS.APP</text>
+
+	<!-- wrapped bouquet (A2 geometry, viewBox 0 0 200 220) -->
+	<g transform="translate(820,120) scale(1.85)">
+		<!-- card corner peeking -->
+		<g transform="rotate(8 148 174)">
+			<rect x="116" y="152" width="64" height="44" rx="7" fill="#FFFDF9"/>
+			<path d="M136 170 c2.4-2.8 6.6-1.4 6.6 1.9 0 2.6-3.3 4.5-6.6 6.6-3.3-2.1-6.6-4-6.6-6.6 0-3.3 4.2-4.7 6.6-1.9z" fill="#C26F82"/>
+		</g>
+		<!-- paper dome -->
+		<path d="M100 14 Q152 34 150 92 Q149 122 128 138 L72 138 Q51 122 50 92 Q48 34 100 14 Z" fill="#E8D3BC"/>
+		<path d="M100 14 Q152 34 150 92 Q149 122 128 138 L100 138 Z" fill="#DDC2A4" opacity=".6"/>
+		<!-- fold lines -->
+		<g stroke="#C9A87F" stroke-width="1.6" fill="none" opacity=".6">
+			<path d="M78 40 Q100 30 122 40"/>
+			<path d="M70 62 Q100 50 130 62"/>
+			<path d="M66 86 Q100 73 134 86"/>
+		</g>
+		<!-- kraft cone -->
+		<path d="M62 140 L138 140 L122 210 Q100 216 78 210 Z" fill="#E0C3A0"/>
+		<path d="M62 140 L100 140 L100 210 Q88 213 78 210 Z" fill="#D4B28C" opacity=".55"/>
+		<!-- bow + tails -->
+		<path d="M84 146 q16 -10 32 0 q-16 10 -32 0" fill="#C26F82"/>
+		<circle cx="100" cy="146" r="3.4" fill="#9A4E6B"/>
+		<path d="M96 152 q-6 14 2 24" stroke="#C26F82" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+		<path d="M106 152 q7 12 1 22" stroke="#C26F82" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+		<!-- sparkles around the bouquet -->
+		<g fill="#F3D9C2">
+			<path d="M30 40 L32.4 47.6 L40 50 L32.4 52.4 L30 60 L27.6 52.4 L20 50 L27.6 47.6 Z" opacity=".8"/>
+			<path d="M168 76 L170 82 L176 84 L170 86 L168 92 L166 86 L160 84 L166 82 Z" opacity=".7"/>
+			<path d="M162 26 L163.6 31 L168.6 32.6 L163.6 34.2 L162 39.2 L160.4 34.2 L155.4 32.6 L160.4 31 Z" opacity=".6"/>
+			<path d="M22 120 L23.6 125 L28.6 126.6 L23.6 128.2 L22 133.2 L20.4 128.2 L15.4 126.6 L20.4 125 Z" opacity=".6"/>
+		</g>
+	</g>
+</svg>

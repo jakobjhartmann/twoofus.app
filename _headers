@@ -1,0 +1,9 @@
+# Netlify / Cloudflare Pages headers.
+# Apple's AASA CDN wants the association file served as JSON; the file has no
+# extension, so static hosts would otherwise fall back to application/octet-stream.
+# (GitHub Pages ignores this file — see repo notes; use Cloudflare Pages or Netlify.)
+/.well-known/apple-app-site-association
+  Content-Type: application/json
+
+/d/*
+  Cache-Control: no-cache

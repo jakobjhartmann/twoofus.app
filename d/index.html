@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Du bist eingeladen &hearts; &middot; TwoOfUs</title>
+<meta name="description" content="Eine Blumenkarte von deinem Lieblingsmenschen &middot; TwoOfUs">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#2E1D2B">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TwoOfUs">
+<meta property="og:title" content="Du bist eingeladen ♥">
+<meta property="og:description" content="Eine Blumenkarte von deinem Lieblingsmenschen · TwoOfUs">
+<meta property="og:url" content="https://twoofus.app/d/">
+<meta property="og:image" content="https://twoofus.app/d/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Du bist eingeladen ♥">
+<meta name="twitter:description" content="Eine Blumenkarte von deinem Lieblingsmenschen · TwoOfUs">
+<meta name="twitter:image" content="https://twoofus.app/d/og.png">
+<style>
+/* NOTE fonts: the app design uses Newsreader (serif) + Hanken Grotesk (sans). This page must be
+   fully self-contained (strict no-CDN / offline), so we use the closest system stacks instead:
+   "New York"/Iowan Old Style/Georgia for serif, system-ui/SF Pro for sans. */
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+	--serif:"New York","Iowan Old Style",Georgia,"Times New Roman",serif;
+	--sans:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,system-ui,sans-serif;
+	--dark-grad:linear-gradient(170deg,#6B4258,#4A2E42 55%,#2E1D2B);
+	--light-grad:linear-gradient(170deg,#F6E3D6,#F2D8CE 60%,#EDCEC8);
+	--cream:#F6E7DC;
+	--ink:#3B2D26;
+	--ink2:#7C6E64;
+}
+html,body{height:100%}
+body{
+	font-family:var(--sans);
+	background:#2E1D2B;
+	color:var(--cream);
+	overflow:hidden;
+	-webkit-font-smoothing:antialiased;
+	-webkit-tap-highlight-color:transparent;
+}
+/* body background crossfades dark -> light at the end of the unwrap */
+body::before,body::after{content:"";position:fixed;inset:0;z-index:-1;transition:opacity 1.1s ease}
+body::before{background:var(--dark-grad);opacity:1}
+body::after{background:var(--light-grad);opacity:0}
+body.light::before{opacity:0}
+body.light::after{opacity:1}
+
+#viewport{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;overflow:hidden}
+#frame{position:relative;width:390px;height:844px;flex:0 0 auto;transform-origin:50% 50%}
+
+/* ————— scene layers (positions mirror unwrap-scene.jsx, 390×844 design space) ————— */
+.scene-bg{position:absolute;inset:0;background:var(--dark-grad);border-radius:0}
+.glow1{position:absolute;left:-40px;top:140px;width:200px;height:200px;border-radius:50%;
+	background:radial-gradient(circle,rgba(230,170,150,.22),transparent 70%)}
+.glow2{position:absolute;right:-30px;bottom:160px;width:180px;height:180px;border-radius:50%;
+	background:radial-gradient(circle,rgba(200,140,160,.18),transparent 70%)}
+#lightLayer{position:absolute;inset:0;background:var(--light-grad);opacity:0;pointer-events:none}
+#sparkles{position:absolute;inset:0}
+#chip{position:absolute;top:54px;left:0;right:0;display:flex;justify-content:center;transition:opacity .8s ease}
+#chip .inner{display:inline-flex;align-items:center;gap:8px;font-size:11.5px;font-weight:700;
+	letter-spacing:.06em;color:#F6E7DC;background:rgba(255,246,239,.12);padding:8px 14px;border-radius:999px}
+#chip .avatar{width:21px;height:21px;border-radius:50%;background:linear-gradient(150deg,#CF6B45,#B04E5E);
+	color:#FCEFE6;font-size:8px;font-weight:700;display:flex;align-items:center;justify-content:center;letter-spacing:0}
+body.light #chip .inner{color:#7C6E64;background:rgba(60,40,45,.08)}
+#bouquet{position:absolute;left:45px;top:150px;width:300px;height:330px}
+.ripple{position:absolute;left:195px;top:369px;width:12px;height:12px;border-radius:50%;
+	border:2.5px solid rgba(246,231,220,.9);opacity:0;pointer-events:none}
+#intro{position:absolute;left:0;right:0;top:520px;text-align:center;color:#F6E7DC;opacity:0}
+#intro .title{font-family:var(--serif);font-style:italic;font-size:30px;font-weight:500}
+#intro .sub{font-size:13px;opacity:.75;margin-top:8px;line-height:1.45}
+#tapPill{display:inline-flex;margin-top:26px;height:50px;padding:0 28px;border-radius:999px;
+	background:rgba(246,231,220,.94);color:#5A3A35;align-items:center;font-size:14.5px;font-weight:700;
+	box-shadow:0 16px 34px -12px rgba(0,0,0,.5);border:none;font-family:var(--sans);cursor:pointer}
+#intro .hint{margin-top:14px;font-size:10.5px;color:rgba(246,231,220,.55)}
+
+#card{position:absolute;left:35px;top:328px;width:320px;opacity:0;background:#FFFDF9;border-radius:22px;
+	overflow:hidden;pointer-events:none}
+#cardCover{height:118px;display:flex;align-items:center;justify-content:center;position:relative}
+#cardBody{padding:15px 18px 17px;text-align:center;color:var(--ink)}
+#cardKicker{font-size:9.5px;font-weight:700;letter-spacing:.2em;color:#B99CA9}
+#cardTitle{font-family:var(--serif);font-size:21px;font-weight:600;margin-top:4px;line-height:1.2}
+#cardMsg{font-family:var(--serif);font-size:13px;font-style:italic;color:var(--ink2);line-height:1.45;margin-top:6px}
+#cardDate{font-size:13px;font-weight:700;margin-top:9px}
+#cardPills{display:flex;gap:6px;justify-content:center;margin-top:7px;flex-wrap:wrap}
+.pill{font-size:11px;font-weight:600;padding:5px 10px;border-radius:999px;font-family:var(--sans)}
+.pill.you{background:#F4EBF0;color:#8E5A6E}
+.pill.them{background:#F1E5D9;color:#7C6E64}
+
+#actions{position:absolute;left:35px;top:688px;width:320px;opacity:0;pointer-events:none}
+#openBtn{display:flex;height:52px;border-radius:999px;background:linear-gradient(150deg,#D5764E,#B84E5F);
+	align-items:center;justify-content:center;gap:8px;color:#FCEFE6;font-size:15px;font-weight:700;
+	text-decoration:none;box-shadow:0 14px 26px -10px rgba(120,40,55,.7)}
+#schemeLink{display:block;text-align:center;font-size:13px;font-weight:700;color:rgba(246,231,220,.75);
+	margin-top:12px;text-decoration:none}
+body.light #schemeLink{color:#C2603E}
+#caption{position:absolute;left:24px;right:24px;top:792px;text-align:center;font-size:10.5px;
+	color:rgba(246,231,220,.55);opacity:0}
+body.light #caption{color:#9A8C82}
+
+/* ————— static states (landing / error / expired) ————— */
+.state{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:32px 24px;overflow:auto}
+.state.show{display:flex}
+.state .box{max-width:390px;text-align:center}
+.state .heart{width:64px;height:64px;border-radius:22px;background:linear-gradient(150deg,#D5764E,#B84E5F);
+	display:flex;align-items:center;justify-content:center;margin:0 auto 22px;
+	box-shadow:0 18px 34px -14px rgba(120,40,55,.55)}
+.state h1{font-family:var(--serif);font-weight:600;font-size:27px;line-height:1.2}
+.state p{margin-top:12px;font-size:14.5px;line-height:1.6}
+.state a.home{display:inline-flex;margin-top:26px;height:48px;padding:0 26px;border-radius:999px;
+	align-items:center;font-size:14px;font-weight:700;text-decoration:none}
+.state.on-dark{color:var(--cream)}
+.state.on-dark p{color:rgba(246,231,220,.75)}
+.state.on-dark a.home{background:rgba(246,231,220,.94);color:#5A3A35}
+.state.on-light{color:var(--ink)}
+.state.on-light p{color:var(--ink2)}
+.state.on-light a.home{background:linear-gradient(150deg,#D5764E,#B84E5F);color:#FCEFE6}
+
+@media (prefers-reduced-motion: reduce){
+	body::before,body::after,#chip{transition:none}
+}
+</style>
+</head>
+<body>
+
+<div id="viewport" aria-live="polite">
+	<div id="frame" hidden>
+		<div class="scene-bg"></div>
+		<div class="glow1"></div>
+		<div class="glow2"></div>
+		<svg id="sparkles" width="390" height="844" viewBox="0 0 390 844" aria-hidden="true"></svg>
+		<div id="lightLayer"></div>
+		<div id="chip"><span class="inner"><span class="avatar" id="chipAvatar"></span><span id="chipText"></span></span></div>
+		<svg id="bouquet" viewBox="0 0 200 220" aria-hidden="true"></svg>
+		<div class="ripple" id="ripple1"></div>
+		<div class="ripple" id="ripple2"></div>
+		<div id="intro">
+			<div class="title">Für dich ♥</div>
+			<div class="sub" id="introSub">Ein Strauß für dich.<br>Im Papier steckt eine Karte.</div>
+			<button id="tapPill" type="button">Tippen zum Auspacken</button>
+			<div class="hint">Kein Druck: Du kannst auch später auspacken</div>
+		</div>
+		<div id="card" aria-hidden="true">
+			<div id="cardCover">
+				<svg width="34" height="34" viewBox="0 0 24 24" aria-hidden="true">
+					<g fill="rgba(255,246,239,.82)">
+						<circle cx="12" cy="8.4" r="3"/><circle cx="15.4" cy="10.9" r="3"/><circle cx="14.1" cy="14.9" r="3"/>
+						<circle cx="9.9" cy="14.9" r="3"/><circle cx="8.6" cy="10.9" r="3"/>
+					</g>
+					<circle cx="12" cy="12" r="2.3" fill="rgba(120,60,60,.55)"/>
+				</svg>
+			</div>
+			<div id="cardBody">
+				<div id="cardKicker">DU BIST EINGELADEN</div>
+				<div id="cardTitle"></div>
+				<div id="cardMsg"></div>
+				<div id="cardDate"></div>
+				<div id="cardPills"></div>
+			</div>
+		</div>
+		<div id="actions">
+			<a id="openBtn" href="#">
+				<svg width="15" height="15" viewBox="0 0 24 24" fill="#FCEFE6" aria-hidden="true"><path d="M12 20.5s-6.7-4.3-9-8.1C1.4 9.6 2.6 6.6 5.5 6.3c1.9-.2 3.3 1 4.5 2.7l2 2.6 2-2.6c1.2-1.7 2.6-2.9 4.5-2.7 2.9.3 4.1 3.3 2.5 6.1-2.3 3.8-9 8.1-9 8.1z"/></svg>
+				In TwoOfUs öffnen
+			</a>
+			<a id="schemeLink" href="#">Direkt in der App öffnen</a>
+		</div>
+		<div id="caption">Mit der App könnt ihr annehmen und den Countdown starten</div>
+	</div>
+</div>
+
+<div class="state on-dark" id="stateLanding">
+	<div class="box">
+		<div class="heart"><svg width="30" height="30" viewBox="0 0 24 24" fill="#FCEFE6"><path d="M12 20.5s-6.7-4.3-9-8.1C1.4 9.6 2.6 6.6 5.5 6.3c1.9-.2 3.3 1 4.5 2.7l2 2.6 2-2.6c1.2-1.7 2.6-2.9 4.5-2.7 2.9.3 4.1 3.3 2.5 6.1-2.3 3.8-9 8.1-9 8.1z"/></svg></div>
+		<h1>Hier öffnet sich eine Einladung ♥</h1>
+		<p>Dir hat jemand einen TwoOfUs-Link geschickt? Öffne ihn genau so, wie er in der Nachricht steht &mdash; dann packst du hier eure Blumenkarte aus.</p>
+		<a class="home" href="https://twoofus.app/">Mehr über TwoOfUs</a>
+	</div>
+</div>
+
+<div class="state on-dark" id="stateError">
+	<div class="box">
+		<div class="heart"><svg width="30" height="30" viewBox="0 0 24 24" fill="#FCEFE6"><path d="M12 20.5s-6.7-4.3-9-8.1C1.4 9.6 2.6 6.6 5.5 6.3c1.9-.2 3.3 1 4.5 2.7l2 2.6 2-2.6c1.2-1.7 2.6-2.9 4.5-2.7 2.9.3 4.1 3.3 2.5 6.1-2.3 3.8-9 8.1-9 8.1z"/></svg></div>
+		<h1>Hoppla &mdash; der Link ist nicht ganz vollständig</h1>
+		<p>Beim Kopieren geht manchmal ein Stück verloren. Bitte öffne den Link genau so, wie er dir geschickt wurde &mdash; oder lass ihn dir noch einmal senden.</p>
+		<a class="home" href="https://twoofus.app/">Mehr über TwoOfUs</a>
+	</div>
+</div>
+
+<div class="state on-light" id="stateExpired">
+	<div class="box">
+		<div class="heart"><svg width="30" height="30" viewBox="0 0 24 24" fill="#FCEFE6"><path d="M12 20.5s-6.7-4.3-9-8.1C1.4 9.6 2.6 6.6 5.5 6.3c1.9-.2 3.3 1 4.5 2.7l2 2.6 2-2.6c1.2-1.7 2.6-2.9 4.5-2.7 2.9.3 4.1 3.3 2.5 6.1-2.3 3.8-9 8.1-9 8.1z"/></svg></div>
+		<h1>Diese Einladung ist abgelaufen ♥</h1>
+		<p id="expiredSub">Das Date liegt schon hinter euch &mdash; die Vorfreude aufs nächste bleibt. Frag nach einem neuen Termin.</p>
+		<a class="home" href="https://twoofus.app/">Mehr über TwoOfUs</a>
+	</div>
+</div>
+
+<script>
+/*CORE-START*/
+/* Pure logic — no DOM. Kept between CORE-START/CORE-END markers so it can be extracted and
+   exercised in Node (extract the block, append `module.exports = TWO`, require it). */
+const TWO = (function () {
+	'use strict';
+
+	function clamp(v, a, b) { return Math.min(b, Math.max(a, v)); }
+
+	const Easing = {
+		linear: function (t) { return t; },
+		easeOutQuad: function (t) { return t * (2 - t); },
+		easeInQuad: function (t) { return t * t; },
+		easeInOutCubic: function (t) { return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; },
+		easeOutCubic: function (t) { return 1 - Math.pow(1 - t, 3); },
+		easeOutQuint: function (t) { return 1 - Math.pow(1 - t, 5); },
+		easeOutBack: function (t) {
+			var c1 = 1.70158, c3 = c1 + 1;
+			return 1 + c3 * Math.pow(t - 1, 3) + c1 * Math.pow(t - 1, 2);
+		}
+	};
+
+	/* animate({from,to,start,end,ease}) -> fn(t), clamped outside [start,end] (like unwrap-scene.jsx) */
+	function animate(o) {
+		var ease = o.ease || Easing.linear;
+		return function (t) {
+			var p = clamp((t - o.start) / (o.end - o.start), 0, 1);
+			return o.from + (o.to - o.from) * ease(p);
+		};
+	}
+
+	/* interpolate([x0,x1,...],[y0,y1,...]) -> fn(t), piecewise linear, clamped */
+	function interpolate(xs, ys) {
+		return function (t) {
+			if (t <= xs[0]) return ys[0];
+			for (var i = 1; i < xs.length; i++) {
+				if (t <= xs[i]) {
+					var p = (t - xs[i - 1]) / (xs[i] - xs[i - 1]);
+					return ys[i - 1] + (ys[i] - ys[i - 1]) * p;
+				}
+			}
+			return ys[ys.length - 1];
+		};
+	}
+
+	function b64urlToBytes(s) {
+		s = String(s).replace(/-/g, '+').replace(/_/g, '/');
+		while (s.length % 4) s += '=';
+		var bin = atob(s);
+		var bytes = new Uint8Array(bin.length);
+		for (var i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+		return bytes;
+	}
+
+	/* zlib-tolerant inflate: try 'deflate' (= zlib wrapper) first, then 'deflate-raw'.
+	   Requires DecompressionStream (Safari 16.4+, Chrome 80+, Firefox 113+). */
+	async function inflateToText(bytes) {
+		var lastErr = null;
+		var formats = ['deflate', 'deflate-raw'];
+		for (var i = 0; i < formats.length; i++) {
+			try {
+				var ds = new DecompressionStream(formats[i]);
+				var buf = await new Response(new Blob([bytes]).stream().pipeThrough(ds)).arrayBuffer();
+				return new TextDecoder().decode(buf);
+			} catch (e) { lastErr = e; }
+		}
+		throw (lastErr || new Error('inflate failed'));
+	}
+
+	/* fragment -> payload object. Accepts base64url(zlib(JSON)), base64url(raw-deflate(JSON))
+	   and — as a debugging convenience — base64url(plain JSON). */
+	async function decodeFragment(frag) {
+		frag = String(frag || '').replace(/^#/, '').trim();
+		if (!frag) throw new Error('empty fragment');
+		var bytes = b64urlToBytes(frag);
+		if (bytes.length && bytes[0] === 0x7B) { /* '{' — uncompressed JSON */
+			try { return JSON.parse(new TextDecoder().decode(bytes)); } catch (e) { /* fall through */ }
+		}
+		return JSON.parse(await inflateToText(bytes));
+	}
+
+	function validTz(tz) {
+		if (typeof tz !== 'string' || !tz) return false;
+		try { new Intl.DateTimeFormat('de-DE', { timeZone: tz }); return true; } catch (e) { return false; }
+	}
+
+	function deviceTz() {
+		try { return Intl.DateTimeFormat().resolvedOptions().timeZone || null; } catch (e) { return null; }
+	}
+
+	/* Validate + default the payload. Returns null when it cannot be rendered at all. */
+	function normalize(p) {
+		if (!p || typeof p !== 'object') return null;
+		var startAt = Number(p.startAt);
+		if (!isFinite(startAt) || startAt <= 0) return null;
+		var durationMin = Number(p.durationMin);
+		if (!isFinite(durationMin) || durationMin <= 0) durationMin = 120;
+		return {
+			v: Number(p.v) || 1,
+			title: (typeof p.title === 'string' && p.title.trim()) ? p.title.trim().slice(0, 80) : 'Ein Date zu zweit',
+			message: (typeof p.message === 'string') ? p.message.trim().slice(0, 400) : '',
+			startAt: startAt,
+			durationMin: durationMin,
+			senderName: (typeof p.senderName === 'string') ? p.senderName.trim().slice(0, 40) : '',
+			ideaType: (typeof p.ideaType === 'string' && IDEA_GRADIENTS[p.ideaType]) ? p.ideaType : 'custom',
+			tzSender: validTz(p.tzSender) ? p.tzSender : null,
+			/* the receiver is the person looking at this page — their device tz is the best fallback */
+			tzReceiver: validTz(p.tzReceiver) ? p.tzReceiver : deviceTz(),
+			bouquet: (p.bouquet && typeof p.bouquet === 'object') ? p.bouquet : null
+		};
+	}
+
+	/* expired = now past startAt + duration + 6 h grace */
+	function isExpired(p, nowMs) {
+		return (nowMs / 1000) > (p.startAt + p.durationMin * 60 + 6 * 3600);
+	}
+
+	function fmtDate(startAtSec, tz) {
+		var d = new Date(startAtSec * 1000);
+		var opts = { weekday: 'long', day: 'numeric', month: 'long' };
+		if (tz) opts.timeZone = tz;
+		try {
+			var yOpts = { year: 'numeric' }; if (tz) yOpts.timeZone = tz;
+			if (new Intl.DateTimeFormat('de-DE', yOpts).format(d) !== String(new Date().getFullYear())) {
+				opts.year = 'numeric';
+			}
+			return new Intl.DateTimeFormat('de-DE', opts).format(d);
+		} catch (e) { return d.toLocaleDateString('de-DE'); }
+	}
+
+	function fmtTime(startAtSec, tz) {
+		var d = new Date(startAtSec * 1000);
+		var opts = { hour: '2-digit', minute: '2-digit', hour12: false };
+		if (tz) opts.timeZone = tz;
+		try { return new Intl.DateTimeFormat('de-DE', opts).format(d); }
+		catch (e) { return d.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' }); }
+	}
+
+	/* Same wall-clock? Then one pill is enough. */
+	function sameWallClock(startAtSec, tzA, tzB) {
+		return fmtTime(startAtSec, tzA) === fmtTime(startAtSec, tzB) &&
+			fmtDate(startAtSec, tzA) === fmtDate(startAtSec, tzB);
+	}
+
+	/* Illustrated cover gradients per DateIdea rawValue (150°, from the design digest) */
+	var IDEA_GRADIENTS = {
+		series: ['#C79BB0', '#8E5A6E'],
+		food: ['#E7B79B', '#C2603E'],
+		dinner: ['#D5764E', '#B84E5F'],
+		game: ['#EDC79B', '#CF8A4E'],
+		walk: ['#A8CDA9', '#5FA978'],
+		quiz: ['#E3A6B4', '#C26F82'],
+		custom: ['#E7B79B', '#C26F82']
+	};
+
+	/* petal / core per FlowerType rawValue */
+	var FLOWER_COLORS = {
+		wildrose: ['#E3A6B4', '#C26F82'],
+		ranunkel: ['#EBA98B', '#C2603E'],
+		anemone: ['#C79BB0', '#8E5A6E'],
+		margerite: ['#EDC79B', '#CF8A4E'],
+		pfingstrose: ['#F0B9C6', '#C2607A'],
+		tulpe: ['#E89A7E', '#B04E3E'],
+		lavendel: ['#C4A3C9', '#7E5A86']
+	};
+
+	var PAPERS = {
+		kraft: { dome: '#E8D3BC', domeShade: '#DDC2A4', cone: '#E0C3A0', coneShade: '#D4B28C', fold: '#C9A87F' },
+		rose: { dome: '#F4DCE1', domeShade: '#E8C3CB', cone: '#F2D7DC', coneShade: '#E3BCC5', fold: '#CC97A3' },
+		cream: { dome: '#F8F1E4', domeShade: '#EBDFCB', cone: '#FFFDF9', coneShade: '#EFE2D6', fold: '#D6C3A8' }
+	};
+
+	var RIBBONS = {
+		rose: ['#C26F82', '#9A4E6B'],
+		terracotta: ['#C2603E', '#A6492B'],
+		cream: ['#EDE3D3', '#C9B99F']
+	};
+
+	/* bloom slots in the bouquet viewBox (x, y, r) — 5 canonical + 2 extra */
+	var BLOOM_SLOTS = [
+		[72, 76, 7], [100, 56, 8], [130, 78, 7], [85, 104, 5.5], [118, 106, 5.5],
+		[95, 64, 5], [112, 82, 5]
+	];
+	var STEM_X = [97, 100, 103, 98, 102, 99, 101];
+
+	/* Default bouquet = BouquetConfig.default in the app */
+	var DEFAULT_BOUQUET = {
+		flowers: [
+			{ type: 'wildrose', count: 2 },
+			{ type: 'ranunkel', count: 1 },
+			{ type: 'anemone', count: 2 }
+		],
+		paper: 'kraft', ribbon: 'rose', eucalyptus: true, dryGrass: false, waxSeal: false
+	};
+
+	/* Expand a BouquetConfig into concrete blooms placed in the slots (schleierkraut = filler, no slot) */
+	function bloomList(bouquet) {
+		var b = bouquet || DEFAULT_BOUQUET;
+		var expanded = [];
+		var flowers = Array.isArray(b.flowers) ? b.flowers : DEFAULT_BOUQUET.flowers;
+		for (var i = 0; i < flowers.length; i++) {
+			var f = flowers[i];
+			if (!f || !FLOWER_COLORS[f.type]) continue;
+			var n = Math.max(1, Math.min(4, Number(f.count) || 1));
+			for (var k = 0; k < n; k++) expanded.push(f.type);
+		}
+		if (!expanded.length) expanded = ['wildrose', 'ranunkel', 'anemone', 'wildrose', 'anemone'];
+		var blooms = [];
+		for (var j = 0; j < Math.min(expanded.length, BLOOM_SLOTS.length); j++) {
+			/* interleave so same-type stems don't clump: pick round-robin across types */
+			var type = expanded[(j * 2) % expanded.length];
+			blooms.push({
+				x: BLOOM_SLOTS[j][0], y: BLOOM_SLOTS[j][1], r: BLOOM_SLOTS[j][2],
+				petal: FLOWER_COLORS[type][0], core: FLOWER_COLORS[type][1],
+				stemX: STEM_X[j]
+			});
+		}
+		return blooms;
+	}
+
+	function paperOf(bouquet) { return PAPERS[(bouquet && bouquet.paper)] || PAPERS.kraft; }
+	function ribbonOf(bouquet) { return RIBBONS[(bouquet && bouquet.ribbon)] || RIBBONS.rose; }
+
+	function initials(name) {
+		var parts = String(name || '').trim().split(/\s+/).filter(Boolean);
+		if (!parts.length) return '♥';
+		if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
+		return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+	}
+
+	return {
+		clamp: clamp, Easing: Easing, animate: animate, interpolate: interpolate,
+		b64urlToBytes: b64urlToBytes, inflateToText: inflateToText, decodeFragment: decodeFragment,
+		validTz: validTz, normalize: normalize, isExpired: isExpired,
+		fmtDate: fmtDate, fmtTime: fmtTime, sameWallClock: sameWallClock,
+		IDEA_GRADIENTS: IDEA_GRADIENTS, FLOWER_COLORS: FLOWER_COLORS, PAPERS: PAPERS, RIBBONS: RIBBONS,
+		DEFAULT_BOUQUET: DEFAULT_BOUQUET, bloomList: bloomList, paperOf: paperOf, ribbonOf: ribbonOf,
+		initials: initials
+	};
+})();
+if (typeof window === 'undefined' && typeof module !== 'undefined') { module.exports = TWO; }
+/*CORE-END*/
+</script>
+
+<script>
+(function () {
+	'use strict';
+	var $ = function (id) { return document.getElementById(id); };
+	var SVGNS = 'http://www.w3.org/2000/svg';
+
+	function show(stateId) {
+		['stateLanding', 'stateError', 'stateExpired'].forEach(function (id) {
+			$(id).classList.toggle('show', id === stateId);
+		});
+		if (stateId === 'stateExpired') document.body.classList.add('light');
+	}
+
+	/* ————— scale the 390×844 design frame to the viewport ————— */
+	function fitFrame() {
+		var s = Math.min(window.innerWidth / 390, window.innerHeight / 844);
+		s = Math.min(s, 1.12);
+		$('frame').style.transform = 'scale(' + s + ')';
+	}
+	window.addEventListener('resize', fitFrame);
+
+	/* ————— build the wrapped-bouquet SVG from the payload's BouquetConfig ————— */
+	function el(name, attrs) {
+		var e = document.createElementNS(SVGNS, name);
+		for (var k in attrs) e.setAttribute(k, attrs[k]);
+		return e;
+	}
+
+	var anim = {}; /* refs to animated nodes */
+
+	function buildBouquet(bouquet) {
+		var svg = $('bouquet');
+		var paper = TWO.paperOf(bouquet);
+		var ribbon = TWO.ribbonOf(bouquet);
+		var blooms = TWO.bloomList(bouquet);
+		var root = el('g', {}); /* bob + sway */
+		svg.appendChild(root);
+		anim.root = root;
+
+		/* 1 · card corner peeking out of the paper */
+		var corner = el('g', { opacity: '0.95' });
+		corner.appendChild(el('rect', { x: 116, y: 152, width: 64, height: 44, rx: 7, fill: '#FFFDF9', transform: 'rotate(8 148 174)' }));
+		var heart = el('path', { d: 'M136 170 c2.4-2.8 6.6-1.4 6.6 1.9 0 2.6-3.3 4.5-6.6 6.6-3.3-2.1-6.6-4-6.6-6.6 0-3.3 4.2-4.7 6.6-1.9z', fill: '#C26F82', transform: 'rotate(8 148 174)' });
+		corner.appendChild(heart);
+		root.appendChild(corner);
+		anim.corner = corner;
+
+		/* 2 · flowers (hidden inside the paper, spring up on unwrap) */
+		var flowers = el('g', { opacity: '0' });
+		if (bouquet === null || (bouquet && bouquet.eucalyptus !== false)) {
+			flowers.appendChild(el('path', { d: 'M54 120 Q40 94 45 66', stroke: '#8FAF97', 'stroke-width': 2, fill: 'none', 'stroke-linecap': 'round' }));
+			flowers.appendChild(el('path', { d: 'M146 120 Q160 94 155 66', stroke: '#8FAF97', 'stroke-width': 2, fill: 'none', 'stroke-linecap': 'round' }));
+			[[48, 108], [43, 94], [43, 80], [46, 68], [152, 108], [157, 94], [157, 80], [154, 68]].forEach(function (p) {
+				flowers.appendChild(el('ellipse', { cx: p[0], cy: p[1], rx: 4.5, ry: 3, fill: '#9DBBA5' }));
+			});
+		}
+		if (bouquet && bouquet.dryGrass) {
+			flowers.appendChild(el('path', { d: 'M78 122 Q68 92 74 64', stroke: '#D8C49A', 'stroke-width': 1.8, fill: 'none', 'stroke-linecap': 'round' }));
+			flowers.appendChild(el('path', { d: 'M124 120 Q133 94 128 66', stroke: '#D8C49A', 'stroke-width': 1.8, fill: 'none', 'stroke-linecap': 'round' }));
+			flowers.appendChild(el('ellipse', { cx: 74, cy: 62, rx: 2.4, ry: 4.5, fill: '#E5D5AE', transform: 'rotate(-12 74 62)' }));
+			flowers.appendChild(el('ellipse', { cx: 128, cy: 64, rx: 2.4, ry: 4.5, fill: '#E5D5AE', transform: 'rotate(10 128 64)' }));
+		}
+		blooms.forEach(function (b) {
+			flowers.appendChild(el('line', { x1: b.x, y1: b.y, x2: b.stemX, y2: 142, stroke: '#7FA98C', 'stroke-width': b.r >= 7 ? 3 : 2.5, 'stroke-linecap': 'round' }));
+		});
+		flowers.appendChild(el('ellipse', { cx: 63, cy: 116, rx: 13, ry: 6, fill: '#7FA98C', transform: 'rotate(-32 63 116)' }));
+		flowers.appendChild(el('ellipse', { cx: 139, cy: 114, rx: 13, ry: 6, fill: '#7FA98C', transform: 'rotate(30 139 114)' }));
+		var P = [[0, -1.35], [1.28, -0.42], [0.79, 1.12], [-0.79, 1.12], [-1.28, -0.42]];
+		blooms.forEach(function (b) {
+			P.forEach(function (p) {
+				flowers.appendChild(el('circle', { cx: b.x + p[0] * b.r, cy: b.y + p[1] * b.r, r: b.r, fill: b.petal }));
+			});
+			flowers.appendChild(el('circle', { cx: b.x, cy: b.y, r: b.r * 0.75, fill: b.core }));
+		});
+		/* schleierkraut filler */
+		[[52, 98, 2.6], [58, 92, 2.2], [55, 105, 2.2], [148, 94, 2.6], [153, 101, 2.2], [145, 103, 2.2], [100, 80, 2.4], [106, 86, 2]].forEach(function (c) {
+			flowers.appendChild(el('circle', { cx: c[0], cy: c[1], r: c[2], fill: '#FFF6EF' }));
+		});
+		root.appendChild(flowers);
+		anim.flowers = flowers;
+
+		/* 3 · kraft cone (stays after unwrap) */
+		root.appendChild(el('path', { d: 'M62 140 L138 140 L122 210 Q100 216 78 210 Z', fill: paper.cone }));
+		root.appendChild(el('path', { d: 'M62 140 L100 140 L100 210 Q88 213 78 210 Z', fill: paper.coneShade, opacity: '.55' }));
+		if (bouquet && bouquet.waxSeal) {
+			root.appendChild(el('circle', { cx: 100, cy: 174, r: 7.5, fill: ribbon[1] }));
+			root.appendChild(el('circle', { cx: 100, cy: 174, r: 4.8, fill: 'none', stroke: 'rgba(255,246,239,.4)', 'stroke-width': 1.2 }));
+		}
+
+		/* 4 · paper dome, two halves that fold open */
+		var dome = el('g', {});
+		var domeL = el('g', {});
+		domeL.appendChild(el('path', { d: 'M100 14 Q48 34 50 92 Q51 122 72 138 L100 138 Z', fill: paper.dome }));
+		domeL.appendChild(el('path', { d: 'M70 62 Q85 54 100 52', stroke: paper.fold, 'stroke-width': 1.6, fill: 'none', opacity: '.6' }));
+		domeL.appendChild(el('path', { d: 'M68 88 Q84 80 100 77', stroke: paper.fold, 'stroke-width': 1.6, fill: 'none', opacity: '.6' }));
+		var domeR = el('g', {});
+		domeR.appendChild(el('path', { d: 'M100 14 Q152 34 150 92 Q149 122 128 138 L100 138 Z', fill: paper.domeShade }));
+		domeR.appendChild(el('path', { d: 'M100 52 Q115 54 130 62', stroke: paper.fold, 'stroke-width': 1.6, fill: 'none', opacity: '.6' }));
+		domeR.appendChild(el('path', { d: 'M100 77 Q116 80 132 88', stroke: paper.fold, 'stroke-width': 1.6, fill: 'none', opacity: '.6' }));
+		dome.appendChild(domeL); dome.appendChild(domeR);
+		root.appendChild(dome);
+		anim.dome = dome; anim.domeL = domeL; anim.domeR = domeR;
+
+		/* 5 · bow + ribbon tails */
+		var bow = el('g', {});
+		bow.appendChild(el('path', { d: 'M84 146 q16 -10 32 0 q-16 10 -32 0', fill: ribbon[0] }));
+		bow.appendChild(el('circle', { cx: 100, cy: 146, r: 3.4, fill: ribbon[1] }));
+		bow.appendChild(el('path', { d: 'M96 152 q-6 14 2 24', stroke: ribbon[0], 'stroke-width': 2.4, fill: 'none', 'stroke-linecap': 'round' }));
+		bow.appendChild(el('path', { d: 'M106 152 q7 12 1 22', stroke: ribbon[0], 'stroke-width': 2.4, fill: 'none', 'stroke-linecap': 'round' }));
+		root.appendChild(bow);
+		anim.bow = bow;
+
+		/* 6 · falling petals (populated at unwrap) */
+		var petalDefs = [
+			{ x: 72, y: 70, d: 2.70 }, { x: 100, y: 50, d: 2.84 }, { x: 130, y: 72, d: 2.98 },
+			{ x: 85, y: 100, d: 3.12 }, { x: 118, y: 100, d: 3.26 }, { x: 95, y: 64, d: 3.40 },
+			{ x: 112, y: 82, d: 3.55 }, { x: 64, y: 86, d: 3.70 }
+		];
+		anim.petals = petalDefs.map(function (p, i) {
+			var c = el('circle', { cx: p.x, cy: p.y, r: 3.1, fill: blooms[i % blooms.length].petal, opacity: '0' });
+			root.appendChild(c);
+			return { def: p, node: c };
+		});
+	}
+
+	/* ————— twinkling stars ————— */
+	function star(cx, cy, s) {
+		var k = s * 0.3;
+		return 'M' + cx + ' ' + (cy - s) + ' L' + (cx + k) + ' ' + (cy - k) + ' L' + (cx + s) + ' ' + cy +
+			' L' + (cx + k) + ' ' + (cy + k) + ' L' + cx + ' ' + (cy + s) + ' L' + (cx - k) + ' ' + (cy + k) +
+			' L' + (cx - s) + ' ' + cy + ' L' + (cx - k) + ' ' + (cy - k) + ' Z';
+	}
+	function buildSparkles() {
+		var svg = $('sparkles');
+		anim.stars = [[52, 150, 6], [330, 120, 5], [350, 300, 4], [40, 330, 4], [305, 505, 5], [70, 540, 4]].map(function (s) {
+			var p = el('path', { d: star(s[0], s[1], s[2]), fill: '#F3D9C2', opacity: '0.35' });
+			svg.appendChild(p);
+			return p;
+		});
+	}
+
+	/* ————— animation clock (keyframes verbatim from unwrap-scene.jsx; tap = t 1.3) ————— */
+	var E = TWO.Easing, interp = TWO.interpolate, animF = TWO.animate, clamp = TWO.clamp;
+	var loadT0 = null;        /* performance.now() at first frame */
+	var tapT0 = null;         /* performance.now() at tap */
+	var reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+	var lightApplied = false;
+
+	var fBowS = animF({ from: 1, to: 1.16, start: 1.7, end: 1.84, ease: E.easeOutQuad });
+	var fBowY = animF({ from: 0, to: 54, start: 1.86, end: 2.3, ease: E.easeInQuad });
+	var fBowRot = animF({ from: 0, to: -26, start: 1.86, end: 2.3 });
+	var fBowOp = interp([0, 2.0, 2.32], [1, 1, 0]);
+	var fDp = animF({ from: 0, to: 1, start: 2.02, end: 2.62, ease: E.easeInOutCubic });
+	var fDomeOp = interp([0, 2.34, 2.68], [1, 1, 0]);
+	var fFy = animF({ from: 74, to: 0, start: 2.1, end: 2.78, ease: E.easeOutBack });
+	var fFs = animF({ from: 0.8, to: 1, start: 2.1, end: 2.72, ease: E.easeOutBack });
+	var fFop = interp([0, 2.08, 2.28], [0, 0, 1]);
+	var fCp = animF({ from: 0, to: 1, start: 3.35, end: 4.12, ease: E.easeOutQuint });
+	var fCop = interp([0, 3.35, 3.62], [0, 0, 1]);
+	var fCornerOp = interp([0, 3.3, 3.5], [0.95, 0.95, 0]);
+	var fBobAmp = interp([0, 1.3, 1.9], [1, 1, 0]);
+	var fCapOp = interp([0, 4.7, 5.1], [0, 0, 1]);
+	var fLightOp = interp([0, 3.6, 4.6], [0, 0, 1]);
+	var fIntroIn = interp([0, 0.35, 0.8], [0, 0, 1]);   /* on the load clock */
+	var fIntroOut = interp([0, 1.42, 1.72], [1, 1, 0]); /* on the anim clock */
+
+	function tick(now) {
+		if (loadT0 === null) loadT0 = now;
+		var g = (now - loadT0) / 1000;                       /* global clock (sines, idle) */
+		var a = tapT0 === null ? 1.29 : 1.3 + (now - tapT0) / 1000; /* anim clock; idle sits just before the tap */
+
+		/* stars twinkle */
+		for (var i = 0; i < anim.stars.length; i++) {
+			anim.stars[i].setAttribute('opacity', (0.2 + 0.5 * (0.5 + 0.5 * Math.sin(g * 2.1 + i * 1.4))).toFixed(3));
+		}
+
+		/* bouquet bob + sway */
+		var bobY = Math.sin(g * 2.4) * 4 * fBobAmp(a);
+		var sway = a > 3 ? Math.sin(g * 1.7) * 1.5 : 0;
+		anim.root.setAttribute('transform', 'translate(0 ' + bobY.toFixed(2) + ') rotate(' + sway.toFixed(2) + ' 100 150)');
+
+		/* intro text */
+		var introOp = tapT0 === null ? fIntroIn(g) : fIntroOut(a);
+		$('intro').style.opacity = introOp.toFixed(3);
+		$('intro').style.pointerEvents = introOp > 0.05 ? 'auto' : 'none';
+
+		if (tapT0 !== null) {
+			/* ripples */
+			[[($('ripple1')), clamp((a - 1.3) / 0.5, 0, 1)], [($('ripple2')), clamp((a - 1.48) / 0.5, 0, 1)]].forEach(function (rp) {
+				var node = rp[0], r = rp[1];
+				if (r > 0 && r < 1) {
+					node.style.opacity = (0.85 * (1 - r)).toFixed(3);
+					node.style.transform = 'translate(-50%,-50%) scale(' + (1 + r * 5.5).toFixed(3) + ')';
+					node.style.top = (369 + bobY * 1.5) + 'px';
+				} else { node.style.opacity = '0'; }
+			});
+
+			/* bow pop, drop, fade */
+			var bowS = fBowS(a), bowY = fBowY(a), bowRot = fBowRot(a);
+			anim.bow.setAttribute('opacity', fBowOp(a).toFixed(3));
+			anim.bow.setAttribute('transform', 'translate(0 ' + bowY.toFixed(2) + ') rotate(' + bowRot.toFixed(2) + ' 100 146) translate(100 146) scale(' + bowS.toFixed(4) + ') translate(-100 -146)');
+
+			/* dome halves fold open ±78° */
+			var dp = fDp(a);
+			anim.dome.setAttribute('opacity', fDomeOp(a).toFixed(3));
+			anim.domeL.setAttribute('transform', 'rotate(' + (-78 * dp).toFixed(2) + ' 62 138)');
+			anim.domeR.setAttribute('transform', 'rotate(' + (78 * dp).toFixed(2) + ' 138 138)');
+
+			/* flowers spring up (easeOutBack) */
+			var fy = fFy(a), fs = fFs(a);
+			anim.flowers.setAttribute('opacity', fFop(a).toFixed(3));
+			anim.flowers.setAttribute('transform', 'translate(0 ' + fy.toFixed(2) + ') translate(100 140) scale(' + fs.toFixed(4) + ') translate(-100 -140)');
+
+			/* falling petals with sway */
+			anim.petals.forEach(function (p, i) {
+				var pr = clamp((a - p.def.d) / 1.6, 0, 1);
+				if (pr <= 0 || pr >= 1) { p.node.setAttribute('opacity', '0'); return; }
+				var py = p.def.y + pr * pr * 175;
+				var px = p.def.x + Math.sin((a - p.def.d) * 3.2 + i * 1.7) * 15 * pr;
+				var pop = pr < 0.12 ? pr / 0.12 : 1 - E.easeInQuad((pr - 0.12) / 0.88);
+				p.node.setAttribute('cx', px.toFixed(2));
+				p.node.setAttribute('cy', py.toFixed(2));
+				p.node.setAttribute('opacity', pop.toFixed(3));
+			});
+
+			/* card corner fades as the real card arrives */
+			anim.corner.setAttribute('opacity', fCornerOp(a).toFixed(3));
+
+			/* card slides up (easeOutQuint) */
+			var cp = fCp(a);
+			var cy = 215 * (1 - cp);
+			var cFloat = cp >= 1 ? Math.sin(g * 1.4) * 2.5 : 0;
+			var crot = -4.5 + 3.7 * cp;
+			var card = $('card');
+			card.style.opacity = fCop(a).toFixed(3);
+			card.style.transform = 'translateY(' + (cy + cFloat).toFixed(2) + 'px) rotate(' + crot.toFixed(2) + 'deg)';
+			card.style.boxShadow = '0 ' + (10 + 16 * cp).toFixed(1) + 'px ' + (20 + 26 * cp).toFixed(1) + 'px -16px rgba(20,8,14,' + (0.35 + 0.25 * cp).toFixed(3) + ')';
+			card.setAttribute('aria-hidden', cp > 0.5 ? 'false' : 'true');
+
+			/* buttons rise */
+			var bp = clamp((a - 4.35) / 0.42, 0, 1);
+			var bop = E.easeOutCubic(bp);
+			var actions = $('actions');
+			actions.style.opacity = bop.toFixed(3);
+			actions.style.transform = 'translateY(' + ((1 - bop) * 22).toFixed(2) + 'px)';
+			actions.style.pointerEvents = bop > 0.5 ? 'auto' : 'none';
+
+			/* caption + light layer */
+			$('caption').style.opacity = fCapOp(a).toFixed(3);
+			$('lightLayer').style.opacity = fLightOp(a).toFixed(3);
+			if (!lightApplied && a > 3.9) { lightApplied = true; document.body.classList.add('light'); }
+			if (a > 3.6) $('chip').style.opacity = '0';
+			if (lightApplied && a > 5.0) $('chip').style.opacity = '1'; /* light restyle via body.light */
+		}
+
+		requestAnimationFrame(tick);
+	}
+
+	function startUnwrap() {
+		if (tapT0 !== null) {
+			/* second tap while running = skip ahead ("danach abkürzbar per Tipp") */
+			var aNow = 1.3 + (performance.now() - tapT0) / 1000;
+			if (aNow < 4.4) tapT0 = performance.now() - (4.4 - 1.3) * 1000;
+			return;
+		}
+		tapT0 = performance.now();
+		if (reducedMotion) tapT0 -= 3.6 * 1000; /* jump close to the end state */
+		if (navigator.vibrate) { try { navigator.vibrate(10); } catch (e) { } }
+	}
+
+	/* ————— boot ————— */
+	async function boot() {
+		fitFrame();
+		var frag = location.hash ? location.hash.slice(1) : '';
+		if (!frag.trim()) { show('stateLanding'); return; }
+
+		var payload = null;
+		try {
+			if (typeof DecompressionStream === 'undefined') throw new Error('no DecompressionStream');
+			payload = TWO.normalize(await TWO.decodeFragment(frag));
+		} catch (e) { payload = null; }
+		if (!payload) { show('stateError'); return; }
+
+		if (TWO.isExpired(payload, Date.now())) {
+			if (payload.senderName) {
+				$('expiredSub').textContent = 'Das Date liegt schon hinter euch — die Vorfreude aufs nächste bleibt. Frag ' + payload.senderName + ' nach einem neuen Termin.';
+			}
+			show('stateExpired');
+			return;
+		}
+
+		/* sender chip + intro */
+		if (payload.senderName) {
+			$('chipAvatar').textContent = TWO.initials(payload.senderName);
+			$('chipText').textContent = 'VON ' + payload.senderName.toUpperCase();
+			$('introSub').innerHTML = '';
+			$('introSub').append('Ein Strauß von ' + payload.senderName + '.', document.createElement('br'), 'Im Papier steckt eine Karte.');
+		} else {
+			$('chip').style.display = 'none';
+		}
+
+		/* card */
+		var grad = TWO.IDEA_GRADIENTS[payload.ideaType] || TWO.IDEA_GRADIENTS.custom;
+		$('cardCover').style.background = 'linear-gradient(150deg,' + grad[0] + ',' + grad[1] + ')';
+		$('cardTitle').textContent = payload.title;
+		if (payload.message) {
+			var msg = payload.message.replace(/^[„“”"]+/, '').replace(/[„“”"]+$/, '');
+			$('cardMsg').textContent = '„' + msg + '“';
+		} else {
+			$('cardMsg').style.display = 'none';
+		}
+		$('cardDate').textContent = TWO.fmtDate(payload.startAt, payload.tzReceiver);
+
+		var pills = $('cardPills');
+		var senderLabel = payload.senderName ? 'bei ' + payload.senderName : 'am anderen Ort';
+		if (payload.tzSender && payload.tzReceiver && !TWO.sameWallClock(payload.startAt, payload.tzReceiver, payload.tzSender)) {
+			var p1 = document.createElement('span'); p1.className = 'pill you';
+			p1.textContent = TWO.fmtTime(payload.startAt, payload.tzReceiver) + ' bei dir';
+			var p2 = document.createElement('span'); p2.className = 'pill them';
+			p2.textContent = TWO.fmtTime(payload.startAt, payload.tzSender) + ' ' + senderLabel;
+			pills.append(p1, p2);
+		} else {
+			var p = document.createElement('span'); p.className = 'pill you';
+			p.textContent = TWO.fmtTime(payload.startAt, payload.tzReceiver || payload.tzSender) + ' bei euch beiden';
+			pills.append(p);
+		}
+
+		/* buttons: universal-link re-entry (same URL) + custom-scheme fallback */
+		$('openBtn').href = location.href;
+		$('schemeLink').href = 'twoofus://d/#' + frag;
+
+		buildSparkles();
+		buildBouquet(payload.bouquet);
+		$('frame').hidden = false;
+
+		$('frame').addEventListener('click', function (ev) {
+			if (ev.target.closest && ev.target.closest('#actions')) return; /* don't hijack the buttons */
+			startUnwrap();
+		});
+		document.addEventListener('keydown', function (ev) {
+			if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); startUnwrap(); }
+		});
+
+		requestAnimationFrame(tick);
+	}
+
+	boot();
+})();
+</script>
+</body>
+</html>
