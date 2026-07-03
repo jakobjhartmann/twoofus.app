@@ -119,12 +119,33 @@ body.light #caption{color:#9A8C82}
 .state.on-light p{color:var(--ink2)}
 .state.on-light a.home{background:linear-gradient(150deg,#D5764E,#B84E5F);color:#FCEFE6}
 
+/* ————— DE/EN language toggle (top-right, warm palette, works on dark + light) ————— */
+#langToggle{position:fixed;z-index:100;
+	top:calc(env(safe-area-inset-top,0px) + 12px);
+	right:calc(env(safe-area-inset-right,0px) + 12px);
+	display:inline-flex;gap:2px;padding:3px;border-radius:999px;
+	background:rgba(246,231,220,.14);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+	font-family:var(--sans)}
+#langToggle button{appearance:none;-webkit-appearance:none;border:none;cursor:pointer;
+	font-family:inherit;font-weight:700;font-size:11px;letter-spacing:.04em;line-height:1;
+	padding:6px 9px;border-radius:999px;color:rgba(246,231,220,.72);background:transparent;
+	transition:background .2s ease,color .2s ease}
+#langToggle button[aria-pressed="true"]{background:rgba(246,231,220,.92);color:#5A3A35}
+body.light #langToggle{background:rgba(60,40,45,.08)}
+body.light #langToggle button{color:#8A6A62}
+body.light #langToggle button[aria-pressed="true"]{background:linear-gradient(150deg,#D5764E,#B84E5F);color:#FCEFE6}
+
 @media (prefers-reduced-motion: reduce){
-	body::before,body::after,#chip{transition:none}
+	body::before,body::after,#chip,#langToggle button{transition:none}
 }
 </style>
 </head>
 <body>
+
+<div id="langToggle" role="group" aria-label="Language / Sprache">
+	<button type="button" data-lang="de" aria-label="Deutsch">DE</button>
+	<button type="button" data-lang="en" aria-label="English">EN</button>
+</div>
 
 <div id="viewport" aria-live="polite">
 	<div id="frame" hidden>
@@ -138,10 +159,10 @@ body.light #caption{color:#9A8C82}
 		<div class="ripple" id="ripple1"></div>
 		<div class="ripple" id="ripple2"></div>
 		<div id="intro">
-			<div class="title">Für dich ♥</div>
+			<div class="title" id="introTitle">Für dich ♥</div>
 			<div class="sub" id="introSub">Ein Strauß für dich.<br>Im Papier steckt eine Karte.</div>
 			<button id="tapPill" type="button">Tippen zum Auspacken</button>
-			<div class="hint">Kein Druck: Du kannst auch später auspacken</div>
+			<div class="hint" id="introHint">Kein Druck: Du kannst auch später auspacken</div>
 		</div>
 		<div id="card" aria-hidden="true">
 			<div id="cardCover">
@@ -164,7 +185,7 @@ body.light #caption{color:#9A8C82}
 		<div id="actions">
 			<a id="openBtn" href="#">
 				<svg width="15" height="15" viewBox="0 0 24 24" fill="#FCEFE6" aria-hidden="true"><path d="M12 20.5s-6.7-4.3-9-8.1C1.4 9.6 2.6 6.6 5.5 6.3c1.9-.2 3.3 1 4.5 2.7l2 2.6 2-2.6c1.2-1.7 2.6-2.9 4.5-2.7 2.9.3 4.1 3.3 2.5 6.1-2.3 3.8-9 8.1-9 8.1z"/></svg>
-				In TwoOfUs öffnen
+				<span id="openBtnLabel">In TwoOfUs öffnen</span>
 			</a>
 			<a id="schemeLink" href="#">Direkt in der App öffnen</a>
 		</div>
@@ -175,8 +196,8 @@ body.light #caption{color:#9A8C82}
 <div class="state on-dark" id="stateLanding">
 	<div class="box">
 		<div class="heart"><svg width="30" height="30" viewBox="0 0 24 24" fill="#FCEFE6"><path d="M12 20.5s-6.7-4.3-9-8.1C1.4 9.6 2.6 6.6 5.5 6.3c1.9-.2 3.3 1 4.5 2.7l2 2.6 2-2.6c1.2-1.7 2.6-2.9 4.5-2.7 2.9.3 4.1 3.3 2.5 6.1-2.3 3.8-9 8.1-9 8.1z"/></svg></div>
-		<h1>Hier öffnet sich eine Einladung ♥</h1>
-		<p>Dir hat jemand einen TwoOfUs-Link geschickt? Öffne ihn genau so, wie er in der Nachricht steht &mdash; dann packst du hier eure Blumenkarte aus.</p>
+		<h1 id="landingTitle">Hier öffnet sich eine Einladung ♥</h1>
+		<p id="landingBody">Dir hat jemand einen TwoOfUs-Link geschickt? Öffne ihn genau so, wie er in der Nachricht steht &mdash; dann packst du hier eure Blumenkarte aus.</p>
 		<a class="home" href="https://jakobjhartmann.github.io/twoofus.app/">Mehr über TwoOfUs</a>
 	</div>
 </div>
@@ -184,8 +205,8 @@ body.light #caption{color:#9A8C82}
 <div class="state on-dark" id="stateError">
 	<div class="box">
 		<div class="heart"><svg width="30" height="30" viewBox="0 0 24 24" fill="#FCEFE6"><path d="M12 20.5s-6.7-4.3-9-8.1C1.4 9.6 2.6 6.6 5.5 6.3c1.9-.2 3.3 1 4.5 2.7l2 2.6 2-2.6c1.2-1.7 2.6-2.9 4.5-2.7 2.9.3 4.1 3.3 2.5 6.1-2.3 3.8-9 8.1-9 8.1z"/></svg></div>
-		<h1>Hoppla &mdash; der Link ist nicht ganz vollständig</h1>
-		<p>Beim Kopieren geht manchmal ein Stück verloren. Bitte öffne den Link genau so, wie er dir geschickt wurde &mdash; oder lass ihn dir noch einmal senden.</p>
+		<h1 id="errorTitle">Hoppla &mdash; der Link ist nicht ganz vollständig</h1>
+		<p id="errorBody">Beim Kopieren geht manchmal ein Stück verloren. Bitte öffne den Link genau so, wie er dir geschickt wurde &mdash; oder lass ihn dir noch einmal senden.</p>
 		<a class="home" href="https://jakobjhartmann.github.io/twoofus.app/">Mehr über TwoOfUs</a>
 	</div>
 </div>
@@ -193,7 +214,7 @@ body.light #caption{color:#9A8C82}
 <div class="state on-light" id="stateExpired">
 	<div class="box">
 		<div class="heart"><svg width="30" height="30" viewBox="0 0 24 24" fill="#FCEFE6"><path d="M12 20.5s-6.7-4.3-9-8.1C1.4 9.6 2.6 6.6 5.5 6.3c1.9-.2 3.3 1 4.5 2.7l2 2.6 2-2.6c1.2-1.7 2.6-2.9 4.5-2.7 2.9.3 4.1 3.3 2.5 6.1-2.3 3.8-9 8.1-9 8.1z"/></svg></div>
-		<h1>Diese Einladung ist abgelaufen ♥</h1>
+		<h1 id="expiredTitle">Diese Einladung ist abgelaufen ♥</h1>
 		<p id="expiredSub">Das Date liegt schon hinter euch &mdash; die Vorfreude aufs nächste bleibt. Frag nach einem neuen Termin.</p>
 		<a class="home" href="https://jakobjhartmann.github.io/twoofus.app/">Mehr über TwoOfUs</a>
 	</div>
@@ -316,25 +337,27 @@ const TWO = (function () {
 		return (nowMs / 1000) > (p.startAt + p.durationMin * 60 + 6 * 3600);
 	}
 
-	function fmtDate(startAtSec, tz) {
+	function fmtDate(startAtSec, tz, locale) {
+		locale = locale || 'de-DE';
 		var d = new Date(startAtSec * 1000);
 		var opts = { weekday: 'long', day: 'numeric', month: 'long' };
 		if (tz) opts.timeZone = tz;
 		try {
 			var yOpts = { year: 'numeric' }; if (tz) yOpts.timeZone = tz;
-			if (new Intl.DateTimeFormat('de-DE', yOpts).format(d) !== String(new Date().getFullYear())) {
+			if (new Intl.DateTimeFormat(locale, yOpts).format(d) !== String(new Date().getFullYear())) {
 				opts.year = 'numeric';
 			}
-			return new Intl.DateTimeFormat('de-DE', opts).format(d);
-		} catch (e) { return d.toLocaleDateString('de-DE'); }
+			return new Intl.DateTimeFormat(locale, opts).format(d);
+		} catch (e) { return d.toLocaleDateString(locale); }
 	}
 
-	function fmtTime(startAtSec, tz) {
+	function fmtTime(startAtSec, tz, locale) {
+		locale = locale || 'de-DE';
 		var d = new Date(startAtSec * 1000);
 		var opts = { hour: '2-digit', minute: '2-digit', hour12: false };
 		if (tz) opts.timeZone = tz;
-		try { return new Intl.DateTimeFormat('de-DE', opts).format(d); }
-		catch (e) { return d.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' }); }
+		try { return new Intl.DateTimeFormat(locale, opts).format(d); }
+		catch (e) { return d.toLocaleTimeString(locale, { hour: '2-digit', minute: '2-digit' }); }
 	}
 
 	/* Same wall-clock? Then one pill is enough. */
@@ -380,9 +403,9 @@ const TWO = (function () {
 	/* bloom slots in the bouquet viewBox (x, y, r) — 5 canonical + 2 extra */
 	var BLOOM_SLOTS = [
 		[72, 76, 7], [100, 56, 8], [130, 78, 7], [85, 104, 5.5], [118, 106, 5.5],
-		[95, 64, 5], [112, 82, 5]
+		[58, 94, 6], [142, 92, 6], [96, 90, 5.5], [112, 70, 6.5]
 	];
-	var STEM_X = [97, 100, 103, 98, 102, 99, 101];
+	var STEM_X = [97, 100, 103, 98, 102, 99, 101, 100, 101];
 
 	/* Default bouquet = BouquetConfig.default in the app */
 	var DEFAULT_BOUQUET = {
@@ -397,19 +420,35 @@ const TWO = (function () {
 	/* Expand a BouquetConfig into concrete blooms placed in the slots (schleierkraut = filler, no slot) */
 	function bloomList(bouquet) {
 		var b = bouquet || DEFAULT_BOUQUET;
-		var expanded = [];
 		var flowers = Array.isArray(b.flowers) ? b.flowers : DEFAULT_BOUQUET.flowers;
+		var remaining = [];
 		for (var i = 0; i < flowers.length; i++) {
 			var f = flowers[i];
 			if (!f || !FLOWER_COLORS[f.type]) continue;
-			var n = Math.max(1, Math.min(4, Number(f.count) || 1));
-			for (var k = 0; k < n; k++) expanded.push(f.type);
+			var n = Math.floor(Number(f.count));
+			if (!(n > 0)) continue;
+			remaining.push({ type: f.type, count: n });
 		}
-		if (!expanded.length) expanded = ['wildrose', 'ranunkel', 'anemone', 'wildrose', 'anemone'];
+		var types = [];
+		if (!remaining.length) {
+			types = ['wildrose', 'ranunkel', 'anemone', 'wildrose', 'anemone'];
+		} else {
+			while (types.length < BLOOM_SLOTS.length) {
+				var placedAny = false;
+				for (var r = 0; r < remaining.length; r++) {
+					if (remaining[r].count > 0) {
+						types.push(remaining[r].type);
+						remaining[r].count--;
+						placedAny = true;
+						if (types.length === BLOOM_SLOTS.length) break;
+					}
+				}
+				if (!placedAny) break;
+			}
+		}
 		var blooms = [];
-		for (var j = 0; j < Math.min(expanded.length, BLOOM_SLOTS.length); j++) {
-			/* interleave so same-type stems don't clump: pick round-robin across types */
-			var type = expanded[(j * 2) % expanded.length];
+		for (var j = 0; j < Math.min(types.length, BLOOM_SLOTS.length); j++) {
+			var type = types[j];
 			blooms.push({
 				x: BLOOM_SLOTS[j][0], y: BLOOM_SLOTS[j][1], r: BLOOM_SLOTS[j][2],
 				petal: FLOWER_COLORS[type][0], core: FLOWER_COLORS[type][1],
@@ -448,6 +487,185 @@ if (typeof window === 'undefined' && typeof module !== 'undefined') { module.exp
 	'use strict';
 	var $ = function (id) { return document.getElementById(id); };
 	var SVGNS = 'http://www.w3.org/2000/svg';
+
+	/* ————— bilingual DE/EN chrome (all sender/payload content stays untranslated) ————— */
+	function detectLang() {
+		var s = null;
+		try { s = localStorage.getItem('lang'); } catch (e) { }
+		if (s === 'de' || s === 'en') return s;
+		var n = '';
+		try { n = String(navigator.language || navigator.userLanguage || ''); } catch (e) { }
+		return n.toLowerCase().indexOf('en') === 0 ? 'en' : 'de';
+	}
+	var lang = detectLang();
+	function localeOf(l) { return l === 'en' ? 'en-US' : 'de-DE'; }
+
+	var I18N = {
+		de: {
+			docTitle: 'Du bist eingeladen ♥ · TwoOfUs',
+			metaDesc: 'Eine Blumenkarte von deinem Lieblingsmenschen · TwoOfUs',
+			introTitle: 'Für dich ♥',
+			tapPill: 'Tippen zum Auspacken',
+			introHint: 'Kein Druck: Du kannst auch später auspacken',
+			cardKicker: 'DU BIST EINGELADEN',
+			openBtn: 'In TwoOfUs öffnen',
+			schemeLink: 'Direkt in der App öffnen',
+			caption: 'Mit der App könnt ihr annehmen und den Countdown starten',
+			home: 'Mehr über TwoOfUs',
+			landingTitle: 'Hier öffnet sich eine Einladung ♥',
+			landingBody: 'Dir hat jemand einen TwoOfUs-Link geschickt? Öffne ihn genau so, wie er in der Nachricht steht — dann packst du hier eure Blumenkarte aus.',
+			errorTitle: 'Hoppla — der Link ist nicht ganz vollständig',
+			errorBody: 'Beim Kopieren geht manchmal ein Stück verloren. Bitte öffne den Link genau so, wie er dir geschickt wurde — oder lass ihn dir noch einmal senden.',
+			expiredTitle: 'Diese Einladung ist abgelaufen ♥',
+			subDefault: 'Ein Strauß für dich.',
+			subCard: 'Im Papier steckt eine Karte.',
+			from: 'VON ',
+			quoteOpen: '„', quoteClose: '“',
+			timeYou: 'bei dir',
+			timeBoth: 'bei euch beiden',
+			timeOther: 'am anderen Ort',
+			subFrom: function (n) { return 'Ein Strauß von ' + n + '.'; },
+			timeAt: function (n) { return 'bei ' + n; },
+			expiredDefault: 'Das Date liegt schon hinter euch — die Vorfreude aufs nächste bleibt. Frag nach einem neuen Termin.',
+			expiredWith: function (n) { return 'Das Date liegt schon hinter euch — die Vorfreude aufs nächste bleibt. Frag ' + n + ' nach einem neuen Termin.'; }
+		},
+		en: {
+			docTitle: 'You’re invited ♥ · TwoOfUs',
+			metaDesc: 'A flower card from your favorite person · TwoOfUs',
+			introTitle: 'For you ♥',
+			tapPill: 'Tap to unwrap',
+			introHint: 'No pressure: you can unwrap later too',
+			cardKicker: 'YOU ARE INVITED',
+			openBtn: 'Open in TwoOfUs',
+			schemeLink: 'Open directly in the app',
+			caption: 'In the app you can accept and start the countdown',
+			home: 'More about TwoOfUs',
+			landingTitle: 'An invitation opens here ♥',
+			landingBody: 'Did someone send you a TwoOfUs link? Open it exactly as it appears in the message — then you’ll unwrap your flower card right here.',
+			errorTitle: 'Oops — the link isn’t quite complete',
+			errorBody: 'Sometimes a piece gets lost when copying. Please open the link exactly as it was sent to you — or ask to have it sent again.',
+			expiredTitle: 'This invitation has expired ♥',
+			subDefault: 'A bouquet for you.',
+			subCard: 'There is a card tucked in the paper.',
+			from: 'FROM ',
+			quoteOpen: '“', quoteClose: '”',
+			timeYou: 'your time',
+			timeBoth: 'for you both',
+			timeOther: 'their time',
+			subFrom: function (n) { return 'A bouquet from ' + n + '.'; },
+			timeAt: function (n) { return 'at ' + n + '’s'; },
+			expiredDefault: 'The date is already behind you — the anticipation for the next one stays. Ask for a new time.',
+			expiredWith: function (n) { return 'The date is already behind you — the anticipation for the next one stays. Ask ' + n + ' for a new time.'; }
+		}
+	};
+	function t(k) { return I18N[lang][k]; }
+
+	/* payload + mode captured so the toggle can re-render everything live */
+	var gPayload = null, gFrag = '', gMode = 'landing';
+
+	function setText(id, s) { var e = $(id); if (e) e.textContent = s; }
+
+	function renderChrome() {
+		document.title = t('docTitle');
+		var md = document.querySelector('meta[name="description"]');
+		if (md) md.setAttribute('content', t('metaDesc'));
+		setText('introTitle', t('introTitle'));
+		setText('tapPill', t('tapPill'));
+		setText('introHint', t('introHint'));
+		setText('cardKicker', t('cardKicker'));
+		setText('openBtnLabel', t('openBtn'));
+		setText('schemeLink', t('schemeLink'));
+		setText('caption', t('caption'));
+		setText('landingTitle', t('landingTitle'));
+		setText('landingBody', t('landingBody'));
+		setText('errorTitle', t('errorTitle'));
+		setText('errorBody', t('errorBody'));
+		setText('expiredTitle', t('expiredTitle'));
+		Array.prototype.forEach.call(document.querySelectorAll('a.home'), function (a) { a.textContent = t('home'); });
+	}
+
+	function renderChip() {
+		if (gMode !== 'unwrap' || !gPayload || !gPayload.senderName) return;
+		setText('chipText', t('from') + gPayload.senderName.toUpperCase());
+	}
+
+	function renderIntroSub() {
+		if (gMode !== 'unwrap') return;
+		var sub = $('introSub'); if (!sub) return;
+		sub.textContent = '';
+		var line1 = (gPayload && gPayload.senderName) ? t('subFrom')(gPayload.senderName) : t('subDefault');
+		sub.append(line1, document.createElement('br'), t('subCard'));
+	}
+
+	function renderCard() {
+		if (gMode !== 'unwrap' || !gPayload) return;
+		setText('cardTitle', gPayload.title); /* sender's title — not translated */
+		var msgEl = $('cardMsg');
+		if (msgEl) {
+			if (gPayload.message) {
+				var msg = gPayload.message.replace(/^[„“”"]+/, '').replace(/[„“”"]+$/, ''); /* sender's message — not translated */
+				msgEl.style.display = '';
+				msgEl.textContent = t('quoteOpen') + msg + t('quoteClose');
+			} else {
+				msgEl.style.display = 'none';
+			}
+		}
+		setText('cardDate', TWO.fmtDate(gPayload.startAt, gPayload.tzReceiver, localeOf(lang)));
+		renderPills();
+	}
+
+	function renderPills() {
+		var pills = $('cardPills'); if (!pills) return;
+		pills.textContent = '';
+		var loc = localeOf(lang);
+		var p = gPayload;
+		if (p.tzSender && p.tzReceiver && !TWO.sameWallClock(p.startAt, p.tzReceiver, p.tzSender)) {
+			var p1 = document.createElement('span'); p1.className = 'pill you';
+			p1.textContent = TWO.fmtTime(p.startAt, p.tzReceiver, loc) + ' ' + t('timeYou');
+			var p2 = document.createElement('span'); p2.className = 'pill them';
+			var senderLabel = p.senderName ? t('timeAt')(p.senderName) : t('timeOther');
+			p2.textContent = TWO.fmtTime(p.startAt, p.tzSender, loc) + ' ' + senderLabel;
+			pills.append(p1, p2);
+		} else {
+			var pe = document.createElement('span'); pe.className = 'pill you';
+			pe.textContent = TWO.fmtTime(p.startAt, p.tzReceiver || p.tzSender, loc) + ' ' + t('timeBoth');
+			pills.append(pe);
+		}
+	}
+
+	function renderExpired() {
+		if (gMode !== 'expired') return;
+		var sub = $('expiredSub'); if (!sub) return;
+		sub.textContent = (gPayload && gPayload.senderName) ? t('expiredWith')(gPayload.senderName) : t('expiredDefault');
+	}
+
+	function renderDynamic() { renderChip(); renderIntroSub(); renderCard(); renderExpired(); }
+
+	function updateToggleUI() {
+		var tg = $('langToggle'); if (!tg) return;
+		Array.prototype.forEach.call(tg.querySelectorAll('button'), function (b) {
+			b.setAttribute('aria-pressed', b.getAttribute('data-lang') === lang ? 'true' : 'false');
+		});
+	}
+
+	function applyLang(newLang, persist) {
+		lang = (newLang === 'en') ? 'en' : 'de';
+		document.documentElement.lang = lang;
+		if (persist) { try { localStorage.setItem('lang', lang); } catch (e) { } }
+		updateToggleUI();
+		renderChrome();
+		renderDynamic();
+	}
+
+	function setupToggle() {
+		var tg = $('langToggle'); if (!tg) return;
+		Array.prototype.forEach.call(tg.querySelectorAll('button'), function (b) {
+			b.addEventListener('click', function (ev) {
+				ev.stopPropagation();
+				applyLang(b.getAttribute('data-lang'), true);
+			});
+		});
+	}
 
 	function show(stateId) {
 		['stateLanding', 'stateError', 'stateExpired'].forEach(function (id) {
@@ -517,10 +735,12 @@ if (typeof window === 'undefined' && typeof module !== 'undefined') { module.exp
 			});
 			flowers.appendChild(el('circle', { cx: b.x, cy: b.y, r: b.r * 0.75, fill: b.core }));
 		});
-		/* schleierkraut filler */
-		[[52, 98, 2.6], [58, 92, 2.2], [55, 105, 2.2], [148, 94, 2.6], [153, 101, 2.2], [145, 103, 2.2], [100, 80, 2.4], [106, 86, 2]].forEach(function (c) {
-			flowers.appendChild(el('circle', { cx: c[0], cy: c[1], r: c[2], fill: '#FFF6EF' }));
-		});
+		/* schleierkraut filler (only when the sender added baby's-breath, matches app hasFiller) */
+		if ((((bouquet && bouquet.flowers)) || []).some(function (f) { return f && f.type === 'schleierkraut' && Number(f.count) > 0; })) {
+			[[52, 98, 2.6], [58, 92, 2.2], [55, 105, 2.2], [148, 94, 2.6], [153, 101, 2.2], [145, 103, 2.2], [100, 80, 2.4], [106, 86, 2]].forEach(function (c) {
+				flowers.appendChild(el('circle', { cx: c[0], cy: c[1], r: c[2], fill: '#FFF6EF' }));
+			});
+		}
 		root.appendChild(flowers);
 		anim.flowers = flowers;
 
@@ -716,63 +936,46 @@ if (typeof window === 'undefined' && typeof module !== 'undefined') { module.exp
 	/* ————— boot ————— */
 	async function boot() {
 		fitFrame();
+		setupToggle();
+
 		var frag = location.hash ? location.hash.slice(1) : '';
-		if (!frag.trim()) { show('stateLanding'); return; }
+		if (!frag.trim()) { gMode = 'landing'; applyLang(lang, false); show('stateLanding'); return; }
 
 		var payload = null;
 		try {
 			if (typeof DecompressionStream === 'undefined') throw new Error('no DecompressionStream');
 			payload = TWO.normalize(await TWO.decodeFragment(frag));
 		} catch (e) { payload = null; }
-		if (!payload) { show('stateError'); return; }
+		if (!payload) { gMode = 'error'; applyLang(lang, false); show('stateError'); return; }
+
+		gPayload = payload; gFrag = frag;
 
 		if (TWO.isExpired(payload, Date.now())) {
-			if (payload.senderName) {
-				$('expiredSub').textContent = 'Das Date liegt schon hinter euch — die Vorfreude aufs nächste bleibt. Frag ' + payload.senderName + ' nach einem neuen Termin.';
-			}
+			gMode = 'expired';
+			applyLang(lang, false); /* renders expiredSub with/without sender name */
 			show('stateExpired');
 			return;
 		}
 
-		/* sender chip + intro */
+		gMode = 'unwrap';
+
+		/* sender chip: avatar + visibility are language-independent (chip label rendered per-language) */
 		if (payload.senderName) {
 			$('chipAvatar').textContent = TWO.initials(payload.senderName);
-			$('chipText').textContent = 'VON ' + payload.senderName.toUpperCase();
-			$('introSub').innerHTML = '';
-			$('introSub').append('Ein Strauß von ' + payload.senderName + '.', document.createElement('br'), 'Im Papier steckt eine Karte.');
 		} else {
 			$('chip').style.display = 'none';
 		}
 
-		/* card */
+		/* card cover gradient (language-independent) */
 		var grad = TWO.IDEA_GRADIENTS[payload.ideaType] || TWO.IDEA_GRADIENTS.custom;
 		$('cardCover').style.background = 'linear-gradient(150deg,' + grad[0] + ',' + grad[1] + ')';
-		$('cardTitle').textContent = payload.title;
-		if (payload.message) {
-			var msg = payload.message.replace(/^[„“”"]+/, '').replace(/[„“”"]+$/, '');
-			$('cardMsg').textContent = '„' + msg + '“';
-		} else {
-			$('cardMsg').style.display = 'none';
-		}
-		$('cardDate').textContent = TWO.fmtDate(payload.startAt, payload.tzReceiver);
-
-		var pills = $('cardPills');
-		var senderLabel = payload.senderName ? 'bei ' + payload.senderName : 'am anderen Ort';
-		if (payload.tzSender && payload.tzReceiver && !TWO.sameWallClock(payload.startAt, payload.tzReceiver, payload.tzSender)) {
-			var p1 = document.createElement('span'); p1.className = 'pill you';
-			p1.textContent = TWO.fmtTime(payload.startAt, payload.tzReceiver) + ' bei dir';
-			var p2 = document.createElement('span'); p2.className = 'pill them';
-			p2.textContent = TWO.fmtTime(payload.startAt, payload.tzSender) + ' ' + senderLabel;
-			pills.append(p1, p2);
-		} else {
-			var p = document.createElement('span'); p.className = 'pill you';
-			p.textContent = TWO.fmtTime(payload.startAt, payload.tzReceiver || payload.tzSender) + ' bei euch beiden';
-			pills.append(p);
-		}
 
 		/* buttons: universal-link re-entry (same URL) + custom-scheme fallback */
 		$('openBtn').href = location.href;
 		$('schemeLink').href = 'twoofus://d/#' + frag;
+
+		/* render all language-dependent chrome + dynamic text (chip label, intro, card, pills) */
+		applyLang(lang, false);
 
 		buildSparkles();
 		buildBouquet(payload.bouquet);
@@ -783,6 +986,7 @@ if (typeof window === 'undefined' && typeof module !== 'undefined') { module.exp
 			startUnwrap();
 		});
 		document.addEventListener('keydown', function (ev) {
+			if (ev.target && ev.target.closest && ev.target.closest('#langToggle')) return; /* let the toggle keep keyboard focus */
 			if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); startUnwrap(); }
 		});
 
