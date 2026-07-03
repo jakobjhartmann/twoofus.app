@@ -90,21 +90,24 @@ body.light #chip .inner{color:#7C6E64;background:rgba(60,40,45,.08)}
 .pill.you{background:#F4EBF0;color:#8E5A6E}
 .pill.them{background:#F1E5D9;color:#7C6E64}
 
-#actions{position:absolute;left:35px;top:688px;width:320px;opacity:0;pointer-events:none}
+/* moved up (was top:688px) so the 3-item stack (Open / scheme link / calendar) clears #caption below */
+#actions{position:absolute;left:35px;top:648px;width:320px;opacity:0;pointer-events:none}
 #openBtn{display:flex;height:52px;border-radius:999px;background:linear-gradient(150deg,#D5764E,#B84E5F);
 	align-items:center;justify-content:center;gap:8px;color:#FCEFE6;font-size:15px;font-weight:700;
 	text-decoration:none;box-shadow:0 14px 26px -10px rgba(120,40,55,.7)}
 #schemeLink{display:block;text-align:center;font-size:13px;font-weight:700;color:rgba(246,231,220,.75);
 	margin-top:12px;text-decoration:none}
 body.light #schemeLink{color:#C2603E}
-/* secondary/ghost "Add to calendar" button — warm palette, quieter than the gradient #openBtn */
+/* secondary "Add to calendar" button — SOLID warm surface (legible on dark + light), quieter than the gradient #openBtn */
 #calBtn{display:flex;height:48px;width:100%;border-radius:999px;margin-top:12px;
 	align-items:center;justify-content:center;gap:8px;font-family:var(--sans);
 	font-size:14px;font-weight:700;cursor:pointer;-webkit-appearance:none;appearance:none;
-	color:#F6E7DC;background:rgba(246,231,220,.12);border:1.5px solid rgba(246,231,220,.30)}
+	color:#F6E7DC;background:#5E3E4A;border:1.5px solid rgba(246,231,220,.28);
+	box-shadow:0 6px 16px -10px rgba(0,0,0,.55)}
 #calBtn svg{display:block}
-body.light #calBtn{color:#B84E5F;background:rgba(213,118,78,.10);border-color:rgba(184,78,95,.32)}
-#caption{position:absolute;left:24px;right:24px;top:792px;text-align:center;font-size:10.5px;
+body.light #calBtn{color:#B84E5F;background:#FFFDF9;border-color:rgba(184,78,95,.30);
+	box-shadow:0 6px 16px -10px rgba(120,40,55,.30)}
+#caption{position:absolute;left:24px;right:24px;top:804px;text-align:center;font-size:10.5px;
 	color:rgba(246,231,220,.55);opacity:0}
 body.light #caption{color:#9A8C82}
 
@@ -1037,34 +1040,52 @@ if (typeof window === 'undefined' && typeof module !== 'undefined') { module.exp
 		].join('\r\n') + '\r\n';
 	}
 
-	function isIOS() {
-		var ua = '';
-		try { ua = navigator.userAgent || ''; } catch (e) { }
-		/* iPhone/iPad, incl. iPadOS 13+ which reports as Macintosh but exposes touch points */
-		return /iP(ad|hone|od)/.test(ua) || (/Macintosh/.test(ua) && (navigator.maxTouchPoints || 0) > 1);
+	/* Turn the invitation title into a safe .ics filename: transliterate German umlauts, drop accents,
+	   collapse whitespace to hyphens, keep only [A-Za-z0-9_-], cap length. Empty -> "TwoOfUs-Termin".
+	   e.g. "Italiener um die Ecke" -> "Italiener-um-die-Ecke.ics". */
+	function safeICSFilename(title) {
+		var name = String(title == null ? '' : title).trim();
+		name = name
+			.replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue')
+			.replace(/Ä/g, 'Ae').replace(/Ö/g, 'Oe').replace(/Ü/g, 'Ue')
+			.replace(/ß/g, 'ss');
+		try { name = name.normalize('NFKD').replace(/[\u0300-\u036f]/g, ''); } catch (e) { }
+		name = name.replace(/\s+/g, '-')
+			.replace(/[^A-Za-z0-9_-]/g, '')
+			.replace(/-{2,}/g, '-')
+			.replace(/^[-_]+|[-_]+$/g, '');
+		if (name.length > 60) name = name.slice(0, 60).replace(/[-_]+$/, '');
+		if (!name) name = 'TwoOfUs-Termin';
+		return name + '.ics';
 	}
 
 	function addToCalendar() {
 		if (!gPayload) return;
 		var ics = buildICS(gPayload);
-		/* iOS Safari ignores <a download>; navigating to a data:text/calendar URL makes iOS
-		   intercept the MIME type and present the native "Add to Calendar" sheet in place.
-		   Everywhere else a Blob object URL + <a download="einladung.ics"> reliably saves the
-		   file, which the OS then opens in the default calendar. Both paths are entirely local:
-		   the Blob / data: URI is built in memory, so no fetch/XHR/network request is ever made. */
-		if (isIOS()) {
-			window.location.href = 'data:text/calendar;charset=utf-8,' + encodeURIComponent(ics);
-			return;
-		}
+		var filename = safeICSFilename(resolveTitle(gPayload, lang));
+		/* Primary path — works on desktop, Android AND modern iOS Safari: a Blob object URL behind a
+		   real <a download="<title>.ics" type="text/calendar"> that we append, click, then revoke.
+		   The download attribute carries a meaningful filename, so iOS presents a NAMED .ics that opens
+		   Calendar's "Add Event" sheet on tap — no more nameless "Unknown.ics". Everything is built in
+		   memory: no fetch/XHR/network request of any kind is ever made. */
 		try {
 			var blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
 			var url = URL.createObjectURL(blob);
 			var a = document.createElement('a');
-			a.href = url; a.download = 'einladung.ics';
-			document.body.appendChild(a); a.click(); document.body.removeChild(a);
-			setTimeout(function () { URL.revokeObjectURL(url); }, 2000);
+			a.href = url;
+			a.download = filename;
+			a.type = 'text/calendar';
+			a.rel = 'noopener';
+			a.style.display = 'none';
+			document.body.appendChild(a);
+			a.click();
+			document.body.removeChild(a);
+			setTimeout(function () { URL.revokeObjectURL(url); }, 4000);
 		} catch (e) {
-			window.location.href = 'data:text/calendar;charset=utf-8,' + encodeURIComponent(ics);
+			/* Fallback only (older browsers that block blob downloads): navigate to a data:text/calendar
+			   URI. iOS intercepts the MIME type and shows the "Add to Calendar" sheet in place, though a
+			   data: URI cannot carry a filename. Still fully offline — the URI is built in memory. */
+			try { window.location.href = 'data:text/calendar;charset=utf-8,' + encodeURIComponent(ics); } catch (e2) { }
 		}
 	}
 
