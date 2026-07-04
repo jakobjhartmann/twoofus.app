@@ -19,7 +19,8 @@ a{color:var(--accent)}
 h1,h2,h3{font-family:var(--serif);color:var(--text);font-weight:600;line-height:1.15}
 nav{position:sticky;top:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:15px 32px;background:rgba(251,244,236,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
 .nav-logo{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:600;font-size:1.3rem;color:var(--text);text-decoration:none}
-.logo-tile{width:34px;height:34px;border-radius:11px;background:linear-gradient(135deg,#D5764E,#B84E5F);display:flex;align-items:center;justify-content:center;color:var(--onaccent);font-size:.95rem}
+.logo-tile{width:34px;height:34px;border-radius:11px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.logo-tile img{width:34px;height:34px;border-radius:11px;display:block}
 .nav-links{display:flex;gap:24px;list-style:none}
 .nav-links a{color:var(--text2);text-decoration:none;font-size:.95rem;font-weight:500}
 .nav-links a:hover{color:var(--accent)}
@@ -54,10 +55,10 @@ footer a:hover{color:var(--accent)}
 .summary-card p{color:var(--text2)}
 .summary-card p:last-child{margin-bottom:0}
 </style>
-</head>
+<link rel="icon" type="image/png" href="appicon.png"><link rel="apple-touch-icon" href="appicon.png"></head>
 <body>
 <nav>
-  <a href="index.html" class="nav-logo"><span class="logo-tile" aria-hidden="true">&#9829;</span> TwoOfUs</a>
+  <a href="index.html" class="nav-logo"><span class="logo-tile"><img src="appicon.png" alt="TwoOfUs" width="34" height="34"></span> TwoOfUs</a>
   <ul class="nav-links">
     <li><a href="index.html">Start</a></li>
     <li><a href="support.html">Support</a></li>
