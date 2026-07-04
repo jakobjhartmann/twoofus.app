@@ -8,22 +8,31 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --bg:#FBF4EC;--surface:#FFFFFF;--tint:#FBF1EB;--text:#3B2D26;--text2:#9A8C82;--line:#EFE2D6;
+  --bg:#FBF4EC;--surface:#FFFFFF;--tint:#FBF1EB;--text:#3B2D26;--text2:#6E5B4E;--text3:#9A8C82;--line:#EFE2D6;
   --accent:#C2603E;--accent2:#A6492B;--success:#5FA978;--onaccent:#FFF6EF;
   --serif:"New York",Georgia,"Times New Roman",serif;
   --sans:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,sans-serif;
   --radius:24px;--shadow:0 10px 30px rgba(90,55,40,.10);
+  --shadow-lg:0 2px 6px rgba(90,55,40,.06),0 26px 50px -14px rgba(150,70,45,.20);
 }
 body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.65;-webkit-font-smoothing:antialiased}
 a{color:var(--accent)}
 h1,h2,h3{font-family:var(--serif);color:var(--text);font-weight:600;line-height:1.15}
 nav{position:sticky;top:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:15px 32px;background:rgba(251,244,236,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-.nav-logo{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:600;font-size:1.3rem;color:var(--text);text-decoration:none}
+.nav-logo{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:600;font-size:1.3rem;letter-spacing:-0.01em;color:var(--text);text-decoration:none}
 .logo-tile{width:34px;height:34px;border-radius:11px;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .logo-tile img{width:34px;height:34px;border-radius:11px;display:block}
 .nav-links{display:flex;gap:24px;list-style:none}
 .nav-links a{color:var(--text2);text-decoration:none;font-size:.95rem;font-weight:500}
 .nav-links a:hover{color:var(--accent)}
+.nav-menu{display:none;position:relative}
+.nav-menu summary{list-style:none;width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:12px;color:var(--text);cursor:pointer}
+.nav-menu summary::-webkit-details-marker{display:none}
+.nav-menu summary::marker{content:""}
+.nav-menu[open] summary{background:var(--tint)}
+.nav-menu ul{position:absolute;right:0;top:52px;min-width:216px;list-style:none;background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow-lg);padding:8px;display:flex;flex-direction:column;gap:2px;z-index:120}
+.nav-menu ul a{display:block;padding:12px 14px;border-radius:10px;color:var(--text);text-decoration:none;font-weight:500;min-height:44px;transition:color .2s ease,background .2s ease}
+.nav-menu ul a:hover{background:var(--tint);color:var(--accent)}
 .btn{display:inline-flex;align-items:center;gap:9px;border-radius:100px;padding:14px 28px;font-weight:600;text-decoration:none;font-size:1rem;border:none;cursor:pointer}
 .btn-primary{background:var(--accent);color:var(--onaccent);box-shadow:var(--shadow)}
 .btn-primary:hover{background:var(--accent2)}
@@ -34,17 +43,25 @@ nav{position:sticky;top:0;z-index:100;display:flex;justify-content:space-between
 .container{max-width:1080px;margin:0 auto}
 section{padding:88px 24px}
 footer{background:var(--bg);border-top:1px solid var(--line);padding:40px 24px;text-align:center;color:var(--text2);font-size:.88rem}
-footer a{color:var(--text2);text-decoration:none;margin:0 12px}
+footer a{color:var(--text2);text-decoration:none;display:inline-block;padding:10px 12px;margin:0 2px}
 footer a:hover{color:var(--accent)}
-@media(max-width:620px){nav{padding:14px 20px}.nav-links{display:none}section{padding:60px 20px}}
+h1,h2{letter-spacing:-0.02em;line-height:1.1}
+a:focus-visible,.btn:focus-visible,.nav-menu summary:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:12px}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){
+  .nav-links a,footer a{transition:color .18s ease}
+  .btn,.card,.privacy-card{transition:transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .3s ease}
+  .btn:hover{transform:translateY(-2px)}
+}
+@media(max-width:760px){.nav-links{display:none}.nav-menu{display:block}}
+@media(max-width:620px){nav{padding:14px 20px}section{padding:60px 20px}}
 </style>
 <style>
-.page h1{font-size:2.6rem;margin-bottom:10px}
+.page h1{font-size:clamp(2rem,5vw,2.9rem);letter-spacing:-0.025em;margin-bottom:10px}
 .page h2{font-size:1.35rem;margin:42px 0 12px}
 .page p{margin-bottom:14px;color:var(--text)}
 .page ul{margin:0 0 16px 22px}
 .page li{margin-bottom:8px;color:var(--text)}
-.page .lead{color:var(--text2)}
+.page .lead{font-family:var(--serif);font-style:italic;color:var(--accent2)}
 .updated{color:var(--text2);font-size:.92rem;margin-bottom:28px}
 .highlight{background:var(--tint);border:1px solid var(--line);border-radius:var(--radius);padding:22px 26px;margin-bottom:38px}
 .highlight p{margin:0}
@@ -66,6 +83,18 @@ footer a:hover{color:var(--accent)}
     <li><a href="support.html">Support</a></li>
     <li><a href="privacy.html">Datenschutz</a></li>
   </ul>
+  <details class="nav-menu">
+    <summary aria-label="Men&uuml; &ouml;ffnen">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </summary>
+    <ul>
+      <li><a href="index.html#neu">Neu in 1.6</a></li>
+      <li><a href="index.html#widgets">Widgets</a></li>
+      <li><a href="index.html#how">So funktioniert&rsquo;s</a></li>
+      <li><a href="support.html">Support</a></li>
+      <li><a href="privacy.html">Datenschutz</a></li>
+    </ul>
+  </details>
 </nav>
 
 <main class="page">
@@ -191,9 +220,9 @@ footer a:hover{color:var(--accent)}
 </main>
 
 <footer>
-  <div style="font-family:var(--serif);color:var(--accent);font-weight:600;font-size:1.05rem;margin-bottom:10px">TwoOfUs</div>
-  <a href="index.html">Start</a><a href="support.html">Support</a><a href="privacy.html">Datenschutz</a><a href="imprint.html">Impressum</a>
-  <div style="margin-top:16px">Mit &#9829; in M&uuml;nster gemacht &middot; &copy; 2026 Jakob Hartmann</div>
+  <div style="font-family:var(--serif);color:var(--accent);font-weight:600;font-size:1.05rem;letter-spacing:-0.01em;margin-bottom:10px">TwoOfUs</div>
+  <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:4px 8px"><a href="index.html">Start</a><a href="support.html">Support</a><a href="privacy.html">Datenschutz</a><a href="imprint.html">Impressum</a></div>
+  <div style="margin-top:16px;color:var(--text3)">Mit &#9829; in M&uuml;nster gemacht &middot; &copy; 2026 Jakob Hartmann</div>
 </footer>
 </body>
 </html>
