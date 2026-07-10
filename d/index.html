@@ -401,7 +401,9 @@ const TWO = (function () {
 		margerite: ['#EDC79B', '#CF8A4E'],
 		pfingstrose: ['#F0B9C6', '#C2607A'],
 		tulpe: ['#E89A7E', '#B04E3E'],
-		lavendel: ['#C4A3C9', '#7E5A86']
+		lavendel: ['#C4A3C9', '#7E5A86'],
+		kornblume: ['#8FA8D6', '#5D77AE'],
+		vergissmeinnicht: ['#A9C3E8', '#E9C46A']
 	};
 
 	var PAPERS = {
@@ -413,7 +415,8 @@ const TWO = (function () {
 	var RIBBONS = {
 		rose: ['#C26F82', '#9A4E6B'],
 		terracotta: ['#C2603E', '#A6492B'],
-		cream: ['#EDE3D3', '#C9B99F']
+		cream: ['#EDE3D3', '#C9B99F'],
+		blau: ['#8FA8D6', '#5D77AE']
 	};
 
 	/* 13 bloom slots [x, y, r, stemWidth, isBack] — 9 front + 4 back-row; fill order = array order
@@ -889,6 +892,22 @@ if (typeof window === 'undefined' && typeof module !== 'undefined') { module.exp
 				var lcol = (li % 2 === 0) ? petalC : lightened(coreC, 0.12);
 				g.appendChild(el('ellipse', { cx: n3(lbx), cy: n3(lby), rx: n3(lbr), ry: n3(lbr), fill: lcol }));
 			}
+		} else if (type === 'kornblume') {
+			var knGrad = radGrad(defs, [[0, lightened(petalC, 0.20)], [1, petalC]], 0, r * 0.55, r * 1.5);
+			petalRing(g, 8, r * 0.78, r * 0.40, r * 1.60, -90, function () { return knGrad; });
+			petalRing(g, 6, r * 0.52, r * 0.34, r * 1.06, -68, function () { return coreC; });
+			g.appendChild(el('ellipse', { cx: 0, cy: 0, rx: n3(r * 0.35), ry: n3(r * 0.35), fill: '#3E4E7A' }));
+			var knStamen = lightened(petalC, 0.35);
+			for (var ki = 0; ki < 5; ki++) {
+				var ka = ki * 72 * Math.PI / 180;
+				g.appendChild(el('ellipse', { cx: n3(Math.cos(ka) * r * 0.16), cy: n3(Math.sin(ka) * r * 0.16), rx: n3(r * 0.05), ry: n3(r * 0.05), fill: knStamen }));
+			}
+		} else if (type === 'vergissmeinnicht') {
+			var vmGrad = radGrad(defs, [[0, lightened(petalC, 0.30)], [1, petalC]], 0, r * 0.45, r * 1.1);
+			petalRing(g, 5, r * 0.60, r * 0.95, r * 1.20, -90, function () { return vmGrad; });
+			var vmEye = radGrad(defs, [[0, lightened(coreC, 0.30)], [1, coreC]], 0, 0, r * 0.30);
+			g.appendChild(el('ellipse', { cx: 0, cy: 0, rx: n3(r * 0.25), ry: n3(r * 0.25), fill: vmEye }));
+			g.appendChild(el('ellipse', { cx: n3(-r * 0.08), cy: n3(-r * 0.10), rx: n3(r * 0.08), ry: n3(r * 0.08), fill: '#FFFFFF', 'fill-opacity': 0.85 }));
 		}
 
 		parent.appendChild(g);
