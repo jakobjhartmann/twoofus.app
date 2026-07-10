@@ -907,7 +907,7 @@ if (typeof window === 'undefined' && typeof module !== 'undefined') { module.exp
 			petalRing(g, 5, r * 0.60, r * 0.95, r * 1.20, -90, function () { return vmGrad; });
 			var vmEye = radGrad(defs, [[0, lightened(coreC, 0.30)], [1, coreC]], 0, 0, r * 0.30);
 			g.appendChild(el('ellipse', { cx: 0, cy: 0, rx: n3(r * 0.25), ry: n3(r * 0.25), fill: vmEye }));
-			g.appendChild(el('ellipse', { cx: n3(-r * 0.08), cy: n3(-r * 0.10), rx: n3(r * 0.08), ry: n3(r * 0.08), fill: '#FFFFFF', 'fill-opacity': 0.85 }));
+			g.appendChild(el('ellipse', { cx: 0, cy: n3(-r * 0.02), rx: n3(r * 0.08), ry: n3(r * 0.08), fill: '#FFFFFF', 'fill-opacity': 0.85 }));
 		}
 
 		parent.appendChild(g);
