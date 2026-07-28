@@ -5,11 +5,26 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script>document.documentElement.classList.add('js')</script>
 <title>TwoOfUs: Together · Nah bleiben, egal wie weit</title>
-<meta name="description" content="TwoOfUs ist die iOS-App für euch zwei: Entfernung, Countdown, Notiz und Partner-Uhr als Home- und Lock-Screen-Widgets. Neu in 1.6: Date-Einladungen mit Blumenkarte, Weekly Check-ins mit Siegel und euer Komplimente-Glas. Alles privat in eurer iCloud.">
+<meta name="description" content="TwoOfUs ist die private iOS-App für Paare, auch in Fernbeziehung: Widgets, Blumenkarten-Dates, Weekly Check-ins und Komplimente-Glas. Jetzt weltweit im App Store.">
 <meta property="og:title" content="TwoOfUs: Together · Nah bleiben, egal wie weit">
-<meta property="og:description" content="Die iOS-App für euch zwei: Widgets, Blumenkarten zum Date, Weekly Check-ins und euer Komplimente-Glas. Alles privat in eurer iCloud.">
+<meta property="og:description" content="Die iOS-App für euch zwei: Widgets, Blumenkarten zum Date, Weekly Check-ins und euer Komplimente-Glas. Alles privat in eurer iCloud, jetzt weltweit im App Store.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://jakobjhartmann.github.io/twoofus.app/">
+<link rel="canonical" href="https://jakobjhartmann.github.io/twoofus.app/">
+<meta name="apple-itunes-app" content="app-id=6760221551">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "TwoOfUs: Together",
+  "operatingSystem": "iOS",
+  "applicationCategory": "LifestyleApplication",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+  "url": "https://jakobjhartmann.github.io/twoofus.app/",
+  "installUrl": "https://apps.apple.com/de/app/id6760221551",
+  "inLanguage": ["de", "en"]
+}
+</script>
 <link rel="icon" type="image/png" href="appicon.png">
 <link rel="apple-touch-icon" href="appicon.png">
 <style>
@@ -136,6 +151,9 @@ a:focus-visible,.btn:focus-visible,.learn-link:focus-visible,.nav-menu summary:f
 .step h3{font-size:1.2rem;font-weight:600;line-height:1.2;margin-bottom:6px}
 .step p{color:var(--text2);font-size:.93rem;line-height:1.5}
 .code-chip{display:inline-block;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--tint);border:1px solid var(--line);color:var(--accent2);padding:2px 10px;border-radius:8px;font-size:.85rem;margin-top:8px}
+.shots{display:flex;gap:18px;overflow-x:auto;padding:6px 6px 22px;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:var(--line) transparent}
+.shots img{width:236px;height:auto;flex-shrink:0;display:block;border-radius:20px;border:1px solid var(--line);box-shadow:var(--shadow);scroll-snap-align:center}
+@media(max-width:620px){.shots img{width:200px}}
 #widgets,.privacy{box-shadow:inset 0 1px 0 rgba(255,255,255,.5),inset 0 -1px 0 var(--line)}
 .privacy{background:var(--band)}
 .privacy-card{max-width:820px;margin:0 auto;text-align:center;padding:52px 40px}
@@ -242,7 +260,7 @@ a:focus-visible,.btn:focus-visible,.learn-link:focus-visible,.nav-menu summary:f
 <header class="hero">
   <div class="hero-grid">
     <div class="hero-copy">
-      <span class="pill"><span class="dot"></span> Version 1.6 &middot; kostenlos im App&nbsp;Store</span>
+      <span class="pill"><span class="dot"></span> Version 1.6.2 &middot; kostenlos im App&nbsp;Store</span>
       <h1>Nah bleiben, egal wie weit.</h1>
       <p class="claim">Zwei Herzen, ein Rhythmus.</p>
       <p class="subtitle">Eure Entfernung, euer Countdown, eine gemeinsame Notiz und die Uhrzeit deines Partners &mdash; als Home- und Lock&nbsp;Screen-Widgets. <strong>Neu in 1.6:</strong> Date-Einladungen zum Auspacken, Weekly Check-ins und euer Komplimente-Glas.</p>
@@ -254,7 +272,7 @@ a:focus-visible,.btn:focus-visible,.learn-link:focus-visible,.nav-menu summary:f
         <a href="#neu" class="learn-link">Neu in 1.6 ansehen <span class="arw" aria-hidden="true">&darr;</span></a>
       </div>
       <p class="beta-note">Sign in with Apple &middot; kein Passwort &middot; keine Werbung &middot; alles in eurer iCloud</p>
-      <p class="beta-note" style="margin-top:8px">In der EU inkl. Deutschland folgt sie in K&uuml;rze &mdash; Apple pr&uuml;ft gerade die Freigabe.</p>
+      <p class="beta-note" style="margin-top:8px">Jetzt in Deutschland, der EU und weltweit verf&uuml;gbar &middot; <a href="https://apps.apple.com/de/app/id6760221551">App&nbsp;Store Deutschland</a> &middot; <a href="https://apps.apple.com/us/app/id6760221551">App&nbsp;Store USA</a></p>
     </div>
 
     <div class="hero-art">
@@ -530,6 +548,25 @@ a:focus-visible,.btn:focus-visible,.learn-link:focus-visible,.nav-menu summary:f
   </div>
 </section>
 
+<!-- APP SCREENS -->
+<section id="einblick">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="kicker">Ein Blick in die App</p>
+      <h2>So sieht TwoOfUs bei euch aus</h2>
+      <p>Sechs echte Screens, direkt aus der App &mdash; von der ersten Blumenkarte bis zum vollen Komplimente-Glas.</p>
+    </div>
+    <div class="shots reveal">
+      <img src="assets/shots/01_home.png" width="472" height="1025" loading="lazy" alt="App-Screen: Start-Ansicht mit Entfernung, Countdown und gemeinsamer Notiz">
+      <img src="assets/shots/02_invitation.png" width="472" height="1025" loading="lazy" alt="App-Screen: eine Date-Einladung mit Blumenkarte zum Auspacken">
+      <img src="assets/shots/03_dates.png" width="472" height="1025" loading="lazy" alt="App-Screen: geplante Dates und gemeinsame Erinnerungen">
+      <img src="assets/shots/04_checkin.png" width="472" height="1025" loading="lazy" alt="App-Screen: Weekly Check-in mit versiegelten Antworten">
+      <img src="assets/shots/05_jar.png" width="472" height="1025" loading="lazy" alt="App-Screen: das Komplimente-Glas mit gefalteten Zetteln">
+      <img src="assets/shots/06_countdowns.png" width="472" height="1025" loading="lazy" alt="App-Screen: Countdowns bis zum n&auml;chsten Wiedersehen">
+    </div>
+  </div>
+</section>
+
 <!-- PRIVACY HIGHLIGHT -->
 <section class="privacy" id="privatsphaere">
   <div class="container">
@@ -555,7 +592,7 @@ a:focus-visible,.btn:focus-visible,.learn-link:focus-visible,.nav-menu summary:f
   <div class="container">
     <div class="cta-final reveal">
       <h2>F&uuml;r euch zwei gemacht.</h2>
-      <p>TwoOfUs ist da &mdash; kostenlos im App&nbsp;Store. Fragen? <a href="support.html">Der Support hilft dir weiter.</a></p>
+      <p>TwoOfUs ist da &mdash; kostenlos im App&nbsp;Store, jetzt in Deutschland, der EU und weltweit. Fragen? <a href="support.html">Der Support hilft dir weiter.</a></p>
       <div class="cta-badges">
         <a href="https://apps.apple.com/app/id6760221551" class="btn btn-secondary">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.365 1.43c0 1.14-.417 2.2-1.24 3.03-.99.99-2.06 1.56-3.22 1.47-.14-1.11.42-2.28 1.16-3.02.83-.84 2.26-1.46 3.3-1.48zM20.5 17.02c-.56 1.3-.83 1.88-1.55 3.03-1 1.6-2.42 3.6-4.18 3.62-1.56.01-1.96-.99-4.08-.98-2.12.01-2.56.98-4.12.99-1.76.02-3.1-1.79-4.1-3.39C-.4 17.03-.63 11.5 1.34 8.56c.98-1.47 2.53-2.34 3.99-2.34 1.49 0 2.42 1 3.65 1 1.19 0 1.91-1 3.63-1 1.3 0 2.68.71 3.66 1.94-3.22 1.76-2.7 6.36.23 7.86z"/></svg>
@@ -563,7 +600,7 @@ a:focus-visible,.btn:focus-visible,.learn-link:focus-visible,.nav-menu summary:f
         </a>
         <span class="pill"><span class="dot"></span> Kostenlos &middot; iOS 26 &middot; Deutsch &amp; Englisch</span>
       </div>
-      <p style="color:rgba(255,246,239,.72);font-size:.86rem;margin-top:16px">In der EU inkl. Deutschland in K&uuml;rze &mdash; Apple pr&uuml;ft gerade die Freigabe.</p>
+      <p style="color:rgba(255,246,239,.72);font-size:.86rem;margin-top:16px">Der Button f&uuml;hrt automatisch in euren App&nbsp;Store &mdash; oder direkt: <a href="https://apps.apple.com/de/app/id6760221551">Deutschland &amp; EU</a> &middot; <a href="https://apps.apple.com/us/app/id6760221551">USA</a></p>
     </div>
   </div>
 </section>
