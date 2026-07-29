@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="apple-itunes-app" content="app-id=6760221551">
+<title>Support &middot; TwoOfUs: Together</title>
+<meta name="description" content="Help and frequently asked questions for the TwoOfUs iOS app: widgets, pairing, the flower card, Weekly Check-ins, the compliments jar, location and privacy.">
+<meta property="og:title" content="Support · TwoOfUs: Together">
+<meta property="og:description" content="Answers about pairing, widgets, check-ins and privacy in TwoOfUs &mdash; and a direct line to support.">
+<meta property="og:url" content="https://jakobjhartmann.github.io/twoofus.app/en/support.html">
+<link rel="canonical" href="https://jakobjhartmann.github.io/twoofus.app/en/support.html">
+<link rel="alternate" hreflang="de" href="https://jakobjhartmann.github.io/twoofus.app/support.html">
+<link rel="alternate" hreflang="en" href="https://jakobjhartmann.github.io/twoofus.app/en/support.html">
+<link rel="alternate" hreflang="x-default" href="https://jakobjhartmann.github.io/twoofus.app/support.html">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#FBF4EC;--surface:#FFFFFF;--tint:#FBF1EB;--text:#3B2D26;--text2:#6E5B4E;--text3:#9A8C82;--line:#EFE2D6;
+  --accent:#C2603E;--accent2:#A6492B;--success:#5FA978;--onaccent:#FFF6EF;
+  --serif:"New York",Georgia,"Times New Roman",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,sans-serif;
+  --radius:24px;--shadow:0 10px 30px rgba(90,55,40,.10);
+  --shadow-lg:0 2px 6px rgba(90,55,40,.06),0 26px 50px -14px rgba(150,70,45,.20);
+}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:var(--accent)}
+h1,h2,h3{font-family:var(--serif);color:var(--text);font-weight:600;line-height:1.15}
+h1,h2{letter-spacing:-0.02em;line-height:1.1}
+nav{position:sticky;top:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:15px 32px;background:rgba(251,244,236,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav-logo{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:600;font-size:1.3rem;color:var(--text);text-decoration:none;letter-spacing:-0.01em}
+.logo-tile{width:34px;height:34px;border-radius:11px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.logo-tile img{width:34px;height:34px;border-radius:11px;display:block}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{color:var(--text2);text-decoration:none;font-size:.95rem;font-weight:500}
+.nav-links a:hover{color:var(--accent)}
+.nav-menu{display:none;position:relative}
+.nav-menu summary{list-style:none;width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:12px;color:var(--text);cursor:pointer}
+.nav-menu summary::-webkit-details-marker{display:none}
+.nav-menu summary::marker{content:""}
+.nav-menu[open] summary{background:var(--tint)}
+.nav-menu ul{position:absolute;right:0;top:52px;min-width:216px;list-style:none;background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow-lg);padding:8px;display:flex;flex-direction:column;gap:2px;z-index:120}
+.nav-menu ul a{display:block;padding:12px 14px;border-radius:10px;color:var(--text);text-decoration:none;font-weight:500;min-height:44px;transition:color .2s ease,background .2s ease}
+.nav-menu ul a:hover{background:var(--tint);color:var(--accent)}
+.btn{display:inline-flex;align-items:center;gap:9px;border-radius:100px;padding:14px 28px;font-weight:600;text-decoration:none;font-size:1rem;border:none;cursor:pointer}
+.btn-primary{background:var(--accent);color:var(--onaccent);box-shadow:var(--shadow)}
+.btn-primary:hover{background:var(--accent2)}
+.btn-secondary{background:var(--surface);color:var(--text);border:1px solid var(--line)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+.kicker{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700}
+.page{max-width:780px;margin:0 auto;padding:64px 24px 90px}
+.container{max-width:1080px;margin:0 auto}
+section{padding:88px 24px}
+footer{background:var(--bg);border-top:1px solid var(--line);padding:40px 24px;text-align:center;color:var(--text2);font-size:.88rem}
+footer a{color:var(--text2);text-decoration:none;display:inline-block;padding:10px 12px;margin:0 2px}
+footer a:hover{color:var(--accent)}
+.footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 8px}
+a:focus-visible,.btn:focus-visible,.nav-menu summary:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:12px}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){
+  .nav-links a,footer a{transition:color .18s ease}
+  .btn,.card,.privacy-card{transition:transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .3s ease}
+  .btn:hover{transform:translateY(-2px)}
+}
+@media(max-width:760px){.nav-links{display:none}.nav-menu{display:block}}
+@media(max-width:620px){nav{padding:14px 20px}section{padding:60px 20px}}
+</style>
+<style>
+.support-hero{text-align:center;margin-bottom:48px}
+.support-hero h1{font-size:clamp(2rem,5vw,2.9rem);letter-spacing:-0.025em;margin:14px 0 12px}
+.support-hero p{font-family:var(--serif);font-style:italic;color:var(--accent2);font-size:1.1rem;max-width:560px;margin:0 auto}
+.contact-card{padding:34px 28px;text-align:center;margin-bottom:60px}
+.contact-card h2{font-size:1.5rem;margin-bottom:8px}
+.contact-card p{color:var(--text2);margin-bottom:22px}
+.contact-email{display:inline-block;font-family:var(--serif);font-size:1.3rem;color:var(--accent);text-decoration:none;margin-bottom:26px}
+.contact-email:hover{color:var(--accent2)}
+.section-head{margin-bottom:24px}
+.section-head h2{font-size:1.9rem;margin-top:6px}
+.faq-list{display:flex;flex-direction:column;gap:12px;margin-bottom:66px}
+.faq-item{overflow:hidden}
+.faq-q{display:flex;justify-content:space-between;align-items:center;gap:16px;width:100%;text-align:left;background:none;border:none;cursor:pointer;padding:20px 24px;font-family:var(--sans);font-size:1.05rem;font-weight:600;color:var(--text)}
+.faq-toggle{flex-shrink:0;width:26px;height:26px;border-radius:50%;background:var(--tint);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:1.2rem;line-height:1;transition:transform .25s ease}
+.faq-item.open .faq-toggle{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .32s ease;color:var(--text2)}
+.faq-item.open .faq-a{max-height:520px}
+.faq-a p{padding:0 24px 22px}
+.faq-a code{background:var(--tint);color:var(--accent2);padding:2px 7px;border-radius:6px;font-size:.9em;font-family:var(--serif)}
+.tips-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+.tip{padding:26px 24px}
+.tip-icon{margin-bottom:12px;color:var(--accent)}
+.tip-icon svg{width:30px;height:30px}
+.tip h3{font-size:1.12rem;margin-bottom:8px}
+.tip p{color:var(--text2);font-size:.95rem;margin:0}
+</style>
+<link rel="icon" type="image/png" href="../appicon.png"><link rel="apple-touch-icon" href="../appicon.png"><script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do I need an account?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — TwoOfUs uses Sign in with Apple. It’s the only sign-in method, so there’s no extra password. Your Apple account keeps your data private and syncs it through iCloud."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I connect with my partner?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "One of you generates an invite code in the format XXXX-XXXX. Share it with your partner, who enters it in their app. Once the code is accepted, your devices are paired and your widgets start syncing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I add a widget to my Home or Lock Screen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "On the Home Screen, touch and hold an empty area until the icons jiggle, tap the + (or Edit → Add Widget), search for TwoOfUs, pick a size and place it. For the Lock Screen, touch and hold the Lock Screen, tap Customize, select a widget area and add the TwoOfUs widget you want."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "My Distance widget shows nothing. Why?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Distance widget needs location permission to work out how far apart you are. Open Settings → TwoOfUs → Location and make sure access is allowed. Both partners need location enabled for the distance to appear."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does the shared note work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You share one note of up to 100 characters. When you write a new one, it replaces the old one and your partner gets a notification. That’s how a quick “thinking of you” lands right on their screen."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the Partner clock?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Partner clock shows your partner’s current local time with their name and city — ideal for long-distance relationships across time zones. It’s derived from their location and updates every minute, so you always know whether it’s morning or midnight over there."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the flower card?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The flower card is a date invitation you unwrap: you choose a date idea, write a card, tie a bouquet from flowers, paper and ribbon, and send it off. Your partner unwraps the bouquet in the app and finds your card inside. They can accept or suggest a different time; TwoOfUs converts the times into both time zones automatically. Accepted dates can be added to your iOS calendar, and the countdown starts on its own."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who sees my check-in answers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Only the two of you — and even then, only at the right moment: your answers are stored sealed. Your partner sees them only once you’ve both submitted your answers, and vice versa. Then both open at the same time. Everything is stored in your private iCloud, which no one else can access."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the compliments jar?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A shared jar for the loveliest lines from your check-ins. When your partner writes something that deserves to stay, you drop it in with “Add to jar”. Later, either of you can draw a slip and read it again, any time. Skipped check-in weeks are fine — the jar keeps filling anyway."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where do our photos, answers and invitations live?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In your private iCloud database at Apple. Apple enforces access server-side: only your two Apple accounts can reach the data — no one else, and that includes us. There are no servers of ours and no tracking. You’ll find the details in the privacy policy."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does TwoOfUs access my calendar?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Only if you want it to, and only to write: after an accepted date invitation you can tap “Add to iOS Calendar”, and the app creates exactly that one event. TwoOfUs never reads your calendar."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What’s inside an invitation link?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "When you share an invitation as a link, the invitation data is encoded in the link fragment — the part after the #. That fragment never leaves the browser and isn’t sent to any server. The link is visible only to the people who receive it and expires after the date."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "“Always” or “While Using” for location?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "“Always” keeps the Distance widget and Partner clock current even when the app is closed. “While Using” works too, but only updates while the app is open, so widget data can go a little stale. For the smoothest experience, we recommend “Always”."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I sign out or delete our data?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You can sign out any time in the app under Settings → Account, where you can also delete your account along with its data. For questions about permanent deletion, write to jakobsworld@web.de and we’ll take care of it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which iPhones and iOS versions are supported?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "TwoOfUs requires iOS 26 or later. If your iPhone runs iOS 26 or newer, you’re good to go."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo"><span class="logo-tile"><img src="../appicon.png" alt="TwoOfUs" width="34" height="34"></span> TwoOfUs: Together</a>
+  <ul class="nav-links">
+    <li><a href="index.html#neu">New in 1.6</a></li>
+    <li><a href="index.html#widgets">Widgets</a></li>
+    <li><a href="index.html#how">How it works</a></li>
+    <li><a href="support.html">Support</a></li>
+    <li><a href="privacy.html">Privacy</a></li>
+    <li><a href="../support.html" hreflang="de" aria-label="Deutsche Version">DE</a></li>
+  </ul>
+  <details class="nav-menu">
+    <summary aria-label="Open menu">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </summary>
+    <ul>
+      <li><a href="index.html#neu">New in 1.6</a></li>
+      <li><a href="index.html#widgets">Widgets</a></li>
+      <li><a href="index.html#how">How it works</a></li>
+      <li><a href="support.html">Support</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
+      <li><a href="../support.html" hreflang="de" aria-label="Deutsche Version">Deutsch</a></li>
+    </ul>
+  </details>
+</nav>
+
+<div class="page">
+
+  <div class="support-hero">
+    <span class="kicker">Help &amp; Support</span>
+    <h1>We&rsquo;re happy to help</h1>
+    <p>If something isn&rsquo;t syncing the way it should, you&rsquo;ll find the answers here. Or just write to us directly.</p>
+  </div>
+
+  <div class="card contact-card">
+    <h2>Write to us</h2>
+    <p>A question, feedback or a bug? Get in touch &mdash; we answer as fast as we can.</p>
+    <a class="contact-email" href="mailto:jakobsworld@web.de?subject=TwoOfUs%20Support">jakobsworld@web.de</a>
+    <br>
+    <a class="btn btn-primary" href="mailto:jakobsworld@web.de?subject=TwoOfUs%20Support">Email support</a>
+  </div>
+
+  <div class="section-head">
+    <span class="kicker">FAQ</span>
+    <h2>Frequently asked questions</h2>
+  </div>
+
+  <div class="faq-list">
+
+    <div class="card faq-item">
+      <button class="faq-q" aria-expanded="false">Do I need an account?<span class="faq-toggle" aria-hidden="true">+</span></button>
+      <div class="faq-a"><p>Yes &mdash; TwoOfUs uses <strong>Sign in with Apple</strong>. It&rsquo;s the only sign-in method, so there&rsquo;s no extra password. Your Apple account keeps your data private and syncs it through iCloud.</p></div>
+    </div>
+
+    <div class="card faq-item">
+      <button class="faq-q" aria-expanded="false">How do I connect with my partner?<span class="faq-toggle" aria-hidden="true">+</span></button>
+      <div class="faq-a"><p>One of you generates an invite code in the format <code>XXXX-XXXX</code>. Share it with your partner, who enters it in their app. Once the code is accepted, your devices are paired and your widgets start syncing.</p></div>
+    </div>
+
+    <div class="card faq-item">
+      <button class="faq-q" aria-expanded="false">How do I add a widget to my Home or Lock Screen?<span class="faq-toggle" aria-hidden="true">+</span></button>
+      <div class="faq-a"><p>On the Home Screen, touch and hold an empty area until the icons jiggle, tap the <strong>+</strong> (or <strong>Edit &rarr; Add Widget</strong>), search for <strong>TwoOfUs</strong>, pick a size and place it. For the Lock Screen, touch and hold the Lock Screen, tap <strong>Customize</strong>, select a widget area and add the TwoOfUs widget you want.</p></div>
+    </div>
+
+    <div class="card faq-item">
+      <button class="faq-q" aria-expanded="false">My Distance widget shows nothing. Why?<span class="faq-toggle" aria-hidden="true">+</span></button>
+      <div class="faq-a"><p>The Distance widget needs <strong>location permission</strong> to work out how far apart you are. Open <strong>Settings &rarr; TwoOfUs &rarr; Location</strong> and make sure access is allowed. Both partners need location enabled for the distance to appear.</p></div>
+    </div>
+
+    <div class="card faq-item">
+      <button class="faq-q" aria-expanded="false">How does the shared note work?<span class="faq-toggle" aria-hidden="true">+</span></button>
+      <div class="faq-a"><p>You share <strong>one</strong> note of up to <strong>100 characters</strong>. When you write a new one, it <strong>replaces</strong> the old one and your partner gets a <strong>notification</strong>. That&rsquo;s how a quick &ldquo;thinking of you&rdquo; lands right on their screen.</p></div>
+    </div>
+
+    <div class="card faq-item">
+      <button class="faq-q" aria-expanded="false">What is the Partner clock?<span class="faq-toggle" aria-hidden="true">+</span></button>
+      <div class="faq-a"><p>The <strong>Partner clock</strong> shows your partner&rsquo;s <strong>current local time</strong> with their name and city &mdash; ideal for long-distance relationships across time zones. It&rsquo;s derived from their location and <strong>updates every minute</strong>, so you always know whether it&rsquo;s morning or midnight over there.</p></div>
+    </div>
+
+    <div class="card faq-item">
+      <button class="faq-q" aria-expanded="false">What is the flower card?<span class="faq-toggle" aria-hidden="true">+</span></button>
+      <div class="faq-a"><p>The <strong>flower card</strong> is a date invitation you unwrap: you choose a date idea, write a card, tie a bouquet from flowers, paper and ribbon, and send it off. Your partner unwraps the bouquet in the app and finds your card inside. They can accept or suggest a different time; TwoOfUs converts the times into both time zones automatically. Accepted dates can be added to your iOS calendar, and the countdown starts on its own.</p></div>
+    </div>
+
+    <div class="card faq-item">
+      <button class="faq-q" aria-expanded="false">Who sees my check-in answers?<span class="faq-toggle" aria-hidden="true">+</span></button>
+      <div class="faq-a"><p>Only the two of you &mdash; and even then, only at the right moment: your answers are stored <strong>sealed</strong>. Your partner sees them only once you&rsquo;ve <strong>both</strong> submitted your answers, and vice versa. Then both open at the same time. Everything is stored in your private iCloud, which no one else can access.</p></div>
+    </div>
+
+    <div class="card faq-item">
+      <button class="faq-q" aria-expanded="false">What is the compliments jar?<span class="faq-toggle" aria-hidden="true">+</span></button>
+      <div class="faq-a"><p>A shared jar for the loveliest lines from your check-ins. When your partner writes something that deserves to stay, you drop it in with <strong>&ldquo;Add to jar&rdquo;</strong>. Later, either of you can draw a slip and read it again, any time. Skipped check-in weeks are fine &mdash; the jar keeps filling anyway.</p></div>
+    </div>
+
+    <div class="card faq-item">
+      <button class="faq-q" aria-expanded="false">Where do our photos, answers and invitations live?<span class="faq-toggle" aria-hidden="true">+</span></button>
+      <div class="faq-a"><p>In your <strong>private iCloud database</strong> at Apple. Apple enforces access server-side: only your two Apple accounts can reach the data &mdash; no one else, and that includes us. There are no servers of ours and no tracking. You&rsquo;ll find the details in the <a href="privacy.html">privacy policy</a>.</p></div>
+    </div>
+
+    <div class="card faq-item">
+      <button class="faq-q" aria-expanded="false">Does TwoOfUs access my calendar?<span class="faq-toggle" aria-hidden="true">+</span></button>
+      <div class="faq-a"><p>Only if you want it to, and only to write: after an accepted date invitation you can tap <strong>&ldquo;Add to iOS Calendar&rdquo;</strong>, and the app creates exactly that one event. TwoOfUs never reads your calendar.</p></div>
+    </div>
+
+    <div class="card faq-item">
+      <button class="faq-q" aria-expanded="false">What&rsquo;s inside an invitation link?<span class="faq-toggle" aria-hidden="true">+</span></button>
+      <div class="faq-a"><p>When you share an invitation as a link, the invitation data is encoded in the link fragment &mdash; the part after the <code>#</code>. That fragment never leaves the browser and isn&rsquo;t sent to any server. The link is visible only to the people who receive it and expires after the date.</p></div>
+    </div>
+
+    <div class="card faq-item">
+      <button class="faq-q" aria-expanded="false">&ldquo;Always&rdquo; or &ldquo;While Using&rdquo; for location?<span class="faq-toggle" aria-hidden="true">+</span></button>
+      <div class="faq-a"><p><strong>&ldquo;Always&rdquo;</strong> keeps the Distance widget and Partner clock current even when the app is closed. <strong>&ldquo;While Using&rdquo;</strong> works too, but only updates while the app is open, so widget data can go a little stale. For the smoothest experience, we recommend &ldquo;Always&rdquo;.</p></div>
+    </div>
+
+    <div class="card faq-item">
+      <button class="faq-q" aria-expanded="false">How do I sign out or delete our data?<span class="faq-toggle" aria-hidden="true">+</span></button>
+      <div class="faq-a"><p>You can sign out any time in the app under <strong>Settings &rarr; Account</strong>, where you can also delete your account along with its data. For questions about <strong>permanent deletion</strong>, write to <a href="mailto:jakobsworld@web.de?subject=TwoOfUs%20Support">jakobsworld@web.de</a> and we&rsquo;ll take care of it.</p></div>
+    </div>
+
+    <div class="card faq-item">
+      <button class="faq-q" aria-expanded="false">Which iPhones and iOS versions are supported?<span class="faq-toggle" aria-hidden="true">+</span></button>
+      <div class="faq-a"><p>TwoOfUs requires <strong>iOS 26 or later</strong>. If your iPhone runs iOS 26 or newer, you&rsquo;re good to go.</p></div>
+    </div>
+
+  </div>
+
+  <div class="section-head">
+    <span class="kicker">Tips</span>
+    <h2>Get more out of TwoOfUs</h2>
+  </div>
+
+  <div class="tips-grid">
+    <div class="card tip">
+      <div class="tip-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="7" width="13" height="13" rx="3"/><path d="M7 7V6a3 3 0 0 1 3-3h7a3 3 0 0 1 3 3v7a3 3 0 0 1-3 3h-1"/></svg></div>
+      <h3>Stack your widgets</h3>
+      <p>Put Distance, Countdown, Note and Partner clock into one Smart Stack and swipe through all four in a single spot.</p>
+    </div>
+    <div class="card tip">
+      <div class="tip-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.3 7-11a7 7 0 1 0-14 0c0 4.7 7 11 7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg></div>
+      <h3>Set location to &ldquo;Always&rdquo;</h3>
+      <p>That keeps the Distance widget and Partner clock up to date even while the app is closed.</p>
+    </div>
+    <div class="card tip">
+      <div class="tip-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="13" rx="3"/><path d="M7.5 9.5h9M7.5 13h5.5"/></svg></div>
+      <h3>One little note</h3>
+      <p>100 characters, straight to your partner&rsquo;s screen. The fastest way to say you&rsquo;re thinking of them.</p>
+    </div>
+    <div class="card tip">
+      <div class="tip-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3"/><path d="M12 11v9M12 20c-3 0-5-1.4-5-4M12 20c3 0 5-1.4 5-4"/></svg></div>
+      <h3>Invite each other on dates</h3>
+      <p>A flower card turns a series night into a date you both look forward to. Countdown included.</p>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div style="font-family:var(--serif);color:var(--accent);font-weight:600;font-size:1.05rem;margin-bottom:10px;letter-spacing:-0.01em">TwoOfUs</div>
+  <div class="footer-links"><a href="index.html">Home</a><a href="support.html">Support</a><a href="privacy.html">Privacy</a><a href="imprint.html">Legal Notice</a></div>
+  <div style="margin-top:16px;color:var(--text3)">Made with &#9829; in M&uuml;nster &middot; &copy; 2026 Jakob Hartmann</div>
+</footer>
+
+<script>
+document.querySelectorAll('.faq-q').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var open=btn.parentElement.classList.toggle('open');
+    btn.setAttribute('aria-expanded',open?'true':'false');
+  });
+});
+</script>
+
+</body>
+</html>

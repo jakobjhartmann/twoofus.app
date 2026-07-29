@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="apple-itunes-app" content="app-id=6760221551">
+<title>Privacy Policy &middot; TwoOfUs: Together</title>
+<meta name="description" content="Privacy policy of the TwoOfUs iOS app and website: private iCloud storage, no tracking, no cookies, no servers of our own.">
+<link rel="canonical" href="https://jakobjhartmann.github.io/twoofus.app/en/privacy.html">
+<link rel="alternate" hreflang="de" href="https://jakobjhartmann.github.io/twoofus.app/privacy.html">
+<link rel="alternate" hreflang="en" href="https://jakobjhartmann.github.io/twoofus.app/en/privacy.html">
+<link rel="alternate" hreflang="x-default" href="https://jakobjhartmann.github.io/twoofus.app/privacy.html">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#FBF4EC;--surface:#FFFFFF;--tint:#FBF1EB;--text:#3B2D26;--text2:#6E5B4E;--text3:#9A8C82;--line:#EFE2D6;
+  --accent:#C2603E;--accent2:#A6492B;--success:#5FA978;--onaccent:#FFF6EF;
+  --serif:"New York",Georgia,"Times New Roman",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,sans-serif;
+  --radius:24px;--shadow:0 10px 30px rgba(90,55,40,.10);
+  --shadow-lg:0 2px 6px rgba(90,55,40,.06),0 26px 50px -14px rgba(150,70,45,.20);
+}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:var(--accent)}
+h1,h2,h3{font-family:var(--serif);color:var(--text);font-weight:600;line-height:1.15}
+nav{position:sticky;top:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:15px 32px;background:rgba(251,244,236,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav-logo{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:600;font-size:1.3rem;letter-spacing:-0.01em;color:var(--text);text-decoration:none}
+.logo-tile{width:34px;height:34px;border-radius:11px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.logo-tile img{width:34px;height:34px;border-radius:11px;display:block}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{color:var(--text2);text-decoration:none;font-size:.95rem;font-weight:500}
+.nav-links a:hover{color:var(--accent)}
+.nav-menu{display:none;position:relative}
+.nav-menu summary{list-style:none;width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:12px;color:var(--text);cursor:pointer}
+.nav-menu summary::-webkit-details-marker{display:none}
+.nav-menu summary::marker{content:""}
+.nav-menu[open] summary{background:var(--tint)}
+.nav-menu ul{position:absolute;right:0;top:52px;min-width:216px;list-style:none;background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow-lg);padding:8px;display:flex;flex-direction:column;gap:2px;z-index:120}
+.nav-menu ul a{display:block;padding:12px 14px;border-radius:10px;color:var(--text);text-decoration:none;font-weight:500;min-height:44px;transition:color .2s ease,background .2s ease}
+.nav-menu ul a:hover{background:var(--tint);color:var(--accent)}
+.btn{display:inline-flex;align-items:center;gap:9px;border-radius:100px;padding:14px 28px;font-weight:600;text-decoration:none;font-size:1rem;border:none;cursor:pointer}
+.btn-primary{background:var(--accent);color:var(--onaccent);box-shadow:var(--shadow)}
+.btn-primary:hover{background:var(--accent2)}
+.btn-secondary{background:var(--surface);color:var(--text);border:1px solid var(--line)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+.kicker{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700}
+.page{max-width:780px;margin:0 auto;padding:64px 24px 90px}
+.container{max-width:1080px;margin:0 auto}
+section{padding:88px 24px}
+footer{background:var(--bg);border-top:1px solid var(--line);padding:40px 24px;text-align:center;color:var(--text2);font-size:.88rem}
+footer a{color:var(--text2);text-decoration:none;display:inline-block;padding:10px 12px;margin:0 2px}
+footer a:hover{color:var(--accent)}
+h1,h2{letter-spacing:-0.02em;line-height:1.1}
+a:focus-visible,.btn:focus-visible,.nav-menu summary:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:12px}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){
+  .nav-links a,footer a{transition:color .18s ease}
+  .btn,.card,.privacy-card{transition:transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .3s ease}
+  .btn:hover{transform:translateY(-2px)}
+}
+@media(max-width:760px){.nav-links{display:none}.nav-menu{display:block}}
+@media(max-width:620px){nav{padding:14px 20px}section{padding:60px 20px}}
+</style>
+<style>
+.page h1{font-size:clamp(2rem,5vw,2.9rem);letter-spacing:-0.025em;margin-bottom:10px}
+.page h2{font-size:1.35rem;margin:42px 0 12px}
+.page p{margin-bottom:14px;color:var(--text)}
+.page ul{margin:0 0 16px 22px}
+.page li{margin-bottom:8px;color:var(--text)}
+.page .lead{font-family:var(--serif);font-style:italic;color:var(--accent2)}
+.updated{color:var(--text2);font-size:.92rem;margin-bottom:28px}
+.highlight{background:var(--tint);border:1px solid var(--line);border-radius:var(--radius);padding:22px 26px;margin-bottom:38px}
+.highlight p{margin:0}
+.contact-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 26px;margin:10px 0 4px}
+.contact-card p{margin-bottom:4px}
+.summary-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:26px 28px;margin-top:48px}
+.summary-card h2{margin:0 0 10px}
+.summary-card p{color:var(--text2)}
+.summary-card p:last-child{margin-bottom:0}
+</style>
+<link rel="icon" type="image/png" href="../appicon.png"><link rel="apple-touch-icon" href="../appicon.png"></head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo"><span class="logo-tile"><img src="../appicon.png" alt="TwoOfUs" width="34" height="34"></span> TwoOfUs: Together</a>
+  <ul class="nav-links">
+    <li><a href="index.html#neu">New in 1.6</a></li>
+    <li><a href="index.html#widgets">Widgets</a></li>
+    <li><a href="index.html#how">How it works</a></li>
+    <li><a href="support.html">Support</a></li>
+    <li><a href="privacy.html">Privacy</a></li>
+    <li><a href="../privacy.html" hreflang="de" aria-label="Deutsche Version">DE</a></li>
+  </ul>
+  <details class="nav-menu">
+    <summary aria-label="Open menu">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </summary>
+    <ul>
+      <li><a href="index.html#neu">New in 1.6</a></li>
+      <li><a href="index.html#widgets">Widgets</a></li>
+      <li><a href="index.html#how">How it works</a></li>
+      <li><a href="support.html">Support</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
+      <li><a href="../privacy.html" hreflang="de" aria-label="Deutsche Version">Deutsch</a></li>
+    </ul>
+  </details>
+</nav>
+
+<main class="page">
+  <span class="kicker">Legal</span>
+  <h1>Privacy Policy</h1>
+  <p class="updated">Last updated: 3 July 2026</p>
+  <p class="updated">This is a convenience translation. The legally binding version is the <a href="../privacy.html">German privacy policy</a>.</p>
+
+  <div class="highlight">
+    <p><strong>In short:</strong> TwoOfUs is built for exactly two people. Since version 1.5, your content lives in your private iCloud database at Apple. Apple enforces access on its servers: only you and your paired partner can read your data &mdash; no one else, not even us. There are no servers of our own, no tracking, no advertising, and no account other than Sign in with Apple. This website sets no cookies and uses no trackers. You can sign out and delete everything in the app at any time.</p>
+  </div>
+
+  <p class="lead">This privacy policy explains what personal data the iOS app TwoOfUs (&ldquo;TwoOfUs,&rdquo; &ldquo;the app,&rdquo; &ldquo;we&rdquo;) and the TwoOfUs website process, for what purpose, on what legal basis, and what rights you have. It is based on the EU General Data Protection Regulation (GDPR).</p>
+
+  <h2>1. Controller</h2>
+  <p>The controller responsible for processing your personal data within the meaning of Art. 4(7) GDPR is:</p>
+  <div class="contact-card">
+    <p><strong>Jakob Hartmann</strong></p>
+    <p>Kanalstra&szlig;e 38</p>
+    <p>48147 M&uuml;nster</p>
+    <p>Germany</p>
+    <p>Email: <a href="mailto:jakobsworld@web.de">jakobsworld@web.de</a></p>
+  </div>
+
+  <h2>2. What data the app processes</h2>
+  <p>TwoOfUs only processes what is needed for the shared features. All couple content is stored in your private iCloud (see section 6) and is accessible only to the two of you:</p>
+  <ul>
+    <li><strong>Apple user identifier:</strong> a stable, app-specific ID from Sign in with Apple. It lets us recognize your account without ever processing an email address or password.</li>
+    <li><strong>Profile name / initials:</strong> the display name you choose. It is shown to your partner and used for initials in the app and widgets.</li>
+    <li><strong>Location (optional):</strong> your coordinates, used solely to calculate the distance for the Distance widget and to determine the time zone for the Partner Clock. With the &ldquo;Always&rdquo; permission, the app can process significant location changes in the background so the distance stays up to date. Location data is only processed if you enable the feature and grant the iOS permission.</li>
+    <li><strong>Shared note:</strong> a short shared note (up to 100 characters). Updating it triggers a notification to your partner.</li>
+    <li><strong>Countdown:</strong> the target date and optional label of your shared countdown.</li>
+    <li><strong>Streak counter:</strong> a counter of your active days or check-in weeks within the app.</li>
+    <li><strong>Partner Clock:</strong> to display your partner&rsquo;s local time, the app derives their time zone from their city or coordinates and shows it along with their name and city.</li>
+    <li><strong>Pairing code:</strong> a short code in the format XXXX-XXXX, used once to connect you securely.</li>
+    <li><strong>Date invitations (from version 1.6):</strong> the content and design of an invitation &mdash; the chosen idea, title, your card message, the date/time (in both time zones), the design of the flower bouquet, as well as replies, proposed times, and reactions.</li>
+    <li><strong>Photos in date memories (from version 1.6):</strong> photos and optional notes that you add to a shared memory after a date. Access to your photo library only happens via the iOS photo picker, and only when you select photos yourself (see section 13).</li>
+    <li><strong>Check-in answers (from version 1.6):</strong> your answers to the weekly check-in questions. They are stored sealed: your partner only sees your answers once you have both submitted yours, and vice versa.</li>
+    <li><strong>Compliments (from version 1.6):</strong> sentences from your check-ins that you place in your shared compliment jar.</li>
+  </ul>
+
+  <h2>3. What we don&rsquo;t collect</h2>
+  <ul>
+    <li>No email address and no password: sign-in runs entirely through Apple&rsquo;s Sign in with Apple.</li>
+    <li>No payment or billing data.</li>
+    <li>No advertising IDs and no advertising.</li>
+    <li>No cross-app or cross-website tracking, no third-party analytics or tracking SDKs.</li>
+    <li>No cookies and no tracking on this website (see section 15).</li>
+    <li>We never sell or rent out data.</li>
+  </ul>
+
+  <h2>4. What we use the data for</h2>
+  <p>We use the data listed above solely for the app&rsquo;s core functions: to sign you in, connect you with your partner, and provide the shared features &mdash; the widgets (distance, countdown, note, partner clock), date invitations and memories, weekly check-ins, and the compliment jar. Certain actions (e.g. a new note, a date invitation, or an acceptance) trigger a notification to your partner. We do not use your data for profiling, marketing, or any other purpose.</p>
+
+  <h2>5. Legal bases (GDPR)</h2>
+  <ul>
+    <li><strong>Art. 6(1)(b) GDPR (performance of a contract):</strong> processing your account identifier, profile, pairing, note, countdown, streak, partner clock, date invitations, memories (including photos you select), check-in answers, and compliments is necessary to provide the service you requested. Photo selection and calendar entries always happen only as a result of your own, active action.</li>
+    <li><strong>Art. 6(1)(a) GDPR (consent):</strong> location data is only processed with your explicit consent via the iOS permission prompt. You can withdraw this consent at any time in iOS Settings.</li>
+    <li><strong>Art. 6(1)(f) GDPR (legitimate interests):</strong> security and integrity of the service, abuse prevention, and the technically necessary delivery of this website.</li>
+  </ul>
+
+  <h2>6. Storage: your private iCloud</h2>
+  <p>Since version 1.5, all couple content is stored in your <strong>private iCloud database (Apple CloudKit)</strong> and shared, via an Apple-managed share, exclusively between your Apple account and your paired partner&rsquo;s Apple account. Apple enforces access control <strong>on its servers</strong>: other users, third parties, and we ourselves have no access to your content. We run no servers and no database of our own.</p>
+  <p>Apple Inc. provides the underlying infrastructure (iCloud/CloudKit, Sign in with Apple, push notifications). Apple&rsquo;s privacy policy applies to these services: <a href="https://www.apple.com/privacy/" target="_blank" rel="noopener">apple.com/privacy</a>.</p>
+  <p><strong>Transfers to third countries (USA):</strong> the provider of the infrastructure used is Apple Inc., headquartered in the USA; personal data may be transferred there as part of iCloud/CloudKit. The legal basis is the European Commission&rsquo;s adequacy decision on the <a href="https://www.dataprivacyframework.gov/" target="_blank" rel="noopener">EU-US Data Privacy Framework</a> (to the extent the respective recipient is certified), supplemented by standard contractual clauses under Art. 46 GDPR. This website is likewise hosted via GitHub Pages (GitHub, Inc., USA); for technical reasons, GitHub briefly processes your IP address on the same legal basis.</p>
+
+  <h2>7. Retention period</h2>
+  <p>We store your data only for as long as your account exists and you use the app. Note, countdown, profile, invitations, memories, photos, check-in answers, and compliments remain in place so that both of you can see them. If you sign out and delete your account (see section 9), the associated data is removed. Apple&rsquo;s own deletion and retention cycles apply to backups within the iCloud infrastructure.</p>
+
+  <h2>8. Your rights</h2>
+  <p>Under the GDPR, you have the right to:</p>
+  <ul>
+    <li>access the data stored about you (Art. 15);</li>
+    <li>rectification of inaccurate data (Art. 16);</li>
+    <li>erasure of your data (Art. 17);</li>
+    <li>restriction of processing (Art. 18);</li>
+    <li>data portability (Art. 20);</li>
+    <li>object to processing based on legitimate interests (Art. 21);</li>
+    <li>withdraw any consent given, with effect for the future (Art. 7(3));</li>
+    <li>lodge a complaint with a supervisory authority (Art. 77).</li>
+  </ul>
+  <p>To exercise these rights, write to us at <a href="mailto:jakobsworld@web.de">jakobsworld@web.de</a>.</p>
+
+  <h2>9. Sign out &amp; delete</h2>
+  <p>You stay in control. In the app, you can sign out under <strong>Settings &rarr; Account</strong>, or delete your account together with your data. Deleting removes your profile and ends the pairing with your partner; shared content such as memories, photos, check-ins, and compliments is also removed from the share. You can additionally revoke the app&rsquo;s access to Sign in with Apple under your Apple Account in iOS Settings.</p>
+
+  <h2>10. Children</h2>
+  <p>TwoOfUs is not directed at children. The app is intended for people aged 13 and older. We do not knowingly collect data from children under 13. If you believe a child has provided us with data, please contact us and we will delete it.</p>
+
+  <h2>11. Location permissions</h2>
+  <p>The Distance widget needs location access to calculate how far apart you are. iOS asks you for permission; you can choose &ldquo;While Using&rdquo; or &ldquo;Always&rdquo;. &ldquo;Always&rdquo; enables background updates on significant location changes so the distance stays current even when the app is closed. You can change or revoke this permission at any time under iOS <strong>Settings &rarr; Privacy &amp; Security &rarr; Location Services &rarr; TwoOfUs</strong>. Without location access the app still works &mdash; only the distance feature is then turned off.</p>
+
+  <h2>12. Notifications (push)</h2>
+  <p>TwoOfUs sends you notifications so you don&rsquo;t miss anything: when your partner updates the shared note, sends you a date invitation, accepts an invitation, or proposes a different time, as well as an optional reminder for your weekly check-in. Delivery happens via the Apple Push Notification Service. You can turn off notifications at any time under iOS <strong>Settings &rarr; Notifications &rarr; TwoOfUs</strong>.</p>
+
+  <h2>13. Photos &amp; photo library</h2>
+  <p>For date memories, you can add photos. Access to your photo library happens exclusively via the iOS photo picker, and only when you actively select photos; the app does not read your library in the background. Selected photos are stored in your private iCloud and are only visible to you and your partner.</p>
+
+  <h2>14. Calendar access</h2>
+  <p>Once you&rsquo;ve arranged a date, you can add it to your iOS calendar with a tap. This access is <strong>write-only</strong> and happens <strong>only as a result of your explicit action</strong> (&ldquo;Add to iOS Calendar&rdquo;). TwoOfUs does not read your calendar. The added event then lives in your own calendar account and is subject to its settings.</p>
+
+  <h2>15. Invitation links &amp; this website</h2>
+  <p><strong>Invitation links:</strong> you can share a date invitation as a link (a link to the TwoOfUs website). The invitation data is encoded in the so-called fragment of the link &mdash; the part after the <strong>#</strong>. For technical reasons, browsers <strong>never send the fragment to a server</strong>: when your partner opens the link, the invitation is rendered purely locally in the browser. Neither we nor the website&rsquo;s hosting provider ever receive the invitation&rsquo;s content. The link is only visible to people who received it, and it expires after the date.</p>
+  <p><strong>Website:</strong> this website is static. It sets no cookies, uses no trackers or analytics services, and does not load fonts, scripts, or other content from third-party servers. When you visit, the hosting provider briefly processes your IP address for technical reasons in order to deliver the pages (Art. 6(1)(f) GDPR); beyond that, no evaluation takes place.</p>
+
+  <h2>16. Security</h2>
+  <p>The transfer between your device and Apple&rsquo;s iCloud servers is encrypted; storage takes place within Apple&rsquo;s secured infrastructure. Access to your couple data is restricted to the two of you and is enforced by Apple on its servers: no one else can read your notes, photos, check-in answers, compliments, invitations, distance, or time data. The app only shows sealed check-in answers to your partner once both of you have submitted them.</p>
+
+  <h2>17. Changes to this policy</h2>
+  <p>We update this privacy policy when the app or the legal situation changes. For material changes, we update the date under &ldquo;Last updated&rdquo; at the top of this page. Please check back from time to time.</p>
+
+  <h2>18. Contact</h2>
+  <p>If you have questions about this privacy policy or your data, you can reach us here:</p>
+  <div class="contact-card">
+    <p><strong>Jakob Hartmann</strong></p>
+    <p>Kanalstra&szlig;e 38, 48147 M&uuml;nster, Germany</p>
+    <p>Email: <a href="mailto:jakobsworld@web.de">jakobsworld@web.de</a></p>
+  </div>
+</main>
+
+<footer>
+  <div style="font-family:var(--serif);color:var(--accent);font-weight:600;font-size:1.05rem;letter-spacing:-0.01em;margin-bottom:10px">TwoOfUs</div>
+  <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:4px 8px"><a href="index.html">Home</a><a href="support.html">Support</a><a href="privacy.html">Privacy</a><a href="imprint.html">Legal Notice</a></div>
+  <div style="margin-top:16px;color:var(--text3)">Made with &#9829; in M&uuml;nster &middot; &copy; 2026 Jakob Hartmann</div>
+</footer>
+</body>
+</html>
