@@ -92,14 +92,14 @@ body.light #chip .inner{color:#7C6E64;background:rgba(60,40,45,.08)}
 .pill.you{background:#F4EBF0;color:#8E5A6E}
 .pill.them{background:#F1E5D9;color:#7C6E64}
 
-/* moved up (was top:688px) so the 3-item stack (Open / scheme link / calendar) clears #caption below */
+/* moved up (was top:688px) so the 3-item stack (Open / store link / calendar) clears #caption below */
 #actions{position:absolute;left:35px;top:648px;width:320px;opacity:0;pointer-events:none}
 #openBtn{display:flex;height:52px;border-radius:999px;background:linear-gradient(150deg,#D5764E,#B84E5F);
 	align-items:center;justify-content:center;gap:8px;color:#FCEFE6;font-size:15px;font-weight:700;
 	text-decoration:none;box-shadow:0 14px 26px -10px rgba(120,40,55,.7)}
-#schemeLink{display:block;text-align:center;font-size:13px;font-weight:700;color:rgba(246,231,220,.75);
+#storeLink{display:block;text-align:center;font-size:13px;font-weight:700;color:rgba(246,231,220,.75);
 	margin-top:12px;text-decoration:none}
-body.light #schemeLink{color:#C2603E}
+body.light #storeLink{color:#C2603E}
 /* secondary "Add to calendar" button — SOLID warm surface (legible on dark + light), quieter than the gradient #openBtn */
 #calBtn{display:flex;height:48px;width:100%;border-radius:999px;margin-top:12px;
 	align-items:center;justify-content:center;gap:8px;font-family:var(--sans);
@@ -199,7 +199,7 @@ body.light #langToggle button[aria-pressed="true"]{background:linear-gradient(15
 				<svg width="15" height="15" viewBox="0 0 24 24" fill="#FCEFE6" aria-hidden="true"><path d="M12 20.5s-6.7-4.3-9-8.1C1.4 9.6 2.6 6.6 5.5 6.3c1.9-.2 3.3 1 4.5 2.7l2 2.6 2-2.6c1.2-1.7 2.6-2.9 4.5-2.7 2.9.3 4.1 3.3 2.5 6.1-2.3 3.8-9 8.1-9 8.1z"/></svg>
 				<span id="openBtnLabel">In TwoOfUs öffnen</span>
 			</a>
-			<a id="schemeLink" href="#">Direkt in der App öffnen</a>
+			<a id="storeLink" href="https://apps.apple.com/app/id6760221551">Noch keine App? Im App Store laden</a>
 			<button id="calBtn" type="button">
 				<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16.5" rx="3"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg>
 				<span id="calBtnLabel">In Kalender eintragen</span>
@@ -335,7 +335,8 @@ const TWO = (function () {
 		if (!isFinite(durationMin) || durationMin <= 0) durationMin = 120;
 		return {
 			v: Number(p.v) || 1,
-			title: (typeof p.title === 'string' && p.title.trim()) ? p.title.trim().slice(0, 80) : 'Ein Date zu zweit',
+			/* empty when missing — the viewer-language fallback is applied at render time (resolveTitle) */
+			title: (typeof p.title === 'string') ? p.title.trim().slice(0, 80) : '',
 			message: (typeof p.message === 'string') ? p.message.trim().slice(0, 400) : '',
 			startAt: startAt,
 			durationMin: durationMin,
@@ -531,9 +532,10 @@ if (typeof window === 'undefined' && typeof module !== 'undefined') { module.exp
 			introHint: 'Kein Druck: Du kannst auch später auspacken',
 			cardKicker: 'DU BIST EINGELADEN',
 			openBtn: 'In TwoOfUs öffnen',
-			schemeLink: 'Direkt in der App öffnen',
+			storeLink: 'Noch keine App? Im App Store laden',
 			caption: 'Mit der App könnt ihr annehmen und den Countdown starten',
 				addToCalendar: 'In Kalender eintragen',
+			titleDefault: 'Ein Date zu zweit',
 			home: 'Mehr über TwoOfUs',
 			landingTitle: 'Hier öffnet sich eine Einladung ♥',
 			landingBody: 'Dir hat jemand einen TwoOfUs-Link geschickt? Öffne ihn genau so, wie er in der Nachricht steht, dann packst du hier eure Blumenkarte aus.',
@@ -560,9 +562,10 @@ if (typeof window === 'undefined' && typeof module !== 'undefined') { module.exp
 			introHint: 'No pressure: you can unwrap later too',
 			cardKicker: 'YOU ARE INVITED',
 			openBtn: 'Open in TwoOfUs',
-			schemeLink: 'Open directly in the app',
+			storeLink: 'No app yet? Get it on the App Store',
 			caption: 'In the app you can accept and start the countdown',
 				addToCalendar: 'Add to calendar',
+			titleDefault: 'A date for two',
 			home: 'More about TwoOfUs',
 			landingTitle: 'An invitation opens here ♥',
 			landingBody: 'Did someone send you a TwoOfUs link? Open it exactly as it appears in the message, then you’ll unwrap your flower card right here.',
@@ -603,7 +606,7 @@ if (typeof window === 'undefined' && typeof module !== 'undefined') { module.exp
 	   user-written title (e.g. "Italiener um die Ecke") that merely shares an ideaType like 'food' —
 	   falls through and returns payload.title unchanged, so already-sent custom links are never altered. */
 	function resolveTitle(payload, viewLang) {
-		if (!payload || typeof payload.title !== 'string') return (payload && payload.title) || '';
+		if (!payload || typeof payload.title !== 'string' || !payload.title) return t('titleDefault');
 		var labels = IDEA_LABELS[payload.ideaType];
 		if (labels && (payload.title === labels.de || payload.title === labels.en)) {
 			return labels[viewLang === 'en' ? 'en' : 'de'];
@@ -625,7 +628,8 @@ if (typeof window === 'undefined' && typeof module !== 'undefined') { module.exp
 		setText('introHint', t('introHint'));
 		setText('cardKicker', t('cardKicker'));
 		setText('openBtnLabel', t('openBtn'));
-		setText('schemeLink', t('schemeLink'));
+		setText('storeLink', t('storeLink'));
+		var sl = $('storeLink'); if (sl) sl.href = 'https://apps.apple.com/' + (lang === 'en' ? 'us' : 'de') + '/app/id6760221551';
 		setText('caption', t('caption'));
 		setText('calBtnLabel', t('addToCalendar'));
 		setText('landingTitle', t('landingTitle'));
@@ -662,7 +666,15 @@ if (typeof window === 'undefined' && typeof module !== 'undefined') { module.exp
 		if (!card || !actions) return;
 		var top = card.offsetTop + card.offsetHeight + 22;   // real card bottom + gap
 		actions.style.top = Math.round(top) + 'px';
-		if (caption) caption.style.top = Math.round(top + actions.offsetHeight + 16) + 'px';
+		var bottom = top + actions.offsetHeight;
+		if (caption) {
+			caption.style.top = Math.round(bottom + 16) + 'px';
+			bottom = caption.offsetTop + caption.offsetHeight;
+		}
+		/* long messages push the stack past the 844px design height — grow the frame so fitFrame
+		   scales everything down instead of the viewport clipping the buttons */
+		var h = Math.max(FRAME_H, Math.ceil(bottom + 24));
+		if (h !== frameH) { frameH = h; $('frame').style.height = h + 'px'; fitFrame(); }
 	}
 
 	function renderCard() {
@@ -751,8 +763,9 @@ if (typeof window === 'undefined' && typeof module !== 'undefined') { module.exp
 	}
 
 	/* ————— scale the 390×844 design frame to the viewport ————— */
+	var FRAME_H = 844, frameH = FRAME_H;
 	function fitFrame() {
-		var s = Math.min(window.innerWidth / 390, window.innerHeight / 844);
+		var s = Math.min(window.innerWidth / 390, window.innerHeight / frameH);
 		s = Math.min(s, 1.12);
 		$('frame').style.transform = 'scale(' + s + ')';
 	}
@@ -1212,7 +1225,7 @@ if (typeof window === 'undefined' && typeof module !== 'undefined') { module.exp
 	function buildICS(p) {
 		var startSec = p.startAt;
 		var endSec = p.startAt + (p.durationMin || 120) * 60;
-		var title = resolveTitle(p, lang) || 'Ein Date zu zweit';
+		var title = resolveTitle(p, lang);
 		/* DESCRIPTION = message, then two newlines, then "von/from <sender>"; each part optional */
 		var parts = [];
 		if (p.message) parts.push(p.message);
@@ -1329,9 +1342,9 @@ if (typeof window === 'undefined' && typeof module !== 'undefined') { module.exp
 		var grad = TWO.IDEA_GRADIENTS[payload.ideaType] || TWO.IDEA_GRADIENTS.custom;
 		$('cardCover').style.background = 'linear-gradient(150deg,' + grad[0] + ',' + grad[1] + ')';
 
-		/* buttons: universal-link re-entry (same URL) + custom-scheme fallback */
-		$('openBtn').href = location.href;
-		$('schemeLink').href = 'twoofus://d/#' + frag;
+		/* "Open" uses the custom scheme: a universal link to this same page would just reload it, because
+		   iOS keeps same-domain taps in Safari. The store link below covers people without the app. */
+		$('openBtn').href = 'twoofus://d/#' + frag;
 
 		/* "Add to calendar": build the .ics from the (current-language) payload on click */
 		$('calBtn').addEventListener('click', function (ev) {
