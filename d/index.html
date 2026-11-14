@@ -637,7 +637,10 @@ if (typeof window === 'undefined' && typeof module !== 'undefined') { module.exp
 		setText('errorTitle', t('errorTitle'));
 		setText('errorBody', t('errorBody'));
 		setText('expiredTitle', t('expiredTitle'));
-		Array.prototype.forEach.call(document.querySelectorAll('a.home'), function (a) { a.textContent = t('home'); });
+		Array.prototype.forEach.call(document.querySelectorAll('a.home'), function (a) {
+			a.textContent = t('home');
+			a.href = 'https://jakobjhartmann.github.io/twoofus.app/' + (lang === 'en' ? 'en/' : '');
+		});
 	}
 
 	function renderChip() {
