@@ -107,7 +107,7 @@ a:focus-visible,.btn:focus-visible,.nav-menu summary:focus-visible,summary:focus
 <main class="page">
   <span class="kicker">Legal</span>
   <h1>Privacy Policy</h1>
-  <p class="updated">Last updated: 14 November 2026</p>
+  <p class="updated">Last updated: 15 November 2026</p>
   <p class="updated">This is a convenience translation. The legally binding version is the <a href="../privacy.html">German privacy policy</a>.</p>
 
   <div class="highlight">
@@ -131,15 +131,15 @@ a:focus-visible,.btn:focus-visible,.nav-menu summary:focus-visible,summary:focus
   <ul>
     <li><strong>Apple user identifier:</strong> a stable, app-specific ID from Sign in with Apple. It lets us recognize your account without ever processing an email address or password. It is stored in your profile record in the shared iCloud space so the app can match the two of you as a couple, which means your partner&rsquo;s device can read it.</li>
     <li><strong>Profile name / initials:</strong> the display name you choose. It is shown to your partner and used for initials in the app and widgets.</li>
-    <li><strong>Location (optional):</strong> the city, country, coordinates, and time zone of your location, used to calculate the distance for the Distance widget and to show the Partner Clock. You can pick a city from the list (its coordinates and time zone are then stored) or use your device location. Once you have granted the iOS permission, the app updates your location automatically when you move a significant distance and shares it with your partner; with the &ldquo;Always&rdquo; permission this also happens while the app is closed. Up to version 1.7, coordinates are stored and shared as precisely as iOS provides them. From version 1.8, they are rounded to about 1&nbsp;km before they are stored or shared. Section 11 explains when the app asks for permission and how the city and time zone are determined.</li>
+    <li><strong>Location (optional):</strong> the city, country, coordinates, and time zone of your location, used to calculate the distance for the Distance widget and to show the Partner Clock. You can pick a city from the list (its coordinates and time zone are then stored) or use your device location. Once you have granted the iOS permission, the app updates your location automatically when you move a significant distance and shares it with your partner; with the &ldquo;Always&rdquo; permission this also happens while the app is closed. Up to version 1.7, coordinates are stored and shared as precisely as iOS provides them. From version 1.8, they are rounded to about 1&nbsp;km before they are stored or shared. Section 10 explains when the app asks for permission and how the city and time zone are determined.</li>
     <li><strong>Shared note and message history:</strong> a short note (up to 100 characters) shown in the Note widget. A new note triggers a notification to your partner. In addition, every note you send is stored with its sender and time as an entry in your shared message history. These entries remain until the shared data is deleted (see sections 7 and 9).</li>
     <li><strong>Countdowns:</strong> the target date and optional label of your shared countdown, plus any additional countdowns you create. Additional countdowns are stored on your device and also shared with your partner, who can see them but not change them.</li>
     <li><strong>Private countdown notes:</strong> notes and reminders you attach to a countdown are stored only locally on your device. They are not placed in the shared iCloud database and are not shared with your partner. The app schedules their reminders as local notifications on your device.</li>
     <li><strong>Streak counter:</strong> a counter of your active days or check-in weeks within the app.</li>
     <li><strong>Partner Clock:</strong> to display your partner&rsquo;s local time, the app uses the time zone stored with their location and shows it along with their name and city.</li>
-    <li><strong>Pairing code:</strong> a short code in the format XXXX-XXXX that your partner uses to join your invitation. Whoever redeems the code gets access to your shared data, so only share it with your partner. The code also serves as the identifier for the technical records that trigger notifications (see sections 6 and 12).</li>
+    <li><strong>Pairing code:</strong> a short code in the format XXXX-XXXX that your partner uses to join your invitation. Whoever redeems the code gets access to your shared data, so only share it with your partner. The code also serves as the identifier for the technical records that trigger notifications (see sections 6 and 11).</li>
     <li><strong>Date invitations (from version 1.6):</strong> the content and design of an invitation &mdash; the chosen idea, title, your card message, the date/time (in both time zones), the design of the flower bouquet, as well as replies, proposed times, and reactions.</li>
-    <li><strong>Photos in date memories (from version 1.6):</strong> photos and optional notes that you add to a shared memory after a date. Access to your photo library only happens via the iOS photo picker, and only when you select photos yourself (see section 13).</li>
+    <li><strong>Photos in date memories (from version 1.6):</strong> photos and optional notes that you add to a shared memory after a date. Access to your photo library only happens via the iOS photo picker, and only when you select photos yourself (see section 12).</li>
     <li><strong>Check-in answers (from version 1.6):</strong> your answers to the check-in questions and your reactions to your partner&rsquo;s answers. When you submit, your answers are stored in the iCloud share like all other shared content and synced to your partner&rsquo;s device. If the seal is on (the default), the app only shows your answers to your partner once you have both submitted, and vice versa. This is a display rule in the app, not encryption: the answers are already in the share and on your partner&rsquo;s device before that.</li>
     <li><strong>Compliments (from version 1.6):</strong> sentences from your check-ins that you place in your shared compliment jar.</li>
     <li><strong>Technical metadata:</strong> an invite pointer and notification signal records in the app&rsquo;s public CloudKit database. They contain no content (see section 6).</li>
@@ -151,7 +151,7 @@ a:focus-visible,.btn:focus-visible,.nav-menu summary:focus-visible,summary:focus
     <li>No payment or billing data.</li>
     <li>No advertising IDs and no advertising.</li>
     <li>No cross-app or cross-website tracking, no third-party analytics or tracking SDKs.</li>
-    <li>No cookies and no tracking on this website (see section 15).</li>
+    <li>No cookies and no tracking on this website (see section 14).</li>
     <li>We never sell or rent out data.</li>
   </ul>
 
@@ -171,12 +171,12 @@ a:focus-visible,.btn:focus-visible,.nav-menu summary:focus-visible,summary:focus
   <p><strong>Public CloudKit database (metadata without content):</strong> for two technical purposes, the app places small records in the app&rsquo;s public CloudKit database, which is not private:</p>
   <ul>
     <li><strong>Invite pointer:</strong> while an invitation is open, a record named after the pairing code holds the link to your iCloud share. The inviter&rsquo;s app deletes it once it notices that your partner has joined, when the invitation is cancelled, or on an app launch once it is older than 72 hours and has not been accepted. If your partner leaves the connection, the app creates the pointer again for the same code so you can reconnect.</li>
-    <li><strong>Notification signal records:</strong> when you, for example, write a note, send a date invitation, or reply to one, the app updates a record containing your pairing code, your role in the pairing (inviter or invitee), the type of event, and the time. There is only one such record per device and event type, and it is overwritten with every event. When you unlink or delete your account, the app tries to remove this device&rsquo;s records. Section 12 explains how these become notifications.</li>
+    <li><strong>Notification signal records:</strong> when you, for example, write a note, send a date invitation, or reply to one, the app updates a record containing your pairing code, your role in the pairing (inviter or invitee), the type of event, and the time. There is only one such record per device and event type, and it is overwritten with every event. When you unlink or delete your account, the app tries to remove this device&rsquo;s records. Section 11 explains how these become notifications.</li>
   </ul>
   <p><strong>Recipient: your partner.</strong> Whoever is connected with you receives all shared content from section 2 on their device, including your profile name, your Apple user identifier, your city and country, your coordinates (up to version 1.7 at the precision iOS provides, from version 1.8 rounded to about 1&nbsp;km), and your time zone. Your private countdown notes never leave your device.</p>
-  <p><strong>Recipient: Apple.</strong> Apple Inc. provides the underlying infrastructure (iCloud/CloudKit, Sign in with Apple, push notifications, and the geocoding service that turns coordinates into a place name and time zone, see section 11). Apple&rsquo;s privacy policy applies to these services: <a href="https://www.apple.com/privacy/" target="_blank" rel="noopener">apple.com/privacy</a>.</p>
+  <p><strong>Recipient: Apple.</strong> Apple Inc. provides the underlying infrastructure (iCloud/CloudKit, Sign in with Apple, push notifications, and the geocoding service that turns coordinates into a place name and time zone, see section 10). Apple&rsquo;s privacy policy applies to these services: <a href="https://www.apple.com/privacy/" target="_blank" rel="noopener">apple.com/privacy</a>.</p>
   <p><strong>Replying via WhatsApp (optional):</strong> in a check-in, you can reply to one of your partner&rsquo;s answers via WhatsApp. When you tap this, the app hands the quoted sentence to WhatsApp through a wa.me link; if WhatsApp is not installed, the wa.me page opens in your browser. The text then goes to WhatsApp (Meta), whose own privacy terms apply. Nothing is sent to WhatsApp unless you tap.</p>
-  <p><strong>Transfers to third countries (USA):</strong> the provider of the infrastructure used is Apple Inc., headquartered in the USA; personal data may be transferred there as part of iCloud/CloudKit. The legal basis is the European Commission&rsquo;s adequacy decision on the <a href="https://www.dataprivacyframework.gov/" target="_blank" rel="noopener">EU-US Data Privacy Framework</a> (to the extent the respective recipient is certified), supplemented by standard contractual clauses under Art. 46 GDPR. This website is likewise hosted via GitHub Pages (GitHub, Inc., USA); GitHub processes your IP address on the same legal basis (see section 15).</p>
+  <p><strong>Transfers to third countries (USA):</strong> the provider of the infrastructure used is Apple Inc., headquartered in the USA; personal data may be transferred there as part of iCloud/CloudKit. The legal basis is the European Commission&rsquo;s adequacy decision on the <a href="https://www.dataprivacyframework.gov/" target="_blank" rel="noopener">EU-US Data Privacy Framework</a> (to the extent the respective recipient is certified), supplemented by standard contractual clauses under Art. 46 GDPR. This website is likewise hosted via GitHub Pages (GitHub, Inc., USA); GitHub processes your IP address on the same legal basis (see section 14).</p>
 
   <h2>7. Retention period</h2>
   <p>We do not store data from the app ourselves, because we run no servers of our own. For data in iCloud and on your device:</p>
@@ -210,36 +210,33 @@ a:focus-visible,.btn:focus-visible,.nav-menu summary:focus-visible,summary:focus
   </ul>
   <p>You can also delete data in your own iCloud at any time in iOS: <strong>Settings &rarr; [your name] &rarr; iCloud &rarr; Manage Storage &rarr; TwoOfUs</strong>. You can additionally revoke the app&rsquo;s access to Sign in with Apple under your Apple Account in iOS Settings. We have no access to data in your partner&rsquo;s iCloud and therefore cannot delete it for you. If you have questions, <a href="mailto:jakobsworld@web.de">jakobsworld@web.de</a> is happy to help.</p>
 
-  <h2>10. Children</h2>
-  <p>TwoOfUs is not directed at children. The app is intended for people aged 13 and older. We do not knowingly collect data from children under 13. If a child has used the app, their data can be deleted in the app or in iOS as described in section 9; if you have questions about this, <a href="mailto:jakobsworld@web.de">jakobsworld@web.de</a> is happy to help.</p>
-
-  <h2>11. Location permissions</h2>
+  <h2>10. Location permissions</h2>
   <p>The Distance widget needs your location to calculate how far apart you are. For your device location, iOS asks you for permission: in version 1.7 the first time the main screen opens, from version 1.8 only when you set up the distance. You can choose &ldquo;While Using&rdquo; or &ldquo;Always&rdquo;. &ldquo;Always&rdquo; enables background updates on significant location changes so the distance stays current even when the app is closed. Every new location is shared with your partner (see section 6).</p>
   <p>To determine the city, country, and time zone from your coordinates, the app sends them to Apple&rsquo;s geocoding service (MapKit or Core Location); Apple&rsquo;s privacy policy applies to this. If the service returns no time zone, the app uses your device&rsquo;s time zone.</p>
   <p>You can change or revoke this permission at any time under iOS <strong>Settings &rarr; Privacy &amp; Security &rarr; Location Services &rarr; TwoOfUs</strong>. Without location access the app still works &mdash; only the distance feature is then turned off.</p>
 
-  <h2>12. Notifications (push)</h2>
+  <h2>11. Notifications (push)</h2>
   <p>TwoOfUs sends you notifications so you don&rsquo;t miss anything: for example when your partner writes a new note, sends you a date invitation, accepts an invitation, proposes a different time, adds photos to a memory, completes a check-in, or reminds you about the check-in.</p>
   <p>We do not run a push server of our own. Your partner&rsquo;s app updates one of the signal records from section 6, and Apple delivers a notification to you through the Apple Push Notification Service, based on a CloudKit subscription registered for your device. These notifications contain fixed text, not the content of your notes or answers. Apple also wakes the app with silent notifications when shared data has changed, so it can sync. Reminders for your weekly check-in and for countdown notes are scheduled locally on your device.</p>
   <p>You can turn off notifications at any time under iOS <strong>Settings &rarr; Notifications &rarr; TwoOfUs</strong>.</p>
 
-  <h2>13. Photos &amp; photo library</h2>
+  <h2>12. Photos &amp; photo library</h2>
   <p>For date memories, you can add photos. Access to your photo library happens exclusively via the iOS photo picker, and only when you actively select photos; the app does not read your library in the background. Selected photos are stored in your shared iCloud space (see section 6) and are visible to you and your partner.</p>
 
-  <h2>14. Calendar access</h2>
+  <h2>13. Calendar access</h2>
   <p>Once you&rsquo;ve arranged a date, you can add it to your iOS calendar with a tap. This access is <strong>write-only</strong> and happens <strong>only as a result of your explicit action</strong> (&ldquo;Add to iOS Calendar&rdquo;). TwoOfUs does not read your calendar. The added event then lives in your own calendar account and is subject to its settings.</p>
 
-  <h2>15. Invitation links &amp; this website</h2>
+  <h2>14. Invitation links &amp; this website</h2>
   <p><strong>Invitation links:</strong> you can share a date invitation as a link (a link to the TwoOfUs website). The invitation data is encoded in the so-called fragment of the link &mdash; the part after the <strong>#</strong>. For technical reasons, browsers <strong>never send the fragment to a server</strong>: when your partner opens the link, the invitation is rendered purely locally in the browser. Neither we nor the website&rsquo;s hosting provider ever receive the invitation&rsquo;s content. After the date, the invitation page no longer shows the invitation, but the link itself still contains the data. Anyone who has the link can read its content, so only share it with your partner.</p>
   <p><strong>Website:</strong> this website is static and hosted on GitHub Pages (GitHub, Inc., USA). It sets no cookies, uses no trackers or analytics services, and does not load fonts, scripts, or other content from third-party servers. When you visit, GitHub processes your IP address for technical reasons in order to deliver the pages and, according to GitHub, logs it in server logs for security purposes. We have no access to these logs and do not analyze them; GitHub determines how long they are kept. For details, see <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">GitHub&rsquo;s privacy statement</a>. The legal basis is Art. 6(1)(f) GDPR; our legitimate interest is the secure and reliable delivery of the website.</p>
 
-  <h2>16. Security</h2>
+  <h2>15. Security</h2>
   <p>The transfer between your device and Apple&rsquo;s iCloud servers is encrypted; storage takes place within Apple&rsquo;s secured infrastructure. Apple only makes your shared data available to the participants of your iCloud share. Whoever redeems your invite code becomes a participant, so treat the code like a password and only share it with your partner. We have no access to your content. The app only shows sealed check-in answers to your partner once both of you have submitted them; this is a display rule in the app, not additional encryption.</p>
 
-  <h2>17. Changes to this policy</h2>
+  <h2>16. Changes to this policy</h2>
   <p>We update this privacy policy when the app or the legal situation changes. For material changes, we update the date under &ldquo;Last updated&rdquo; at the top of this page. Please check back from time to time.</p>
 
-  <h2>18. Contact</h2>
+  <h2>17. Contact</h2>
   <p>If you have questions about this privacy policy or your data, you can reach us here:</p>
   <div class="contact-card">
     <p><strong>Jakob Hartmann</strong></p>
