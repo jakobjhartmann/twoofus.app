@@ -3,11 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script>document.documentElement.classList.add('js')</script>
-<title>TwoOfUs: Together · Stay close, no matter how far</title>
-<meta name="description" content="TwoOfUs is the private iOS app for long-distance couples: shared widgets, flower-card dates, weekly check-ins and a compliments jar. Free on the App Store.">
-<meta property="og:title" content="TwoOfUs: Together · Stay close, no matter how far">
-<meta property="og:description" content="The iOS app for the two of you: widgets, flower cards for date invitations, Weekly Check-ins and your shared compliments jar. All private in your iCloud, now on the App Store worldwide.">
+<title>TwoOfUs: Together – the app for long-distance couples</title>
+<meta name="description" content="TwoOfUs is a free iPhone app for couples who live apart: widgets with your partner's time, distance and a countdown, date invitations, a weekly check-in and a jar for compliments. Your data stays in your iCloud.">
+<meta property="og:title" content="TwoOfUs: Together – the app for long-distance couples">
+<meta property="og:description" content="Widgets with your partner's time and distance, date invitations, a weekly check-in and a jar for compliments. Free for iPhone, with your data in your iCloud.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://jakobjhartmann.github.io/twoofus.app/en/">
 <link rel="canonical" href="https://jakobjhartmann.github.io/twoofus.app/en/">
@@ -43,641 +42,189 @@
 </script>
 <link rel="icon" type="image/png" href="../appicon.png">
 <link rel="apple-touch-icon" href="../appicon.png">
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --bg:#FBF4EC;--surface:#FFFFFF;--tint:#FBF1EB;--band:#F5E7D6;
-  --text:#3B2D26;--text2:#6E5B4E;--text3:#9A8C82;--line:#EFE2D6;
-  --accent:#C2603E;--accent2:#A6492B;--success:#5FA978;--onaccent:#FFF6EF;
-  --plum:#8E5A6E;--plumtint:#F4EBF0;
-  --serif:"New York",Georgia,"Times New Roman",serif;
-  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,sans-serif;
-  --radius:24px;
-  --shadow:0 1px 2px rgba(90,55,40,.05),0 10px 28px rgba(90,55,40,.10);
-  --shadow-lg:0 2px 6px rgba(90,55,40,.06),0 26px 50px -14px rgba(150,70,45,.20);
-  --ease-spring:cubic-bezier(.34,1.56,.64,1);
-  --ease-out:cubic-bezier(.22,.61,.36,1);
-}
-body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.65;-webkit-font-smoothing:antialiased}
-body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.045;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E")}
-a{color:var(--accent2)}
-h1,h2,h3{font-family:var(--serif);color:var(--text);font-weight:600;line-height:1.15;letter-spacing:-.015em;font-optical-sizing:auto}
-@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
-nav{position:sticky;top:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:15px 32px;background:rgba(251,244,236,.85);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-.nav-logo{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:600;font-size:1.3rem;letter-spacing:-.01em;color:var(--text);text-decoration:none}
-.logo-tile{width:34px;height:34px;border-radius:11px;overflow:hidden;display:flex;align-items:center;justify-content:center}
-.logo-tile img{width:34px;height:34px;border-radius:11px;display:block}
-.nav-links{display:flex;gap:24px;list-style:none}
-.nav-links a{color:var(--text2);text-decoration:none;font-size:.95rem;font-weight:500;transition:color .2s ease}
-.nav-links a:hover{color:var(--accent)}
-.nav-menu{display:none;position:relative}
-.nav-menu summary{list-style:none;width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:12px;color:var(--text);cursor:pointer}
-.nav-menu summary::-webkit-details-marker{display:none}
-.nav-menu summary::marker{content:""}
-.nav-menu[open] summary{background:var(--tint)}
-.nav-menu ul{position:absolute;right:0;top:52px;min-width:216px;list-style:none;background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow-lg);padding:8px;display:flex;flex-direction:column;gap:2px;z-index:120}
-.nav-menu ul a{display:block;padding:12px 14px;border-radius:10px;color:var(--text);text-decoration:none;font-weight:500;min-height:44px;transition:color .2s ease,background .2s ease}
-.nav-menu ul a:hover{background:var(--tint);color:var(--accent)}
-.btn{display:inline-flex;align-items:center;gap:9px;border-radius:100px;padding:14px 28px;font-weight:600;text-decoration:none;font-size:1rem;border:none;cursor:pointer}
-.btn-primary{background:var(--accent);color:var(--onaccent);box-shadow:var(--shadow)}
-.btn-primary:hover{background:var(--accent2)}
-.btn-secondary{background:var(--surface);color:var(--text);border:1px solid var(--line)}
-.status-badge{display:inline-flex;align-items:center;gap:9px;border-radius:100px;padding:13px 22px;font-weight:600;font-size:.98rem;background:var(--surface);border:1px solid var(--line);color:var(--accent2);box-shadow:var(--shadow);cursor:default}
-.status-badge svg{flex-shrink:0;opacity:.9}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
-.kicker{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent2);font-weight:700}
-.container{max-width:1080px;margin:0 auto}
-section{padding:88px 24px;scroll-margin-top:80px}
-footer{background:var(--bg);border-top:1px solid var(--line);padding:40px 24px;text-align:center;color:var(--text2);font-size:.88rem}
-.footer-wordmark{font-family:var(--serif);color:var(--accent2);font-weight:600;font-size:1.05rem;letter-spacing:-.01em;margin-bottom:10px}
-.footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 6px}
-footer a{color:var(--text2);text-decoration:none;display:inline-block;padding:10px 12px;margin:0 2px;transition:color .2s ease}
-footer a:hover{color:var(--accent)}
-.footer-meta{color:var(--text3);margin-top:12px}
-a:focus-visible,.btn:focus-visible,.learn-link:focus-visible,.nav-menu summary:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:12px}
-.btn:focus-visible{outline-offset:4px}
-@media(max-width:760px){.nav-links{display:none}.nav-menu{display:block}}
-@media(max-width:620px){nav{padding:14px 20px}section{padding:60px 20px}}
-</style>
-<style>
-/* page-scoped styles — shared tokens only */
-.hero{padding:80px 24px 64px;background:
-  radial-gradient(760px 420px at 12% -8%,rgba(194,96,62,.10),transparent 60%),
-  radial-gradient(680px 460px at 92% 6%,rgba(142,90,110,.10),transparent 62%),
-  radial-gradient(1200px 640px at 50% 128%,rgba(237,183,155,.20),transparent 72%),
-  var(--bg)}
-.hero-grid{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:52px;align-items:center}
-.pill{display:inline-flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);color:var(--accent2);font-weight:600;font-size:.85rem;padding:8px 16px;border-radius:100px;box-shadow:var(--shadow)}
-.pill .dot{width:8px;height:8px;border-radius:50%;background:var(--accent)}
-.hero h1{font-weight:500;font-size:clamp(2.6rem,7vw,4.4rem);letter-spacing:-.03em;line-height:1.03;margin:22px 0 12px;max-width:15ch}
-.claim{font-family:var(--serif);font-style:italic;font-size:clamp(1.25rem,3.2vw,1.7rem);letter-spacing:-.01em;color:var(--accent2);margin-bottom:16px}
-.hero .subtitle{max-width:56ch;margin:0 0 30px;color:var(--text2);font-size:1.1rem;line-height:1.6}
-.hero .subtitle strong{color:var(--text);font-weight:600}
-.hero-actions{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
-.learn-link{color:var(--accent2);text-decoration:none;font-weight:600;font-size:1rem;display:inline-flex;gap:6px;align-items:center;padding:10px 2px;min-height:44px}
-.learn-link:hover{color:var(--accent)}
-.learn-link .arw{display:inline-block}
-.beta-note{margin-top:16px;color:var(--text2);font-size:.92rem}
-.hero-art{position:relative;background:radial-gradient(120% 115% at 50% 34%,#FBE7DA 0%,#F8E0D2 46%,transparent 74%);overflow:visible;min-height:400px;display:flex;align-items:center;justify-content:center}
-.hero-art svg{display:block;width:min(360px,118%);height:auto;filter:drop-shadow(0 26px 42px rgba(120,60,40,.16))}
-.float-chip{position:absolute;display:inline-flex;align-items:center;gap:7px;background:var(--surface);border:1px solid var(--line);border-radius:100px;padding:7px 14px;font-size:.82rem;font-weight:600;color:var(--text);box-shadow:var(--shadow-lg);z-index:2}
-.float-chip .fdot{width:7px;height:7px;border-radius:50%}
-.chip-km{top:2px;left:-38px}
-.chip-date{bottom:8px;right:-30px}
-@media(max-width:860px){
-  .hero{padding:56px 20px 48px}
-  .hero-grid{grid-template-columns:1fr;gap:28px;text-align:center}
-  .hero h1{margin-left:auto;margin-right:auto}
-  .hero .subtitle{margin-left:auto;margin-right:auto}
-  .hero-actions{justify-content:center}
-  .hero-art{min-height:320px}
-  .hero-art svg{width:min(300px,84%)}
-  .chip-km{left:8px;top:6px}
-  .chip-date{right:8px;bottom:6px}
-}
-.section-head{text-align:center;max-width:64ch;margin:0 auto 56px}
-.section-head h2{font-size:clamp(1.9rem,4.5vw,2.7rem);font-weight:500;letter-spacing:-.02em;line-height:1.08;margin:12px 0 14px}
-.section-head p{color:var(--text2);font-size:1.05rem}
-.neu-head{display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:end;text-align:left;max-width:none;margin:0 auto 60px}
-.neu-head h2{max-width:14ch;margin:10px 0 0}
-.showcase{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:52px;align-items:center;margin-bottom:88px}
-.showcase:last-of-type{margin-bottom:0}
-.art-canvas{position:relative;overflow:visible;background:radial-gradient(120% 92% at 50% 8%,#FDEEE1,#F5D6C9);border:1px solid var(--line);border-radius:28px;padding:38px 24px 24px;text-align:center;box-shadow:inset 0 1px 0 rgba(255,255,255,.6),var(--shadow)}
-.art-canvas.plum{background:radial-gradient(120% 92% at 50% 8%,#F7ECF2,#E7D3DF)}
-.art-canvas svg{width:min(240px,78%);height:auto;display:inline-block;transform:translateY(-24px)}
-.art-canvas.wide svg{width:min(300px,92%)}
-.art-caption{font-family:var(--serif);font-style:italic;font-size:.98rem;line-height:1.4;color:var(--accent2);margin:-6px auto 6px;max-width:34ch}
-.showcase .copy h3{font-size:clamp(1.5rem,3.4vw,1.95rem);font-weight:600;letter-spacing:-.015em;margin:10px 0 12px}
-.showcase .copy>p{color:var(--text2);font-size:1.02rem}
-.detail{list-style:none;margin-top:20px;display:flex;flex-direction:column;gap:11px}
-.detail li{display:flex;gap:11px;align-items:flex-start;font-size:.96rem;color:var(--text);line-height:1.5}
-.detail .check{flex-shrink:0;width:22px;height:22px;border-radius:50%;background:var(--tint);color:var(--success);font-size:.8rem;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:2px}
-@media(min-width:861px){.showcase.flip{grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr)}.showcase.flip .art{order:2}}
-@media(max-width:860px){.showcase,.showcase.flip{grid-template-columns:1fr;gap:28px;margin-bottom:64px}.art-canvas svg{transform:none}.art-caption{margin-top:14px}}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;align-items:start}
-.grid .feature:nth-child(even){margin-top:24px}
-.feature{padding:28px 24px}
-.feature .ico{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;color:#fff}
-.feature .ico svg{width:24px;height:24px}
-.feature h3{font-size:1.3rem;font-weight:600;line-height:1.2;margin-bottom:10px}
-.feature p{color:var(--text2);font-size:.94rem;line-height:1.5}
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
-.step{padding:28px 22px;text-align:center}
-.step .num{width:44px;height:44px;border-radius:50%;background:var(--tint);color:var(--accent2);font-family:var(--serif);font-weight:700;font-size:1.2rem;display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
-.step h3{font-size:1.2rem;font-weight:600;line-height:1.2;margin-bottom:6px}
-.step p{color:var(--text2);font-size:.93rem;line-height:1.5}
-.code-chip{display:inline-block;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--tint);border:1px solid var(--line);color:var(--accent2);padding:2px 10px;border-radius:8px;font-size:.85rem;margin-top:8px}
-.shots{display:flex;gap:18px;overflow-x:auto;padding:6px 6px 22px;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:var(--line) transparent}
-.shots img{width:236px;height:auto;flex-shrink:0;display:block;border-radius:20px;border:1px solid var(--line);box-shadow:var(--shadow);scroll-snap-align:center}
-@media(max-width:620px){.shots img{width:200px}}
-#widgets,.privacy{box-shadow:inset 0 1px 0 rgba(255,255,255,.5),inset 0 -1px 0 var(--line)}
-.privacy{background:var(--band)}
-.privacy-card{max-width:820px;margin:0 auto;text-align:center;padding:52px 40px}
-.privacy-card .ico{width:56px;height:56px;border-radius:16px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;color:#fff;margin:0 auto 20px}
-.privacy-card .ico svg{width:28px;height:28px}
-.privacy-card h2{font-size:clamp(1.7rem,4vw,2.2rem);font-weight:500;letter-spacing:-.02em;margin-bottom:12px}
-.privacy-card>p{color:var(--text2);max-width:58ch;margin:0 auto 26px}
-.pledge{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:12px 24px;text-align:left;max-width:700px;margin:0 auto 30px}
-.pledge li{display:flex;gap:10px;align-items:flex-start;font-size:.94rem;color:var(--text)}
-.pledge .check{flex-shrink:0;width:22px;height:22px;border-radius:50%;background:var(--bg);color:var(--success);font-size:.8rem;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:2px}
-.cta-final{background:linear-gradient(155deg,#C2603E,#8E5A6E);color:var(--onaccent);border-radius:32px;padding:76px 40px;text-align:center;box-shadow:0 30px 60px -22px rgba(120,50,60,.45)}
-.cta-final h2{color:#FFF6EF;font-size:clamp(1.9rem,4.5vw,2.7rem);font-weight:500;letter-spacing:-.02em;margin-bottom:14px}
-.cta-final p{color:rgba(255,246,239,.9);max-width:52ch;margin:0 auto 26px}
-.cta-final a{color:#FFF6EF;text-decoration:underline}
-.cta-final .btn-secondary{color:var(--text);text-decoration:none}
-.cta-badges{display:flex;flex-direction:column;align-items:center;gap:14px}
-.cta-final .status-badge{background:rgba(255,246,239,.14);color:#FFF6EF;border-color:rgba(255,246,239,.30);box-shadow:none}
-.cta-final .pill{background:rgba(255,246,239,.14);color:#FFF6EF;border-color:rgba(255,246,239,.30);box-shadow:none}
-.cta-final .pill .dot{background:#FFF6EF}
-@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}.steps{grid-template-columns:repeat(2,1fr)}.grid .feature:nth-child(even){margin-top:0}}
-@media(max-width:760px){.neu-head{grid-template-columns:1fr;gap:14px}}
-@media(max-width:560px){.grid{grid-template-columns:1fr}.steps{grid-template-columns:1fr}.pledge{grid-template-columns:1fr}.privacy-card{padding:40px 24px}.cta-final{padding:56px 24px}}
-</style>
-<style>
-/* motion — every rule guarded, reduced-motion shows finished state instantly */
-@media (prefers-reduced-motion:no-preference){
-  /* orchestrated page-load reveal */
-  .hero-copy>*,.hero-art{opacity:0;animation:riseIn .7s var(--ease-out) both;animation-delay:var(--d,0s)}
-  .hero .pill{--d:.05s}
-  .hero h1{--d:.16s}
-  .hero .claim{--d:.30s}
-  .hero .subtitle{--d:.42s}
-  .hero-actions{--d:.54s}
-  .beta-note{--d:.64s}
-  .hero-art{--d:.48s;animation-name:riseArt}
-  @keyframes riseIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
-  @keyframes riseArt{from{opacity:0;transform:translateY(26px) scale(.96)}to{opacity:1;transform:none}}
-  /* the signature move: each bloom springs open from its own centre, then a gentle idle bob */
-  .hero-art .bloom{transform-box:fill-box;transform-origin:center;animation:bloomIn .6s var(--ease-spring) both;animation-delay:var(--bd,0s)}
-  @keyframes bloomIn{from{opacity:0;transform:scale(0)}to{opacity:1;transform:scale(1)}}
-  .hero-art svg{animation:bouquetBob 6s ease-in-out 1.9s infinite}
-  @keyframes bouquetBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
-  /* live chips float out-of-phase in the gutter */
-  .chip-km{animation:floatChip 5.5s ease-in-out infinite}
-  .chip-date{animation:floatChip 6.5s ease-in-out .8s infinite}
-  @keyframes floatChip{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
-  /* scroll reveals (js-guarded so no-JS still shows everything) */
-  .js .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s var(--ease-out)}
-  .js .reveal.in{opacity:1;transform:none}
-  .js .showcase .art{opacity:0;transform:translateX(-26px);transition:transform .8s var(--ease-out),opacity .7s ease}
-  .js .showcase.flip .art{transform:translateX(26px)}
-  .js .showcase.in .art{opacity:1;transform:none}
-  .js .reveal-stagger.in>*{animation:riseIn .6s var(--ease-out) backwards}
-  .js .reveal-stagger.in>*:nth-child(2){animation-delay:.08s}
-  .js .reveal-stagger.in>*:nth-child(3){animation-delay:.16s}
-  .js .reveal-stagger.in>*:nth-child(4){animation-delay:.24s}
-  /* the check-in seal signs itself */
-  .js .showcase.flip .art-canvas path[stroke="#FFF6EF"]{stroke-dasharray:60;stroke-dashoffset:60}
-  .js .showcase.flip.in .art-canvas path[stroke="#FFF6EF"]{animation:drawCheck .6s ease forwards .35s}
-  @keyframes drawCheck{to{stroke-dashoffset:0}}
-}
-/* on single-column mobile, the near-full-width art glides vertically (a sideways glide would nudge the viewport wider) */
-@media (prefers-reduced-motion:no-preference) and (max-width:860px){
-  .js .showcase .art,.js .showcase.flip .art{transform:translateY(24px)}
-  .js .showcase.in .art{transform:none}
-}
-@media (hover:hover) and (prefers-reduced-motion:no-preference){
-  .btn{transition:background .25s ease,transform .25s var(--ease-spring),box-shadow .25s ease}
-  .btn-primary:hover,.btn-secondary:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(90,55,40,.18)}
-  .card{transition:transform .3s var(--ease-out),box-shadow .3s ease}
-  .feature:hover,.step:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(90,55,40,.14)}
-  .feature .ico{transition:transform .3s var(--ease-spring)}
-  .feature:hover .ico{transform:scale(1.08) rotate(-4deg)}
-  .learn-link .arw{transition:transform .25s ease}
-  .learn-link:hover .arw{transform:translateY(3px)}
-}
-</style>
+<link rel="preload" href="../assets/fonts/Newsreader.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/HankenGrotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/site.css">
 </head>
 <body>
-<nav>
-  <a href="index.html" class="nav-logo"><span class="logo-tile"><img src="../appicon.png" alt="TwoOfUs" width="34" height="34" style="border-radius:11px;display:block"></span> TwoOfUs: Together</a>
-  <ul class="nav-links">
-    <li><a href="#neu">New in 1.8</a></li>
-    <li><a href="#widgets">Widgets</a></li>
-    <li><a href="#how">How it works</a></li>
-    <li><a href="support.html">Support</a></li>
-    <li><a href="privacy.html">Privacy</a></li>
-    <li><a href="../" hreflang="de" aria-label="Deutsche Version">DE</a></li>
-  </ul>
-  <details class="nav-menu">
-    <summary aria-label="Open menu">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-    </summary>
-    <ul>
-      <li><a href="#neu">New in 1.8</a></li>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-nav" id="top">
+  <div class="wrap">
+    <a class="brand" href="./"><img src="../appicon.png" alt="" width="32" height="32">TwoOfUs</a>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
       <li><a href="#widgets">Widgets</a></li>
-      <li><a href="#how">How it works</a></li>
+      <li><a href="#privacy">Privacy</a></li>
       <li><a href="support.html">Support</a></li>
-      <li><a href="privacy.html">Privacy</a></li>
-      <li><a href="../" hreflang="de" aria-label="Deutsche Version">Deutsch</a></li>
+      <li><a href="../" hreflang="de" lang="de">Deutsch</a></li>
     </ul>
-  </details>
-</nav>
-
-<!-- HERO -->
-<header class="hero">
-  <div class="hero-grid">
-    <div class="hero-copy">
-      <span class="pill"><span class="dot"></span> Version 1.8 &middot; free on the App&nbsp;Store</span>
-      <h1>Stay close, no matter how far.</h1>
-      <p class="claim">Two hearts, one rhythm.</p>
-      <p class="subtitle">The distance between you, your countdown, one shared note and your partner&rsquo;s local time &mdash; as Home and Lock&nbsp;Screen widgets. <strong>New in 1.8:</strong> more than 70 check-in questions, many made for long-distance couples, and reminders that stick with you.</p>
-      <div class="hero-actions">
-        <a href="https://apps.apple.com/app/id6760221551" class="btn btn-primary">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.365 1.43c0 1.14-.417 2.2-1.24 3.03-.99.99-2.06 1.56-3.22 1.47-.14-1.11.42-2.28 1.16-3.02.83-.84 2.26-1.46 3.3-1.48zM20.5 17.02c-.56 1.3-.83 1.88-1.55 3.03-1 1.6-2.42 3.6-4.18 3.62-1.56.01-1.96-.99-4.08-.98-2.12.01-2.56.98-4.12.99-1.76.02-3.1-1.79-4.1-3.39C-.4 17.03-.63 11.5 1.34 8.56c.98-1.47 2.53-2.34 3.99-2.34 1.49 0 2.42 1 3.65 1 1.19 0 1.91-1 3.63-1 1.3 0 2.68.71 3.66 1.94-3.22 1.76-2.7 6.36.23 7.86z"/></svg>
-          Download on the App&nbsp;Store
-        </a>
-        <a href="#neu" class="learn-link">See what&rsquo;s new in 1.8 <span class="arw" aria-hidden="true">&darr;</span></a>
-      </div>
-      <p class="beta-note">Sign in with Apple &middot; no password &middot; no ads &middot; everything in your own iCloud</p>
-      <p class="beta-note" style="margin-top:8px">Now available in the US, Germany, the EU and worldwide &middot; <a href="https://apps.apple.com/us/app/id6760221551">App&nbsp;Store US</a> &middot; <a href="https://apps.apple.com/de/app/id6760221551">App&nbsp;Store Germany</a></p>
-    </div>
-
-    <div class="hero-art">
-      <span class="float-chip chip-km"><span class="fdot" style="background:var(--accent)"></span> 8,642 km apart</span>
-      <span class="float-chip chip-date"><span class="fdot" style="background:var(--plum)"></span> Date in 3 days</span>
-      <!-- Assembled bouquet, ported from the app's builder -->
-      <svg viewBox="0 0 200 218" role="img" aria-label="Illustration: a hand-tied bouquet of wild roses, ranunculus and eucalyptus in kraft paper">
-        <!-- eucalyptus sprigs -->
-        <path d="M54 120 Q40 94 45 66" stroke="#8FAF97" stroke-width="2" fill="none"/>
-        <ellipse cx="48" cy="108" rx="4.5" ry="3" fill="#9DBBA5"/>
-        <ellipse cx="43" cy="94" rx="4.5" ry="3" fill="#9DBBA5"/>
-        <ellipse cx="43" cy="80" rx="4.5" ry="3" fill="#9DBBA5"/>
-        <ellipse cx="46" cy="68" rx="4.5" ry="3" fill="#9DBBA5"/>
-        <path d="M146 120 Q160 94 155 66" stroke="#8FAF97" stroke-width="2" fill="none"/>
-        <ellipse cx="152" cy="108" rx="4.5" ry="3" fill="#9DBBA5"/>
-        <ellipse cx="157" cy="94" rx="4.5" ry="3" fill="#9DBBA5"/>
-        <ellipse cx="157" cy="80" rx="4.5" ry="3" fill="#9DBBA5"/>
-        <ellipse cx="154" cy="68" rx="4.5" ry="3" fill="#9DBBA5"/>
-        <!-- stems -->
-        <path d="M72 80 Q80 116 100 142" stroke="#7FA98C" stroke-width="2.5" fill="none"/>
-        <path d="M100 60 Q100 104 100 142" stroke="#7FA98C" stroke-width="2.5" fill="none"/>
-        <path d="M130 82 Q120 116 100 142" stroke="#7FA98C" stroke-width="2.5" fill="none"/>
-        <path d="M85 106 Q90 126 100 142" stroke="#7FA98C" stroke-width="2.5" fill="none"/>
-        <path d="M118 108 Q112 128 100 142" stroke="#7FA98C" stroke-width="2.5" fill="none"/>
-        <!-- base greens -->
-        <ellipse cx="63" cy="116" rx="13" ry="6" fill="#7FA98C" transform="rotate(-32 63 116)"/>
-        <ellipse cx="139" cy="114" rx="13" ry="6" fill="#7FA98C" transform="rotate(30 139 114)"/>
-        <!-- bloom: Wildrose (72,76) r7 -->
-        <g class="bloom" style="--bd:.55s">
-          <g fill="#E3A6B4">
-            <circle cx="72" cy="66.6" r="7"/><circle cx="80.96" cy="73.06" r="7"/><circle cx="77.53" cy="83.84" r="7"/><circle cx="66.47" cy="83.84" r="7"/><circle cx="63.04" cy="73.06" r="7"/>
-          </g>
-          <circle cx="72" cy="76" r="5.25" fill="#C26F82"/>
-        </g>
-        <!-- bloom: Ranunkel (100,56) r8 -->
-        <g class="bloom" style="--bd:.68s">
-          <g fill="#EBA98B">
-            <circle cx="100" cy="45.2" r="8"/><circle cx="110.24" cy="52.64" r="8"/><circle cx="106.32" cy="64.96" r="8"/><circle cx="93.68" cy="64.96" r="8"/><circle cx="89.76" cy="52.64" r="8"/>
-          </g>
-          <circle cx="100" cy="56" r="6" fill="#C2603E"/>
-        </g>
-        <!-- bloom: Anemone (130,78) r7 -->
-        <g class="bloom" style="--bd:.81s">
-          <g fill="#C79BB0">
-            <circle cx="130" cy="68.55" r="7"/><circle cx="138.96" cy="75.06" r="7"/><circle cx="135.53" cy="85.84" r="7"/><circle cx="124.47" cy="85.84" r="7"/><circle cx="121.04" cy="75.06" r="7"/>
-          </g>
-          <circle cx="130" cy="78" r="5.25" fill="#8E5A6E"/>
-        </g>
-        <!-- bloom: Margerite (85,104) r5.5 -->
-        <g class="bloom" style="--bd:.94s">
-          <g fill="#EDC79B">
-            <circle cx="85" cy="96.58" r="5.5"/><circle cx="92.04" cy="101.69" r="5.5"/><circle cx="89.35" cy="110.16" r="5.5"/><circle cx="80.66" cy="110.16" r="5.5"/><circle cx="77.96" cy="101.69" r="5.5"/>
-          </g>
-          <circle cx="85" cy="104" r="4.13" fill="#CF8A4E"/>
-        </g>
-        <!-- bloom: Pink (118,106) r5.5 -->
-        <g class="bloom" style="--bd:1.07s">
-          <g fill="#D98A9E">
-            <circle cx="118" cy="98.58" r="5.5"/><circle cx="125.04" cy="103.69" r="5.5"/><circle cx="122.35" cy="112.16" r="5.5"/><circle cx="113.66" cy="112.16" r="5.5"/><circle cx="110.96" cy="103.69" r="5.5"/>
-          </g>
-          <circle cx="118" cy="106" r="4.13" fill="#9A4E6B"/>
-        </g>
-        <!-- gypsophila filler -->
-        <g fill="#FFF6EF">
-          <circle cx="52" cy="98" r="2.4"/><circle cx="58" cy="92" r="2"/><circle cx="55" cy="105" r="2.2"/>
-          <circle cx="148" cy="94" r="2.4"/><circle cx="153" cy="101" r="2"/><circle cx="145" cy="103" r="2.2"/>
-          <circle cx="100" cy="80" r="2.6"/><circle cx="106" cy="86" r="2"/>
-        </g>
-        <!-- kraft cone -->
-        <path d="M62 140 L138 140 L122 210 Q100 216 78 210 Z" fill="#E0C3A0"/>
-        <path d="M62 140 L100 140 L100 210 Q88 213 78 210 Z" fill="#D4B28C" opacity=".55"/>
-        <!-- small bow -->
-        <path d="M92 148 q8 -7 16 0 q-8 7 -16 0" fill="#C26F82"/>
-        <circle cx="100" cy="148" r="2.6" fill="#9A4E6B"/>
-      </svg>
-    </div>
+    <a class="store-btn compact" href="https://apps.apple.com/app/id6760221551"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.365 1.43c0 1.14-.417 2.2-1.24 3.03-.99.99-2.06 1.56-3.22 1.47-.14-1.11.42-2.28 1.16-3.02.83-.84 2.26-1.46 3.3-1.48zM20.5 17.02c-.56 1.3-.83 1.88-1.55 3.03-1 1.6-2.42 3.6-4.18 3.62-1.56.01-1.96-.99-4.08-.98-2.12.01-2.56.98-4.12.99-1.76.02-3.1-1.79-4.1-3.39C-.4 17.03-.63 11.5 1.34 8.56c.98-1.47 2.53-2.34 3.99-2.34 1.49 0 2.42 1 3.65 1 1.19 0 1.91-1 3.63-1 1.3 0 2.68.71 3.66 1.94-3.22 1.76-2.7 6.36.23 7.86z"/></svg>Get the app</a>
+    <details class="menu">
+      <summary aria-label="Open menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></summary>
+      <ul>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#widgets">Widgets</a></li>
+        <li><a href="#privacy">Privacy</a></li>
+        <li><a href="support.html">Support</a></li>
+        <li><a href="../" hreflang="de" lang="de">Deutsch</a></li>
+        <li><a href="https://apps.apple.com/app/id6760221551">Download on the App Store</a></li>
+      </ul>
+    </details>
   </div>
 </header>
 
-<!-- NEW IN 1.8 -->
-<section id="neu">
-  <div class="container">
-    <div class="section-head neu-head reveal">
-      <div>
-        <p class="kicker">New in Version 1.8</p>
-        <h2>Small gestures, big impact</h2>
+<main id="main">
+<section class="hero" aria-labelledby="hero-title">
+  <div class="wrap">
+    <div>
+      <h1 id="hero-title">For couples who don&rsquo;t live in the same city.</h1>
+      <p class="lead">TwoOfUs puts it on your Home Screen: what time it is where your partner is, how far apart you are, and how many days are left until you see each other again.</p>
+      <div class="hero-actions">
+        <a class="store-btn" href="https://apps.apple.com/app/id6760221551"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.365 1.43c0 1.14-.417 2.2-1.24 3.03-.99.99-2.06 1.56-3.22 1.47-.14-1.11.42-2.28 1.16-3.02.83-.84 2.26-1.46 3.3-1.48zM20.5 17.02c-.56 1.3-.83 1.88-1.55 3.03-1 1.6-2.42 3.6-4.18 3.62-1.56.01-1.96-.99-4.08-.98-2.12.01-2.56.98-4.12.99-1.76.02-3.1-1.79-4.1-3.39C-.4 17.03-.63 11.5 1.34 8.56c.98-1.47 2.53-2.34 3.99-2.34 1.49 0 2.42 1 3.65 1 1.19 0 1.91-1 3.63-1 1.3 0 2.68.71 3.66 1.94-3.22 1.76-2.7 6.36.23 7.86z"/></svg><span><small>Download on the</small><strong>App Store</strong></span></a>
+        <p class="fine">Free for iPhone with iOS&nbsp;26. In English and German.</p>
       </div>
-      <p>Three rituals for the two of you: an invitation you unwrap, a check-in with a seal, and a jar full of compliments. New in 1.8: more than 70 rotating questions, many made for long-distance couples, and reminders that stick with you while your check-in is still open. Everything in sync on both iPhones, everything private in your iCloud.</p>
+      <p class="news"><strong>New in version 1.8:</strong> more than 70 questions for the check-in, many of them for long-distance couples, and reminders while your check-in is still open.</p>
     </div>
 
-    <!-- Blumenkarte -->
-    <div class="showcase">
-      <div class="art">
-        <div class="art-canvas">
-          <!-- Wrapped bouquet with peeking card, ported from the app -->
-          <svg viewBox="0 0 200 220" role="img" aria-label="Illustration: a bouquet wrapped in paper with a bow, with a card and heart peeking out">
-            <!-- sparkles -->
-            <g fill="#E8C9AE">
-              <path d="M30 34 Q31.1 38.9 36 40 Q31.1 41.1 30 46 Q28.9 41.1 24 40 Q28.9 38.9 30 34 Z"/>
-              <path d="M168 71 Q168.9 75.1 173 76 Q168.9 76.9 168 81 Q167.1 76.9 163 76 Q167.1 75.1 168 71 Z"/>
-              <path d="M162 22 Q162.7 25.3 166 26 Q162.7 26.7 162 30 Q161.3 26.7 158 26 Q161.3 25.3 162 22 Z"/>
-            </g>
-            <!-- peeking card corner -->
-            <g transform="rotate(8 151 173)">
-              <rect x="118" y="150" width="66" height="46" rx="7" fill="#FFFDF9" stroke="#EFE2D6"/>
-              <path d="M151 179 C147 175 143.5 171.5 145.5 168 C147 165.5 150 166 151 168.6 C152 166 155 165.5 156.5 168 C158.5 171.5 155 175 151 179 Z" fill="#C26F82"/>
-            </g>
-            <!-- paper dome -->
-            <path d="M100 14 Q152 34 150 92 Q149 122 128 138 L72 138 Q51 122 50 92 Q48 34 100 14 Z" fill="#E8D3BC"/>
-            <path d="M100 14 Q152 34 150 92 Q149 122 128 138 L100 138 Z" fill="#DDC2A4" opacity=".6"/>
-            <!-- fold lines -->
-            <g stroke="#C9A87F" stroke-width="1.6" opacity=".6" fill="none">
-              <path d="M78 40 Q100 30 122 40"/>
-              <path d="M70 62 Q100 50 130 62"/>
-              <path d="M66 86 Q100 73 134 86"/>
-            </g>
-            <!-- kraft cone -->
-            <path d="M62 140 L138 140 L122 210 Q100 216 78 210 Z" fill="#E0C3A0"/>
-            <path d="M62 140 L100 140 L100 210 Q88 213 78 210 Z" fill="#D4B28C" opacity=".55"/>
-            <!-- bow with tails -->
-            <path d="M84 146 q16 -10 32 0 q-16 10 -32 0" fill="#C26F82"/>
-            <circle cx="100" cy="146" r="3.4" fill="#9A4E6B"/>
-            <path d="M96 152 q-6 14 2 24" stroke="#C26F82" stroke-width="2.4" fill="none"/>
-            <path d="M106 152 q7 12 1 22" stroke="#C26F82" stroke-width="2.4" fill="none"/>
-          </svg>
-          <p class="art-caption">Tap to unwrap: the ribbon unties, the paper folds open, your card slides forward.</p>
+    <figure class="homescreen" aria-label="Example of TwoOfUs widgets on the Home Screen">
+      <div class="widget">
+        <span class="w-label" data-partner-city>New York</span>
+        <span class="w-value" data-partner-time>9:41</span>
+        <span class="w-sub" data-partner-diff>Partner clock</span>
+      </div>
+      <div class="widget">
+        <span class="w-label">Distance</span>
+        <span class="w-value">3,761&nbsp;mi</span>
+        <span class="w-sub">Münster – New York</span>
+      </div>
+      <div class="widget wide">
+        <span class="w-label">Note from Diana</span>
+        <p class="w-note">Landed safely. Call me when you&rsquo;re up.</p>
+        <div class="w-row"><span class="w-sub">Together again in</span><span class="w-value">23 days</span></div>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<section id="features" aria-labelledby="features-title">
+  <span id="neu"></span>
+  <div class="wrap">
+    <div class="section-intro">
+      <h2 id="features-title">What you do together in the app</h2>
+      <p>Besides the widgets, there are three things you share. You both see the same thing, whatever time zone you&rsquo;re in.</p>
+    </div>
+    <div class="features">
+      <article class="feature">
+        <img src="../assets/phones/02_invitation.png" width="340" height="722" loading="lazy" alt="An opened date invitation in the app: candlelit dinner for two, with the time in both time zones">
+        <div>
+          <h3>Date invitations</h3>
+          <p>Pick an idea, write a card and put together a bouquet. Your partner unwraps the invitation, then accepts it or suggests another time. Accepted dates go into the calendar, with the time for both time zones.</p>
         </div>
-      </div>
-      <div class="copy">
-        <p class="kicker">Date invitations</p>
-        <h3>The flower card</h3>
-        <p>Invite your partner on a date the way people once left flowers at the door. Choose an idea, write a card, and tie a bouquet of wild roses, ranunculus and eucalyptus to go with it. Your partner unwraps it in the app &mdash; ribbon, petals, and your card at the very end.</p>
-        <ul class="detail">
-          <li><span class="check" aria-hidden="true">&#10003;</span> Six date ideas, from a shared series night to a candlelit dinner &mdash; or make up your own</li>
-          <li><span class="check" aria-hidden="true">&#10003;</span> Times shown in both time zones automatically, perfect for long distance</li>
-          <li><span class="check" aria-hidden="true">&#10003;</span> Accepted? The date lands in your iOS calendar and the countdown starts on its own</li>
-          <li><span class="check" aria-hidden="true">&#10003;</span> After the date you add photos, and the invitation becomes a memory</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Weekly Check-ins -->
-    <div class="showcase flip">
-      <div class="art">
-        <div class="art-canvas plum wide">
-          <!-- Two seals: one signed, one still locked -->
-          <svg viewBox="0 0 240 120" role="img" aria-label="Illustration: two seals. The left one is confirmed with a check mark, the right one is still closed with a lock">
-            <defs>
-              <linearGradient id="sealGrad" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stop-color="#CF6B45"/>
-                <stop offset="1" stop-color="#B04E5E"/>
-              </linearGradient>
-            </defs>
-            <circle cx="60" cy="60" r="36" fill="url(#sealGrad)"/>
-            <path d="M46 61 L56 71 L76 49" stroke="#FFF6EF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-            <line x1="104" y1="60" x2="136" y2="60" stroke="#C9A87F" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="2 8"/>
-            <circle cx="180" cy="60" r="36" fill="#FFFDF9" stroke="#C9A87F" stroke-width="2.5" stroke-dasharray="5 7"/>
-            <path d="M174 56 v-6 a6 6 0 0 1 12 0 v6" stroke="#8E5A6E" stroke-width="3" fill="none"/>
-            <rect x="170" y="56" width="20" height="16" rx="4" fill="#8E5A6E"/>
-          </svg>
-          <p class="art-caption">Sealed until you&rsquo;re both done. Then the answers open at the same time.</p>
+      </article>
+      <article class="feature">
+        <img src="../assets/phones/04_checkin.png" width="340" height="722" loading="lazy" alt="A revealed check-in showing both partners&rsquo; answers">
+        <div>
+          <h3>The weekly check-in</h3>
+          <p>You choose the days. Each of you answers two or three short questions on your own, and you only see each other&rsquo;s answers once you&rsquo;re both done. There are more than 70 questions to choose from, many of them for long-distance couples.</p>
         </div>
-      </div>
-      <div class="copy">
-        <p class="kicker">Weekly Check-ins</p>
-        <h3>Two or three questions, one seal</h3>
-        <p>One to seven times a week, two minutes: a compliment, an honest wish and, if you like, a random question such as &ldquo;What did you do today while I was asleep?&rdquo;. You only see your partner&rsquo;s answer once you&rsquo;ve both sent yours. No peeking, no rewriting &mdash; just honest answers.</p>
-        <ul class="detail">
-          <li><span class="check" aria-hidden="true">&#10003;</span> You choose the days, the time and the questions yourselves &mdash; or let more than 70 questions rotate</li>
-          <li><span class="check" aria-hidden="true">&#10003;</span> Reminders that stick with you: a last call in the evening while your check-in is still open (can be turned off)</li>
-          <li><span class="check" aria-hidden="true">&#10003;</span> Give your partner a loving nudge, once a day at most</li>
-          <li><span class="check" aria-hidden="true">&#10003;</span> One tap turns a wish into your next date invitation</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Komplimente-Glas -->
-    <div class="showcase">
-      <div class="art">
-        <div class="art-canvas">
-          <!-- Compliments jar, ported from the app -->
-          <svg viewBox="0 0 150 164" role="img" aria-label="Illustration: a lidded jar filled with colorful folded slips of paper">
-            <rect x="42" y="6" width="66" height="14" rx="5" fill="#C9A87F"/>
-            <path d="M36 22 h78 v104 q0 26 -39 26 t-39 -26 Z" fill="rgba(255,255,255,.55)" stroke="#E3CBB4" stroke-width="2"/>
-            <rect x="49" y="67.5" width="26" height="17" rx="3" fill="#FFF6EF" stroke="#E3CBB4" transform="rotate(-6 62 76)"/>
-            <rect x="39" y="87.5" width="26" height="17" rx="3" fill="#E3A6B4" transform="rotate(-12 52 96)"/>
-            <rect x="63" y="93.5" width="26" height="17" rx="3" fill="#EDC79B" transform="rotate(9 76 102)"/>
-            <rect x="33" y="107.5" width="26" height="17" rx="3" fill="#C79BB0" transform="rotate(7 46 116)"/>
-            <rect x="61" y="113.5" width="26" height="17" rx="3" fill="#EBA98B" transform="rotate(-10 74 122)"/>
-            <rect x="47" y="125.5" width="26" height="17" rx="3" fill="#D98A9E" transform="rotate(4 60 134)"/>
-            <path d="M50 30 q25 10 50 0" stroke="rgba(255,255,255,.9)" stroke-width="3" fill="none"/>
-          </svg>
-          <p class="art-caption">Every line you pin from your check-ins ends up here.</p>
+      </article>
+      <article class="feature">
+        <img src="../assets/phones/05_jar.png" width="340" height="722" loading="lazy" alt="The compliments jar with collected slips and a button to draw one">
+        <div>
+          <h3>The compliments jar</h3>
+          <p>Every compliment from your check-ins becomes a slip in the jar. On a bad day, draw one and read what your partner likes about you.</p>
         </div>
-      </div>
-      <div class="copy">
-        <p class="kicker">Compliments jar</p>
-        <h3>The loveliest lines, kept to read again</h3>
-        <p>Every compliment from your check-ins lands in the jar on its own, and one tap takes out anything you&rsquo;d rather not keep. Slip by slip, it grows into a collection of your best moments. And on gray days, you simply draw one and read it again.</p>
-        <ul class="detail">
-          <li><span class="check" aria-hidden="true">&#10003;</span> One shared jar, filled by both of you</li>
-          <li><span class="check" aria-hidden="true">&#10003;</span> Draw a slip whenever you need one</li>
-          <li><span class="check" aria-hidden="true">&#10003;</span> Skipped weeks are fine &mdash; the jar keeps filling anyway</li>
-        </ul>
-      </div>
+      </article>
     </div>
   </div>
 </section>
 
-<!-- WIDGETS -->
-<section id="widgets" style="background:var(--band)">
-  <div class="container">
-    <div class="section-head reveal">
-      <p class="kicker">There from day one</p>
-      <h2>Four widgets, four little windows to each other</h2>
-      <p>For your Home Screen and Lock Screen. If you like, all four together in one Smart Stack.</p>
+<section class="band" id="widgets" aria-labelledby="widgets-title">
+  <div class="wrap">
+    <div class="section-intro">
+      <h2 id="widgets-title">Four widgets for your Home and Lock Screen</h2>
+      <p>You add them like any other iPhone widget. When one of you changes something, the other sees it shortly after.</p>
     </div>
-    <div class="grid reveal-stagger">
-      <div class="card feature">
-        <div class="ico" style="background:linear-gradient(135deg,#D5764E,#A8506A)" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s6.5-5.8 6.5-10.5a6.5 6.5 0 1 0-13 0C5.5 15.2 12 21 12 21Z"/><circle cx="12" cy="10.5" r="2.4"/></svg></div>
-        <h3>Distance</h3>
-        <p>The distance between you as the crow flies, live. Whether a city or an ocean lies in between.</p>
-      </div>
-      <div class="card feature">
-        <div class="ico" style="background:linear-gradient(135deg,#E0A055,#C57A3C)" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2h6"/><path d="M12 6v3.5"/><circle cx="12" cy="15" r="6.5"/><path d="M12 15l3-2"/></svg></div>
-        <h3>Countdown</h3>
-        <p>The days until your next reunion, anniversary or trip. Counts down on both iPhones.</p>
-      </div>
-      <div class="card feature">
-        <div class="ico" style="background:linear-gradient(135deg,#E3A6B4,#B85A72)" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h9l5 5v11H5z"/><path d="M14 4v5h5"/><path d="M8.5 13h7"/><path d="M8.5 16.5h5"/></svg></div>
-        <h3>Note</h3>
-        <p>One shared note, up to 100 characters. Update it and your partner gets a gentle notification.</p>
-      </div>
-      <div class="card feature">
-        <div class="ico" style="background:linear-gradient(135deg,#CF8A6E,#9A566A)" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg></div>
-        <h3>Partner clock</h3>
-        <p>His or her local time with name and city, current to the minute.</p>
-      </div>
+    <dl class="widget-list">
+      <div><dt>Partner clock</dt><dd>The time where your partner is right now, with the name of the city.</dd></div>
+      <div><dt>Distance</dt><dd>The straight-line distance between your cities, in kilometres or miles.</dd></div>
+      <div><dt>Countdown</dt><dd>The days until you see each other again, an anniversary or a trip.</dd></div>
+      <div><dt>Note</dt><dd>A short line you write onto each other&rsquo;s screen.</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="night" id="privacy" aria-labelledby="privacy-title">
+  <div class="wrap">
+    <div class="section-intro">
+      <h2 id="privacy-title">Your data stays in your iCloud</h2>
+      <p>TwoOfUs has no server of its own. What you share syncs between your two iPhones through Apple&rsquo;s iCloud, and we have no access to it.</p>
+    </div>
+    <div class="facts">
+      <div><h3>No account with us</h3><p>You sign in with Apple. The app doesn&rsquo;t ask for your email address or a password.</p></div>
+      <div><h3>No ads, no tracking</h3><p>There are no ad networks and no analytics tools in the app.</p></div>
+      <div><h3>Delete whenever you like</h3><p>Under Settings → Account you delete your account and your data. The details are in the <a href="privacy.html">privacy policy</a>.</p></div>
     </div>
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
-<section id="how">
-  <div class="container">
-    <div class="section-head reveal">
-      <p class="kicker">How it works</p>
-      <h2>Together in four steps</h2>
-      <p>From download to your first widget takes only a few minutes.</p>
+<section id="start" aria-labelledby="start-title">
+  <div class="wrap">
+    <div class="section-intro">
+      <h2 id="start-title">How to get started</h2>
+      <p>You both need an iPhone with iOS&nbsp;26. Setting up takes a few minutes.</p>
     </div>
-    <div class="steps reveal-stagger">
-      <div class="card step">
-        <div class="num" aria-hidden="true">1</div>
-        <h3>Download</h3>
-        <p>Get TwoOfUs free on the App&nbsp;Store. Requires iOS 26.</p>
-      </div>
-      <div class="card step">
-        <div class="num" aria-hidden="true">2</div>
-        <h3>Sign in with Apple</h3>
-        <p>One tap, no new password. Private and secure from the first second.</p>
-      </div>
-      <div class="card step">
-        <div class="num" aria-hidden="true">3</div>
-        <h3>Connect</h3>
-        <p>Share your invite code with your partner and you&rsquo;re paired.</p>
-        <span class="code-chip">XXXX-XXXX</span>
-      </div>
-      <div class="card step">
-        <div class="num" aria-hidden="true">4</div>
-        <h3>Place your widgets</h3>
-        <p>Set up Distance, Countdown, Note and Partner clock on your screens.</p>
-      </div>
+    <ol class="steps">
+      <li><h3>Get the app</h3><p>TwoOfUs is free on the App Store.</p></li>
+      <li><h3>Sign in</h3><p>With your Apple ID, no new password.</p></li>
+      <li><h3>Connect</h3><p>One of you creates an invitation, the other enters the code or opens the link.</p></li>
+      <li><h3>Add widgets</h3><p>Touch and hold the Home Screen and choose TwoOfUs.</p></li>
+    </ol>
+    <div class="closing">
+      <a class="store-btn" href="https://apps.apple.com/app/id6760221551"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.365 1.43c0 1.14-.417 2.2-1.24 3.03-.99.99-2.06 1.56-3.22 1.47-.14-1.11.42-2.28 1.16-3.02.83-.84 2.26-1.46 3.3-1.48zM20.5 17.02c-.56 1.3-.83 1.88-1.55 3.03-1 1.6-2.42 3.6-4.18 3.62-1.56.01-1.96-.99-4.08-.98-2.12.01-2.56.98-4.12.99-1.76.02-3.1-1.79-4.1-3.39C-.4 17.03-.63 11.5 1.34 8.56c.98-1.47 2.53-2.34 3.99-2.34 1.49 0 2.42 1 3.65 1 1.19 0 1.91-1 3.63-1 1.3 0 2.68.71 3.66 1.94-3.22 1.76-2.7 6.36.23 7.86z"/></svg><span><small>Download on the</small><strong>App Store</strong></span></a>
+      <p>Questions about widgets, connecting or privacy are answered in <a href="support.html">Support</a>.</p>
     </div>
   </div>
 </section>
+</main>
 
-<!-- APP SCREENS -->
-<section id="einblick">
-  <div class="container">
-    <div class="section-head reveal">
-      <p class="kicker">A look inside the app</p>
-      <h2>What TwoOfUs looks like for the two of you</h2>
-      <p>Six real screens, straight from the app &mdash; from the first flower card to a full compliments jar.</p>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="about">
+      <strong>TwoOfUs: Together</strong>
+      <p>A free iPhone app for couples, especially long-distance ones. It shows your partner&rsquo;s time and distance as widgets and adds date invitations, a weekly check-in and a compliments jar. Made by Jakob Hartmann in Münster, Germany.</p>
     </div>
-    <div class="shots reveal">
-      <img src="../assets/shots/01_home.png" width="472" height="1025" loading="lazy" alt="App screen: home view with distance, countdown and shared note">
-      <img src="../assets/shots/02_invitation.png" width="472" height="1025" loading="lazy" alt="App screen: a date invitation with a flower card to unwrap">
-      <img src="../assets/shots/03_dates.png" width="472" height="1025" loading="lazy" alt="App screen: planned dates and shared memories">
-      <img src="../assets/shots/04_checkin.png" width="472" height="1025" loading="lazy" alt="App screen: Weekly Check-in with sealed answers">
-      <img src="../assets/shots/05_jar.png" width="472" height="1025" loading="lazy" alt="App screen: the compliments jar with folded slips">
-      <img src="../assets/shots/06_countdowns.png" width="472" height="1025" loading="lazy" alt="App screen: countdowns until the next reunion">
-    </div>
-  </div>
-</section>
-
-<!-- FOR LONG-DISTANCE COUPLES (GEO) -->
-<section id="long-distance">
-  <div class="container">
-    <div class="section-head reveal">
-      <p class="kicker">Made for long-distance</p>
-      <h2>Which app for your long-distance relationship?</h2>
-      <p>TwoOfUs: Together is a free iOS app for couples, built especially for long-distance relationships. It puts the distance between you, your partner&rsquo;s local time, a shared countdown and a shared note right on your Home and Lock Screens as widgets, and adds small rituals that keep you close: date invitations, Weekly Check-ins and a shared compliments jar. Everything syncs privately through your own iCloud &mdash; no servers of ours, no tracking, no ads.</p>
-    </div>
-    <div class="reveal" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:36px 48px;max-width:900px;margin:0 auto">
-      <div>
-        <h3>Who it&rsquo;s for</h3>
-        <ul class="detail">
-          <li><span class="check" aria-hidden="true">&#10003;</span> Long-distance couples living in different cities, countries or time zones</li>
-          <li><span class="check" aria-hidden="true">&#10003;</span> Couples who want shared iPhone widgets &mdash; distance, countdown, partner clock and a note &mdash; on their Home and Lock Screens</li>
-          <li><span class="check" aria-hidden="true">&#10003;</span> Couples who love small rituals: weekly check-ins, compliments, planned date nights</li>
-          <li><span class="check" aria-hidden="true">&#10003;</span> Privacy-conscious couples who want their relationship in their own iCloud, not on someone else&rsquo;s servers</li>
-          <li><span class="check" aria-hidden="true">&#10003;</span> Any two people counting the days to the next reunion</li>
-        </ul>
-      </div>
-      <div>
-        <h3>What&rsquo;s inside</h3>
-        <ul class="detail">
-          <li><span class="check" aria-hidden="true">&#10003;</span> Distance widget &mdash; the live distance between you</li>
-          <li><span class="check" aria-hidden="true">&#10003;</span> Partner clock &mdash; their local time, with name and city</li>
-          <li><span class="check" aria-hidden="true">&#10003;</span> Countdown &mdash; days until you see each other again, on both iPhones</li>
-          <li><span class="check" aria-hidden="true">&#10003;</span> Shared note &mdash; 100 characters, straight to their screen</li>
-          <li><span class="check" aria-hidden="true">&#10003;</span> Date invitations &mdash; the flower card: invite, accept, calendar entry and countdown</li>
-          <li><span class="check" aria-hidden="true">&#10003;</span> Weekly Check-ins &mdash; more than 70 questions, many for long-distance couples, visible once you&rsquo;ve both answered</li>
-          <li><span class="check" aria-hidden="true">&#10003;</span> Compliments jar &mdash; keep the loveliest lines and draw one whenever you need it</li>
-          <li><span class="check" aria-hidden="true">&#10003;</span> Private by design &mdash; synced through your own iCloud; free, iOS 26 or later, in English and German</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PRIVACY HIGHLIGHT -->
-<section class="privacy" id="privatsphaere">
-  <div class="container">
-    <div class="card privacy-card reveal">
-      <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/><path d="M12 15v2"/></svg></div>
-      <h2>Your data belongs to you. Literally.</h2>
-      <p>Since version 1.5, everything you share lives in your private, Apple-secured iCloud: photos, notes, check-in answers, compliments, invitations. Only whoever redeems your invite code gets access. We run no servers of our own and have no access to your content.</p>
-      <ul class="pledge">
-        <li><span class="check" aria-hidden="true">&#10003;</span> Private iCloud database, secured by Apple</li>
-        <li><span class="check" aria-hidden="true">&#10003;</span> Access only through your personal invite code</li>
-        <li><span class="check" aria-hidden="true">&#10003;</span> No servers of ours, no third-party cloud</li>
-        <li><span class="check" aria-hidden="true">&#10003;</span> No tracking, no analytics SDKs, no ads</li>
-        <li><span class="check" aria-hidden="true">&#10003;</span> No account beyond Sign in with Apple, no password</li>
-        <li><span class="check" aria-hidden="true">&#10003;</span> Delete your account any time, right in the app</li>
+    <nav aria-label="Footer">
+      <ul>
+        <li><a href="support.html">Support</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="imprint.html">Legal notice</a></li>
+        <li><a href="../" hreflang="de" lang="de">Deutsch</a></li>
+        <li><a href="https://apps.apple.com/app/id6760221551">App Store</a></li>
       </ul>
-      <a href="privacy.html" class="btn btn-secondary">Read the privacy policy</a>
-    </div>
+    </nav>
+    <p class="legal">© 2026 Jakob Hartmann</p>
   </div>
-</section>
-
-<!-- FINAL CTA -->
-<section>
-  <div class="container">
-    <div class="cta-final reveal">
-      <h2>Made for the two of you.</h2>
-      <p>TwoOfUs is here &mdash; free on the App&nbsp;Store, now in the US, Germany, the EU and worldwide. Questions? <a href="support.html">Support is happy to help.</a></p>
-      <div class="cta-badges">
-        <a href="https://apps.apple.com/app/id6760221551" class="btn btn-secondary">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.365 1.43c0 1.14-.417 2.2-1.24 3.03-.99.99-2.06 1.56-3.22 1.47-.14-1.11.42-2.28 1.16-3.02.83-.84 2.26-1.46 3.3-1.48zM20.5 17.02c-.56 1.3-.83 1.88-1.55 3.03-1 1.6-2.42 3.6-4.18 3.62-1.56.01-1.96-.99-4.08-.98-2.12.01-2.56.98-4.12.99-1.76.02-3.1-1.79-4.1-3.39C-.4 17.03-.63 11.5 1.34 8.56c.98-1.47 2.53-2.34 3.99-2.34 1.49 0 2.42 1 3.65 1 1.19 0 1.91-1 3.63-1 1.3 0 2.68.71 3.66 1.94-3.22 1.76-2.7 6.36.23 7.86z"/></svg>
-          Download on the App&nbsp;Store
-        </a>
-        <span class="pill"><span class="dot"></span> Free &middot; iOS 26 &middot; English &amp; German</span>
-      </div>
-      <p style="color:rgba(255,246,239,.72);font-size:.86rem;margin-top:16px">The button opens your local App&nbsp;Store automatically &mdash; or go directly: <a href="https://apps.apple.com/us/app/id6760221551">United States</a> &middot; <a href="https://apps.apple.com/de/app/id6760221551">Germany &amp; EU</a></p>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="footer-wordmark">TwoOfUs: Together</div>
-  <div class="footer-links">
-    <a href="index.html">Home</a><a href="support.html">Support</a><a href="privacy.html">Privacy</a><a href="imprint.html">Legal Notice</a>
-  </div>
-  <div class="footer-meta">Made with &#9829; in M&uuml;nster &middot; &copy; 2026 Jakob Hartmann</div>
 </footer>
 
 <script>
 (function(){
-  if(!('IntersectionObserver' in window))return;
-  if(!window.matchMedia||!matchMedia('(prefers-reduced-motion: no-preference)').matches)return;
-  var io=new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
-    });
-  },{threshold:.16,rootMargin:'0px 0px -8% 0px'});
-  document.querySelectorAll('.reveal,.showcase,.reveal-stagger').forEach(function(el){io.observe(el);});
+  // Partner clock: New York, or Münster for visitors who are themselves on New York time.
+  var here=Intl.DateTimeFormat().resolvedOptions().timeZone||'America/New_York';
+  function offset(tz,d){var p=new Intl.DateTimeFormat('en-US',{timeZone:tz,hourCycle:'h23',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'}).formatToParts(d),o={};p.forEach(function(x){o[x.type]=x.value});return (Date.UTC(o.year,o.month-1,o.day,o.hour,o.minute)-Math.floor(d.getTime()/60000)*60000)/60000}
+  var now=new Date(),tz='America/New_York',city='New York';
+  if(offset(here,now)===offset(tz,now)){tz='Europe/Berlin';city='Münster'}
+  var cityEl=document.querySelector('[data-partner-city]'),timeEl=document.querySelector('[data-partner-time]'),diffEl=document.querySelector('[data-partner-diff]');
+  function tick(){
+    var d=new Date();
+    timeEl.textContent=new Intl.DateTimeFormat('en-US',{timeZone:tz,hour:'numeric',minute:'2-digit'}).format(d);
+    var h=Math.round((offset(tz,d)-offset(here,d))/60);
+    diffEl.textContent=h===0?'same time as you':(Math.abs(h)+(Math.abs(h)===1?' hr ':' hrs ')+(h<0?'behind you':'ahead of you'));
+  }
+  cityEl.textContent=city;tick();setInterval(tick,15000);
+  var nav=document.querySelector('.site-nav');
+  addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>8)},{passive:true});
 })();
 </script>
 </body>

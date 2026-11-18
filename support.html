@@ -10,62 +10,28 @@
 <link rel="alternate" hreflang="de" href="https://jakobjhartmann.github.io/twoofus.app/support.html">
 <link rel="alternate" hreflang="en" href="https://jakobjhartmann.github.io/twoofus.app/en/support.html">
 <link rel="alternate" hreflang="x-default" href="https://jakobjhartmann.github.io/twoofus.app/support.html">
+<link rel="preload" href="assets/fonts/Newsreader.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/HankenGrotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/site.css">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --bg:#FBF4EC;--surface:#FFFFFF;--tint:#FBF1EB;--text:#3B2D26;--text2:#6E5B4E;--text3:#9A8C82;--line:#EFE2D6;
-  --accent:#C2603E;--accent2:#A6492B;--success:#5FA978;--onaccent:#FFF6EF;
-  --serif:"New York",Georgia,"Times New Roman",serif;
-  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,sans-serif;
-  --radius:24px;--shadow:0 10px 30px rgba(90,55,40,.10);
-  --shadow-lg:0 2px 6px rgba(90,55,40,.06),0 26px 50px -14px rgba(150,70,45,.20);
-}
-body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.65;-webkit-font-smoothing:antialiased}
-a{color:var(--accent)}
-h1,h2,h3{font-family:var(--serif);color:var(--text);font-weight:600;line-height:1.15}
-h1,h2{letter-spacing:-0.02em;line-height:1.1}
-nav{position:sticky;top:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:15px 32px;background:rgba(251,244,236,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-.nav-logo{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:600;font-size:1.3rem;color:var(--text);text-decoration:none;letter-spacing:-0.01em}
-.logo-tile{width:34px;height:34px;border-radius:11px;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.logo-tile img{width:34px;height:34px;border-radius:11px;display:block}
-.nav-links{display:flex;gap:24px;list-style:none}
-.nav-links a{color:var(--text2);text-decoration:none;font-size:.95rem;font-weight:500}
-.nav-links a:hover{color:var(--accent)}
-.nav-menu{display:none;position:relative}
-.nav-menu summary{list-style:none;width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:12px;color:var(--text);cursor:pointer}
-.nav-menu summary::-webkit-details-marker{display:none}
-.nav-menu summary::marker{content:""}
-.nav-menu[open] summary{background:var(--tint)}
-.nav-menu ul{position:absolute;right:0;top:52px;min-width:216px;list-style:none;background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow-lg);padding:8px;display:flex;flex-direction:column;gap:2px;z-index:120}
-.nav-menu ul a{display:block;padding:12px 14px;border-radius:10px;color:var(--text);text-decoration:none;font-weight:500;min-height:44px;transition:color .2s ease,background .2s ease}
-.nav-menu ul a:hover{background:var(--tint);color:var(--accent)}
-.btn{display:inline-flex;align-items:center;gap:9px;border-radius:100px;padding:14px 28px;font-weight:600;text-decoration:none;font-size:1rem;border:none;cursor:pointer}
-.btn-primary{background:var(--accent);color:var(--onaccent);box-shadow:var(--shadow)}
-.btn-primary:hover{background:var(--accent2)}
-.btn-secondary{background:var(--surface);color:var(--text);border:1px solid var(--line)}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
-.kicker{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700}
-.page{max-width:780px;margin:0 auto;padding:64px 24px 90px}
+/* Page-specific styles below still use the old token names; map them onto the shared palette. */
+:root{--bg:var(--paper);--surface:#fff;--tint:var(--sand);--text:var(--ink);--text2:var(--muted);--text3:#8A7B72;--accent:var(--rose-ink);--accent2:var(--plum);--success:#4F8A64;--onaccent:#fff;--radius:18px;--shadow:0 1px 2px rgba(43,32,37,.04);--shadow-lg:0 18px 40px -20px rgba(43,32,37,.35)}
+.btn{display:inline-flex;align-items:center;gap:9px;border-radius:12px;padding:13px 22px;font-weight:600;text-decoration:none;font-size:1rem;border:none;cursor:pointer}
+.btn-primary{background:var(--plum);color:#fff}
+.btn-primary:hover{background:var(--plum-2);color:#fff}
+.btn-secondary{background:#fff;color:var(--ink);border:1px solid var(--line)}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius)}
+.page{max-width:760px;margin:0 auto;padding:56px 24px 96px}
 .container{max-width:1080px;margin:0 auto}
-section{padding:88px 24px}
-footer{background:var(--bg);border-top:1px solid var(--line);padding:40px 24px;text-align:center;color:var(--text2);font-size:.88rem}
-footer a{color:var(--text2);text-decoration:none;display:inline-block;padding:10px 12px;margin:0 2px}
-footer a:hover{color:var(--accent)}
-.footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 8px}
-a:focus-visible,.btn:focus-visible,.nav-menu summary:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:12px}
-@media (hover:hover) and (prefers-reduced-motion:no-preference){
-  .nav-links a,footer a{transition:color .18s ease}
-  .btn,.card,.privacy-card{transition:transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .3s ease}
-  .btn:hover{transform:translateY(-2px)}
-}
-@media(max-width:760px){.nav-links{display:none}.nav-menu{display:block}}
-@media(max-width:620px){nav{padding:14px 20px}section{padding:60px 20px}}
+.page p,.page li,.page h1,.page h2,.support-hero h1,.support-hero p{max-width:none}
+.support-hero p{margin:0}
 </style>
+
 <style>
-.support-hero{text-align:center;margin-bottom:48px}
+.support-hero{margin-bottom:48px}
 .support-hero h1{font-size:clamp(2rem,5vw,2.9rem);letter-spacing:-0.025em;margin:14px 0 12px}
-.support-hero p{font-family:var(--serif);font-style:italic;color:var(--accent2);font-size:1.1rem;max-width:560px;margin:0 auto}
-.contact-card{padding:34px 28px;text-align:center;margin-bottom:60px}
+.support-hero p{color:var(--muted);font-size:1.15rem;max-width:560px;margin:0 auto}
+.contact-card{padding:30px 28px;margin-bottom:60px}
 .contact-card h2{font-size:1.5rem;margin-bottom:8px}
 .contact-card p{color:var(--text2);margin-bottom:22px}
 .contact-email{display:inline-block;font-family:var(--serif);font-size:1.3rem;color:var(--accent);text-decoration:none;margin-bottom:26px}
@@ -226,37 +192,36 @@ a:focus-visible,.btn:focus-visible,.nav-menu summary:focus-visible,summary:focus
 </script>
 </head>
 <body>
-<nav>
-  <a href="index.html" class="nav-logo"><span class="logo-tile"><img src="appicon.png" alt="TwoOfUs" width="34" height="34"></span> TwoOfUs: Together</a>
-  <ul class="nav-links">
-    <li><a href="index.html#neu">Neu in 1.8</a></li>
-    <li><a href="index.html#widgets">Widgets</a></li>
-    <li><a href="index.html#how">So funktioniert&rsquo;s</a></li>
-    <li><a href="support.html">Support</a></li>
-    <li><a href="privacy.html">Datenschutz</a></li>
-    <li><a href="en/support.html" hreflang="en" aria-label="English version">EN</a></li>
-  </ul>
-  <details class="nav-menu">
-    <summary aria-label="Men&uuml; &ouml;ffnen">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-    </summary>
-    <ul>
-      <li><a href="index.html#neu">Neu in 1.8</a></li>
+<header class="site-nav">
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="appicon.png" alt="" width="32" height="32">TwoOfUs</a>
+    <ul class="nav-links">
+      <li><a href="index.html#funktionen">Funktionen</a></li>
       <li><a href="index.html#widgets">Widgets</a></li>
-      <li><a href="index.html#how">So funktioniert&rsquo;s</a></li>
-      <li><a href="support.html">Support</a></li>
       <li><a href="privacy.html">Datenschutz</a></li>
-      <li><a href="en/support.html" hreflang="en" aria-label="English version">English</a></li>
+      <li><a href="support.html" aria-current="page">Support</a></li>
+      <li><a href="en/support.html" hreflang="en" lang="en">English</a></li>
     </ul>
-  </details>
-</nav>
+    <a class="store-btn compact" href="https://apps.apple.com/app/id6760221551"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.365 1.43c0 1.14-.417 2.2-1.24 3.03-.99.99-2.06 1.56-3.22 1.47-.14-1.11.42-2.28 1.16-3.02.83-.84 2.26-1.46 3.3-1.48zM20.5 17.02c-.56 1.3-.83 1.88-1.55 3.03-1 1.6-2.42 3.6-4.18 3.62-1.56.01-1.96-.99-4.08-.98-2.12.01-2.56.98-4.12.99-1.76.02-3.1-1.79-4.1-3.39C-.4 17.03-.63 11.5 1.34 8.56c.98-1.47 2.53-2.34 3.99-2.34 1.49 0 2.42 1 3.65 1 1.19 0 1.91-1 3.63-1 1.3 0 2.68.71 3.66 1.94-3.22 1.76-2.7 6.36.23 7.86z"/></svg>App laden</a>
+    <details class="menu">
+      <summary aria-label="Menü öffnen"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></summary>
+      <ul>
+        <li><a href="index.html#funktionen">Funktionen</a></li>
+        <li><a href="index.html#widgets">Widgets</a></li>
+        <li><a href="privacy.html">Datenschutz</a></li>
+        <li><a href="support.html" aria-current="page">Support</a></li>
+        <li><a href="en/support.html" hreflang="en" lang="en">English</a></li>
+        <li><a href="https://apps.apple.com/app/id6760221551">Im App Store laden</a></li>
+      </ul>
+    </details>
+  </div>
+</header>
 
 <div class="page">
 
   <div class="support-hero">
-    <span class="kicker">Hilfe &amp; Support</span>
-    <h1>Wir helfen dir gern</h1>
-    <p>Wenn etwas nicht so synct, wie es soll, findest du hier die Antworten. Oder schreib uns einfach direkt.</p>
+    <h1>Hilfe und Kontakt</h1>
+    <p>Antworten zu Verbindung, Widgets und Datenschutz. Wenn du hier nichts findest, schreib uns eine E-Mail.</p>
   </div>
 
   <div class="card contact-card">
@@ -268,7 +233,6 @@ a:focus-visible,.btn:focus-visible,.nav-menu summary:focus-visible,summary:focus
   </div>
 
   <div class="section-head">
-    <span class="kicker">FAQ</span>
     <h2>H&auml;ufige Fragen</h2>
   </div>
 
@@ -357,7 +321,6 @@ a:focus-visible,.btn:focus-visible,.nav-menu summary:focus-visible,summary:focus
   </div>
 
   <div class="section-head">
-    <span class="kicker">Tipps</span>
     <h2>Hol mehr aus TwoOfUs raus</h2>
   </div>
 
@@ -386,10 +349,23 @@ a:focus-visible,.btn:focus-visible,.nav-menu summary:focus-visible,summary:focus
 
 </div>
 
-<footer>
-  <div style="font-family:var(--serif);color:var(--accent);font-weight:600;font-size:1.05rem;margin-bottom:10px;letter-spacing:-0.01em">TwoOfUs</div>
-  <div class="footer-links"><a href="index.html">Start</a><a href="support.html">Support</a><a href="privacy.html">Datenschutz</a><a href="imprint.html">Impressum</a></div>
-  <div style="margin-top:16px;color:var(--text3)">Mit &#9829; in M&uuml;nster gemacht &middot; &copy; 2026 Jakob Hartmann</div>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="about">
+      <strong>TwoOfUs: Together</strong>
+      <p>Eine kostenlose iPhone-App für Paare, vor allem in Fernbeziehungen. Entwickelt von Jakob Hartmann in Münster.</p>
+    </div>
+    <nav aria-label="Fußzeile">
+      <ul>
+        <li><a href="index.html">Start</a></li>
+        <li><a href="support.html">Support</a></li>
+        <li><a href="privacy.html">Datenschutz</a></li>
+        <li><a href="imprint.html">Impressum</a></li>
+        <li><a href="en/support.html">English</a></li>
+      </ul>
+    </nav>
+    <p class="legal">© 2026 Jakob Hartmann</p>
+  </div>
 </footer>
 
 <script>
