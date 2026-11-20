@@ -1,22 +1,26 @@
 /* TwoOfUs landing — shared by / and /en/.
-   Type and colour come from the app itself (Newsreader + Hanken Grotesk, the "Tageslicht"
-   palette), used with restraint: paper-white ground, plum for night, rose as the only accent. */
+   Same language as the app since 1.9 ("Ruhig · Pflaume"): the system font (SF Pro on Apple
+   devices) for everything, Newsreader only for words a person wrote, one plum accent on a
+   soft grouped background, white cards without shadows. Follows the system's dark mode. */
 
 @font-face{font-family:"Newsreader";src:url("fonts/Newsreader.woff2") format("woff2");font-weight:200 800;font-style:normal;font-display:swap}
-@font-face{font-family:"Hanken Grotesk";src:url("fonts/HankenGrotesk.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap}
 
 :root{
-  --paper:#FFFCF8;
-  --sand:#F5EDE5;
-  --ink:#2B2025;
-  --muted:#6B5D57;
-  --line:#E7DCD2;
-  --plum:#47293F;
-  --plum-2:#6B4258;
-  --rose:#C26F82;
-  --rose-ink:#9A4E6B;
+  color-scheme:light dark;
+  --paper:#F2EFF1;
+  --surface:#FFFFFF;
+  --sand:#F0EBEE;
+  --ink:#1F171C;
+  --muted:#6B6066;
+  --line:#E6DFE3;
+  --plum:#5B3150;
+  --plum-2:#4A2741;
+  --night:#3A2234;
+  --rose:#5B3150;
+  --rose-ink:#5B3150;
   --serif:"Newsreader","Iowan Old Style",Georgia,serif;
-  --sans:"Hanken Grotesk",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --display:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
   --wrap:1120px;
 }
 
@@ -32,17 +36,17 @@ a:hover{color:var(--plum)}
 .skip{position:absolute;left:-9999px}
 .skip:focus{left:16px;top:12px;background:var(--paper);padding:8px 12px;z-index:200}
 
-h1,h2,h3{font-family:var(--serif);font-weight:500;color:var(--ink);font-optical-sizing:auto;letter-spacing:-.012em}
-h1{font-size:clamp(2.5rem,5vw,4.25rem);line-height:1.04;letter-spacing:-.022em;max-width:13ch}
-h2{font-size:clamp(1.85rem,3.2vw,2.6rem);line-height:1.1;max-width:22ch}
-h3{font-size:1.35rem;line-height:1.25;font-weight:600}
+h1,h2,h3{font-family:var(--display);font-weight:700;color:var(--ink);letter-spacing:-.022em}
+h1{font-size:clamp(2.5rem,5vw,4rem);line-height:1.05;letter-spacing:-.03em;max-width:14ch}
+h2{font-size:clamp(1.8rem,3.2vw,2.5rem);line-height:1.1;max-width:22ch}
+h3{font-size:1.25rem;line-height:1.25;font-weight:600;letter-spacing:-.012em}
 p{max-width:62ch}
 
 /* ---------- Navigation ---------- */
-.site-nav{position:sticky;top:0;z-index:100;background:rgba(255,252,248,.92);backdrop-filter:saturate(1.4) blur(12px);-webkit-backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid transparent}
+.site-nav{position:sticky;top:0;z-index:100;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:saturate(1.4) blur(12px);-webkit-backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid transparent}
 .site-nav.scrolled{border-bottom-color:var(--line)}
 .site-nav .wrap{display:flex;align-items:center;gap:28px;height:68px}
-.brand{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-family:var(--serif);font-size:1.3rem;font-weight:600;letter-spacing:-.01em;margin-right:auto}
+.brand{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-family:var(--display);font-size:1.2rem;font-weight:700;letter-spacing:-.02em;margin-right:auto}
 .brand img{width:32px;height:32px;border-radius:8px}
 .nav-links{display:flex;gap:26px;list-style:none;font-size:.97rem}
 .nav-links a{color:var(--muted);text-decoration:none}
@@ -57,7 +61,7 @@ p{max-width:62ch}
 .menu{display:none}
 .menu summary{list-style:none;cursor:pointer;width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:10px}
 .menu summary::-webkit-details-marker{display:none}
-.menu ul{position:absolute;right:20px;top:62px;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:8px;list-style:none;min-width:200px;box-shadow:0 18px 40px -20px rgba(43,32,37,.35)}
+.menu ul{position:absolute;right:20px;top:62px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:8px;list-style:none;min-width:200px;box-shadow:0 18px 40px -20px rgba(43,32,37,.35)}
 .menu li a{display:block;padding:11px 14px;border-radius:9px;color:var(--ink);text-decoration:none}
 .menu li a:hover{background:var(--sand)}
 
@@ -71,11 +75,11 @@ p{max-width:62ch}
 .news strong{color:var(--ink);font-weight:600}
 
 /* Home-screen slab with live widgets — the one memorable element */
-.homescreen{width:100%;min-width:0;background:linear-gradient(165deg,var(--plum-2) 0%,var(--plum) 62%,#33202E 100%);border-radius:40px;padding:26px;display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:440px;margin-left:auto;box-shadow:0 40px 80px -40px rgba(71,41,63,.65)}
-.widget{min-width:0;background:rgba(255,252,248,.96);border-radius:24px;padding:18px 18px 16px;min-height:150px;display:flex;flex-direction:column;color:var(--ink)}
+.homescreen{width:100%;min-width:0;background:var(--plum);border-radius:40px;padding:26px;display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:440px;margin-left:auto}
+.widget{min-width:0;background:var(--surface);border-radius:24px;padding:18px 18px 16px;min-height:150px;display:flex;flex-direction:column;color:var(--ink)}
 .widget.wide{grid-column:span 2;min-height:0}
 .widget .w-label{font-size:.85rem;font-weight:600;color:var(--muted)}
-.widget .w-value{font-family:var(--serif);font-size:2.35rem;line-height:1;margin-top:auto;font-weight:500;letter-spacing:-.02em;font-variant-numeric:lining-nums tabular-nums}
+.widget .w-value{font-family:var(--display);font-size:2.25rem;line-height:1;margin-top:auto;font-weight:600;letter-spacing:-.025em;font-variant-numeric:tabular-nums}
 .widget .w-sub{font-size:.85rem;color:var(--muted);margin-top:6px}
 .widget .w-note{font-family:var(--serif);font-size:1.12rem;line-height:1.35;margin-top:8px;max-width:none}
 .widget .w-row{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-top:10px}
@@ -88,18 +92,18 @@ section{padding:104px 0}
 
 /* Three features, product shots first */
 .features{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:56px 44px}
-.feature img{width:100%;max-width:260px;margin:0 auto 30px;filter:drop-shadow(0 30px 40px rgba(71,41,63,.18))}
+.feature img{width:100%;max-width:260px;margin:0 auto 30px;filter:drop-shadow(0 24px 32px rgba(31,23,28,.14))}
 .feature h3{margin-bottom:10px}
 .feature p{color:var(--muted)}
 
 /* Widgets: definition list, no cards */
 .band{background:var(--sand)}
 .widget-list{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:40px;border-top:1px solid var(--line);padding-top:32px}
-.widget-list dt{font-family:var(--serif);font-size:1.3rem;font-weight:600;margin-bottom:8px}
+.widget-list dt{font-family:var(--display);font-size:1.15rem;font-weight:600;letter-spacing:-.012em;margin-bottom:8px}
 .widget-list dd{color:var(--muted);font-size:1rem}
 
 /* Privacy, at night */
-.night{background:var(--plum);color:#F6ECEE}
+.night{background:var(--night);color:#F6ECEE}
 .night h2{color:#fff}
 .night .section-intro p{color:rgba(246,236,238,.8)}
 .facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px;border-top:1px solid rgba(246,236,238,.18);padding-top:32px}
@@ -111,7 +115,7 @@ section{padding:104px 0}
 /* Getting started: a real sequence, so numbered */
 .steps{list-style:none;counter-reset:step;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:40px;border-top:1px solid var(--line);padding-top:32px}
 .steps li{counter-increment:step}
-.steps li::before{content:counter(step);display:block;font-family:var(--serif);font-size:2.4rem;line-height:1;color:var(--rose);margin-bottom:14px;font-variant-numeric:lining-nums}
+.steps li::before{content:counter(step);display:block;font-family:var(--display);font-size:2.25rem;font-weight:600;line-height:1;color:var(--plum);margin-bottom:14px;font-variant-numeric:tabular-nums}
 .steps h3{font-size:1.15rem;margin-bottom:6px}
 .steps p{color:var(--muted);font-size:1rem}
 .closing{display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px;margin-top:64px}
@@ -121,11 +125,21 @@ section{padding:104px 0}
 .site-footer{border-top:1px solid var(--line);padding:48px 0 56px;font-size:.95rem;color:var(--muted)}
 .site-footer .wrap{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:40px}
 .site-footer .about{max-width:56ch}
-.site-footer .about strong{color:var(--ink);font-family:var(--serif);font-size:1.15rem;font-weight:600;display:block;margin-bottom:8px}
+.site-footer .about strong{color:var(--ink);font-family:var(--display);font-size:1.1rem;font-weight:600;display:block;margin-bottom:8px}
 .site-footer nav ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px 24px;justify-self:end}
 .site-footer nav a{color:var(--muted);text-decoration:none}
 .site-footer nav a:hover{color:var(--ink)}
 .site-footer .legal{grid-column:1/-1;font-size:.88rem}
+
+/* ---------- Dark mode (the app follows the system since 1.9, so does the site) ---------- */
+@media (prefers-color-scheme:dark){
+  :root{--paper:#0F0D10;--surface:#1C181D;--sand:#161317;--ink:#F4EEF2;--muted:#A79AA2;--line:#2F2830;--plum:#E2A8BE;--plum-2:#EDBDCE;--night:#1C181D;--rose:#E2A8BE;--rose-ink:#E2A8BE}
+  .homescreen{background:#3A2836}
+  .store-btn{background:#fff;color:#000}
+  .store-btn:hover{background:#e8e8ed;color:#000}
+  .feature img{filter:none}
+  .night h2,.facts h3{color:#F4EEF2}
+}
 
 /* ---------- Responsive ---------- */
 @media (max-width:980px){
