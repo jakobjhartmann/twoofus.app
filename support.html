@@ -14,12 +14,12 @@
 <link rel="stylesheet" href="assets/site.css">
 <style>
 /* Page-specific styles below still use the old token names; map them onto the shared palette. */
-:root{--bg:var(--paper);--surface:#fff;--tint:var(--sand);--text:var(--ink);--text2:var(--muted);--text3:#8A7B72;--accent:var(--rose-ink);--accent2:var(--plum);--success:#4F8A64;--onaccent:#fff;--radius:18px;--shadow:0 1px 2px rgba(43,32,37,.04);--shadow-lg:0 18px 40px -20px rgba(43,32,37,.35)}
+:root{--bg:var(--paper);--surface:var(--card);--tint:var(--sand);--text:var(--ink);--text2:var(--muted);--text3:#8A7B72;--accent:var(--plum);--accent2:var(--plum);--success:#4F8A64;--onaccent:#fff;--radius:8px;--shadow:0 1px 2px rgba(43,32,37,.04);--shadow-lg:0 18px 40px -20px rgba(43,32,37,.35)}
 .btn{display:inline-flex;align-items:center;gap:9px;border-radius:12px;padding:13px 22px;font-weight:600;text-decoration:none;font-size:1rem;border:none;cursor:pointer}
 .btn-primary{background:var(--plum);color:#fff}
 .btn-primary:hover{background:var(--plum-2);color:#fff}
-.btn-secondary{background:#fff;color:var(--ink);border:1px solid var(--line)}
-.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius)}
+.btn-secondary{background:var(--card);color:var(--ink);border:1px solid var(--line)}
+.card{background:var(--card);box-shadow:var(--shadow);border:1px solid var(--line);border-radius:var(--radius)}
 .page{max-width:760px;margin:0 auto;padding:56px 24px 96px}
 .container{max-width:1080px;margin:0 auto}
 .page p,.page li,.page h1,.page h2,.support-hero h1,.support-hero p{max-width:none}
@@ -127,7 +127,7 @@
       "name": "Wann erinnert mich die App an den Check-in?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Am Check-in-Tag gibt es eine Erinnerung zu eurer gewählten Uhrzeit, auf Wunsch auch morgens. Ist euer Check-in am Abend noch offen, kommt etwa 90 Minuten später eine letzte Chance (nie nach 23:30 Uhr). Wurde der letzte Check-in ausgelassen, erinnert die App am nächsten Check-in-Tag zusätzlich mittags. Sobald du abschickst, verschwinden die Erinnerungen dieses Tages. Die Extra-Erinnerungen kannst du in den Check-in-Einstellungen unter „Extra-Erinnerungen\" ausschalten."
+        "text": "Am Check-in-Tag erinnert dich die App morgens (auf Wunsch) und zu eurer gewählten Uhrzeit. Mit den Extra-Erinnerungen (Standard) kommen zusätzlich Erinnerungen um 12, 16, 18, 21 und 22 Uhr, insgesamt bis zu 7 – aber nur, solange du noch nicht abgeschickt hast. Ab 20 Uhr kommen sie als zeitkritische Mitteilung auch durch einen Fokus. Hat dein Partner schon geantwortet, bekommst du außerdem die Mitteilung „… hat schon geantwortet – du bist dran“ (ab Version 1.10, wenn ihr beide 1.10 habt). Sobald du abschickst, ist für diesen Tag Ruhe. Die Extra-Erinnerungen kannst du in den Check-in-Einstellungen ausschalten; dann bleibt es bei morgens und abends."
       }
     },
     {
@@ -151,7 +151,31 @@
       "name": "Greift TwoOfUs auf meinen Kalender zu?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Nur wenn du es willst, und nur schreibend: Nach einer angenommenen Date-Einladung kannst du auf „Zum iOS-Kalender hinzufügen“ tippen, dann trägt die App genau diesen Termin ein. TwoOfUs liest deinen Kalender nicht aus."
+        "text": "Nur wenn du es willst, und nur schreibend: Bei einer angenommenen Date-Einladung kannst du auf „Zum iOS-Kalender hinzufügen“ tippen – ab Version 1.10 ihr beide, also auch die Person, die eingeladen hat. Dann trägt die App genau diesen Termin ein. TwoOfUs liest deinen Kalender nicht aus."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wer sieht meine Geschenkideen und Wünsche?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Unter Geschenke gibt es zwei Teile. „Meine Wünsche“ sieht dein Partner – das ist eure gemeinsame Wunschliste, gespeichert wie eure anderen geteilten Inhalte in eurer iCloud. Deine Ideen für deinen Partner, die Markierung „besorgt“ sowie Geburtstag und Jahrestag bleiben nur auf deinem iPhone; dein Partner sieht sie nie. Fügst du einen Link ein (z. B. von Amazon), lädt dein iPhone einmalig Titel und Vorschaubild von der Seite."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Woher kommt der Himmel auf „Heute“?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Die App berechnet ihn direkt auf deinem iPhone aus den Städten, die ihr in der App gewählt habt: Sonnenstand, Sonnenauf- und -untergang, Dämmerung und Mondphase – jeweils für dich und für deinen Partner. Dafür werden keine zusätzlichen Daten erhoben oder übertragen. Ist für deinen Partner noch keine Stadt gesetzt, zeigt die App nur deinen Himmel."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wie funktioniert das Widget „Herz senden“?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Füge das Widget „Herz senden“ zu deinem Home- oder Sperrbildschirm hinzu. Ein Tipp darauf schickt deinem Partner ein Herz als Mitteilung, ohne dass du die App öffnest – höchstens einmal pro Minute. Damit es ankommt, braucht dein Partner ebenfalls Version 1.10."
       }
     },
     {
@@ -279,7 +303,7 @@
 
     <div class="card faq-item">
       <button class="faq-q" aria-expanded="false">Wann erinnert mich die App an den Check-in?<span class="faq-toggle" aria-hidden="true">+</span></button>
-      <div class="faq-a"><p>Am Check-in-Tag gibt es eine Erinnerung zu eurer gew&auml;hlten Uhrzeit, auf Wunsch auch morgens. Ist euer Check-in am Abend noch offen, kommt etwa 90 Minuten sp&auml;ter eine <strong>letzte Chance</strong> (nie nach 23:30 Uhr). Wurde der letzte Check-in ausgelassen, erinnert die App am n&auml;chsten Check-in-Tag zus&auml;tzlich mittags. Sobald du abschickst, verschwinden die Erinnerungen dieses Tages. Die Extra-Erinnerungen kannst du in den Check-in-Einstellungen unter <strong>&bdquo;Extra-Erinnerungen&ldquo;</strong> ausschalten.</p></div>
+      <div class="faq-a"><p>Am Check-in-Tag erinnert dich die App morgens (auf Wunsch) und zu eurer gew&auml;hlten Uhrzeit. Mit den <strong>Extra-Erinnerungen</strong> (Standard) kommen zus&auml;tzlich Erinnerungen um 12, 16, 18, 21 und 22&nbsp;Uhr, insgesamt bis zu 7 &ndash; aber nur, solange du noch nicht abgeschickt hast. Ab 20&nbsp;Uhr kommen sie als zeitkritische Mitteilung auch durch einen Fokus. Hat dein Partner schon geantwortet, bekommst du au&szlig;erdem die Mitteilung &bdquo;&hellip; hat schon geantwortet &ndash; du bist dran&ldquo; (ab Version 1.10, wenn ihr beide 1.10 habt). Sobald du abschickst, ist f&uuml;r diesen Tag Ruhe. Die Extra-Erinnerungen kannst du in den Check-in-Einstellungen ausschalten; dann bleibt es bei morgens und abends.</p></div>
     </div>
 
     <div class="card faq-item">
@@ -294,7 +318,22 @@
 
     <div class="card faq-item">
       <button class="faq-q" aria-expanded="false">Greift TwoOfUs auf meinen Kalender zu?<span class="faq-toggle" aria-hidden="true">+</span></button>
-      <div class="faq-a"><p>Nur wenn du es willst, und nur schreibend: Nach einer angenommenen Date-Einladung kannst du auf <strong>&bdquo;Zum iOS-Kalender hinzuf&uuml;gen&ldquo;</strong> tippen, dann tr&auml;gt die App genau diesen Termin ein. TwoOfUs liest deinen Kalender nicht aus.</p></div>
+      <div class="faq-a"><p>Nur wenn du es willst, und nur schreibend: Bei einer angenommenen Date-Einladung kannst du auf <strong>&bdquo;Zum iOS-Kalender hinzuf&uuml;gen&ldquo;</strong> tippen &ndash; ab Version 1.10 ihr beide, also auch die Person, die eingeladen hat. Dann tr&auml;gt die App genau diesen Termin ein. TwoOfUs liest deinen Kalender nicht aus.</p></div>
+    </div>
+
+    <div class="card faq-item">
+      <button class="faq-q" aria-expanded="false">Wer sieht meine Geschenkideen und W&uuml;nsche?<span class="faq-toggle" aria-hidden="true">+</span></button>
+      <div class="faq-a"><p>Unter <strong>Geschenke</strong> gibt es zwei Teile. <strong>&bdquo;Meine W&uuml;nsche&ldquo;</strong> sieht dein Partner &ndash; das ist eure gemeinsame Wunschliste, gespeichert wie eure anderen geteilten Inhalte in eurer iCloud. Deine <strong>Ideen f&uuml;r deinen Partner</strong>, die Markierung &bdquo;besorgt&ldquo; sowie Geburtstag und Jahrestag bleiben nur auf deinem iPhone; dein Partner sieht sie nie. F&uuml;gst du einen Link ein (z.&nbsp;B. von Amazon), l&auml;dt dein iPhone einmalig Titel und Vorschaubild von der Seite.</p></div>
+    </div>
+
+    <div class="card faq-item">
+      <button class="faq-q" aria-expanded="false">Woher kommt der Himmel auf &bdquo;Heute&ldquo;?<span class="faq-toggle" aria-hidden="true">+</span></button>
+      <div class="faq-a"><p>Die App berechnet ihn direkt auf deinem iPhone aus den St&auml;dten, die ihr in der App gew&auml;hlt habt: Sonnenstand, Sonnenauf- und -untergang, D&auml;mmerung und Mondphase &ndash; jeweils f&uuml;r dich und f&uuml;r deinen Partner. Daf&uuml;r werden keine zus&auml;tzlichen Daten erhoben oder &uuml;bertragen. Ist f&uuml;r deinen Partner noch keine Stadt gesetzt, zeigt die App nur deinen Himmel.</p></div>
+    </div>
+
+    <div class="card faq-item">
+      <button class="faq-q" aria-expanded="false">Wie funktioniert das Widget &bdquo;Herz senden&ldquo;?<span class="faq-toggle" aria-hidden="true">+</span></button>
+      <div class="faq-a"><p>F&uuml;ge das Widget &bdquo;Herz senden&ldquo; zu deinem Home- oder Sperrbildschirm hinzu. Ein Tipp darauf schickt deinem Partner ein Herz als Mitteilung, ohne dass du die App &ouml;ffnest &ndash; h&ouml;chstens einmal pro Minute. Damit es ankommt, braucht dein Partner ebenfalls Version 1.10.</p></div>
     </div>
 
     <div class="card faq-item">
